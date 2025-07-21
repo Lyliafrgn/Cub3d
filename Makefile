@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/07/21 16:48:04 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/07/21 16:51:01 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ YELLOW	=	\e[1;33m
 #      \  /     / ____ \  | | \ \   _| |_   / ____ \  | |_) | | |____  | |____   ____) |
 #       \/     /_/    \_\ |_|  \_\ |_____| /_/    \_\ |____/  |______| |______| |_____/
 #
-NAME	=	minishell
+NAME	=	cub3D
 CC		=	cc
-INC = -I./header
+INC 	=	-I./header
 CFLAGS	=	-Wall -Wextra -Werror -g $(INC)
 
 LIBFLAGS	=	#-lreadline
@@ -72,17 +72,17 @@ LIBFT_OBJ	:=	$(patsubst %.c,%.o,$(wildcard ./libs/libft/build/*.c))
 #   |_|     |_____||______||______|       |_|/_/    \_\|_|  \_\ \_____||______|   |_|  |_____/
 #
 $(BUILD_DIR)/%.o	:	%.c $(INC) Makefile
-						@printf "$(YELLOW)[minishell] Compiling $< ...$(DEFAULT)                  \r"
+						@printf "$(YELLOW)[cub3D] Compiling $< ...$(DEFAULT)                  \r"
 						@mkdir -p $(dir $@)
 						@$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
 
 $(NAME) 			:	$(OBJ) $(LIBFT_PATH)
 						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) -o $@ $(LDFLAGS)
-						@printf "\n$(GREEN)[minishell] Compiled successfully.$(DEFAULT)\n"
+						@printf "\n$(GREEN)[cub3D] Compiled successfully.$(DEFAULT)\n"
 
 $(LIBFT_PATH)		:	$(LIBFT_OBJ)
 						@$(MAKE) -C ./libs/libft
-						@printf "\n$(GREEN)[minishell] libft compiled successfully.$(DEFAULT)\n" > /dev/null
+						@printf "\n$(GREEN)[cub3D] libft compiled successfully.$(DEFAULT)\n" > /dev/null
 
 #    _____   _    _   ____   _   _ __     __    _______         _____    _____  ______  _______  _____
 #   |  __ \ | |  | | / __ \ | \ | |\ \   / /   |__   __| /\    |  __ \  / ____||  ____||__   __|/ ____|
@@ -110,5 +110,4 @@ re		:	fclean all
 
 test	:	$(NAME)
 			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes \
-			--child-silent-after-fork=no --suppressions=readline.supp -s ./minishell
-
+			--child-silent-after-fork=no --suppressions=readline.supp -s ./cub3D
