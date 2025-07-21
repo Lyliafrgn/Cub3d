@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_game_main_loop.c                               :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 19:03:46 by ofilloux         ###   ########.fr       */
+/*   Created: 2025/07/21 18:39:07 by ofilloux          #+#    #+#             */
+/*   Updated: 2025/07/21 18:56:57 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-int	run_game_main_loop(t_global *data)
-{
-	(void) data;
-	printf("Running the game loop...\n");
-	while (true)
-	{
-		if (1 == 1 /*stoping game condition*/)
-			break;
-		// handle input
-		// Update game state
-		// Render graphics
+# include "structures.h"
 
-	}
-	return (EXIT_SUCCESS);
-}
+void	initialize_structures(t_global *data);
+int		free_resources(t_global *data);
+
+#endif

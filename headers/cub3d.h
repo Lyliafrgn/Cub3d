@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 17:48:25 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:59:19 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 
 ///CUSTOMS HEADERS
 # include "structures.h"	// Structures for player, map, and global data
+# include "utils.h"			// Init and resource managment (frees)
+# include "parsing.h"		// Map parsing functions
+# include "exec.h"			// Game execution functions
+# include "sig.h"			// Signal handling functions
+
 # include "libft.h"
 
 #endif

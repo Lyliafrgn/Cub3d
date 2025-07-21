@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/07/21 17:37:02 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/07/21 19:09:44 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,21 +32,25 @@ YELLOW	=	\e[1;33m
 #
 NAME	=	cub3D
 CC		=	cc
-INC 	=	-I./headers
-LINK_FLAGS	=	-lm -lmlx
-CFLAGS	=	-Wall -Wextra -Werror $(INC) $(LINK_FLAGS)
+INC 	=	-I./headers -I./libs/libft
+LNK_FLAGS	=	-lm
+CFLAGS	=	-Wall -Wextra -Werror #$(INC) $(LNK_FLAGS)
 DEBUG	=	-g -O0
 
 #   ////////////////// SOURCES FILES //////////////////
-SIGNALS	=	./src/signals/signals.c
+SIGNALS	=	src/signals/signal_main.c
 
-EXEC	=	./src/exec/exec.c
+EXEC	=	src/exec/run_game_main_loop.c
 
-UTILS	=	./utils.c
+PARSING	=	src/parsing/parse_map.c
+
+UTILS	=	utils/frees/free_resources.c \
+			utils/init/initialize_structures.c
 
 SRC		=	main.c \
 			$(SIGNALS) \
 			$(UTILS) \
+			$(PARSING) \
 			$(EXEC)
 
 
@@ -57,7 +61,7 @@ SRC		=	main.c \
 #   | |__| | | |_) | | |__| | | |____  | |____     | |     ____) |
 #    \____/  |____/   \____/  |______|  \_____|    |_|    |_____/
 #
-BUILD_DIR	=	./build
+BUILD_DIR	=	build
 OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIBFT_PATH	=	./libs/libft/libft.a
@@ -71,13 +75,13 @@ LIBFT_OBJ	:=	$(patsubst %.c,%.o,$(wildcard ./libs/libft/build/*.c))
 #   | |      _| |_ | |____ | |____        | | / ____ \ | | \ \ | |__| || |____    | |   ____) |
 #   |_|     |_____||______||______|       |_|/_/    \_\|_|  \_\ \_____||______|   |_|  |_____/
 #
-$(BUILD_DIR)/%.o	:	%.c $(INC) Makefile
-						@printf "$(YELLOW)[cub3D] Compiling $< ...$(DEFAULT)                  \r"
+$(BUILD_DIR)/%.o	:	%.c Makefile
 						@mkdir -p $(dir $@)
-						@$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
+						@printf "$(YELLOW)[cub3D] Compiling $< ...$(DEFAULT)                  \r"
+						@$(CC) $(CFLAGS) $(INC) $(LNK_FLAGS) $(DEBUG) -c $< -o $@
 
 $(NAME) 			:	$(OBJ) $(LIBFT_PATH)
-						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) $(LINK_FLAGS) -o $@ $(LDFLAGS)
+						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) $(INC) $(LNK_FLAGS) -o $@
 						@printf "\n$(GREEN)[cub3D] Compiled successfully.$(DEFAULT)\n"
 
 $(LIBFT_PATH)		:	$(LIBFT_OBJ)

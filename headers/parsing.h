@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_game_main_loop.c                               :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 19:03:46 by ofilloux         ###   ########.fr       */
+/*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
+/*   Updated: 2025/07/21 18:36:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef PARSING_H
+# define PARSING_H
 
-int	run_game_main_loop(t_global *data)
-{
-	(void) data;
-	printf("Running the game loop...\n");
-	while (true)
-	{
-		if (1 == 1 /*stoping game condition*/)
-			break;
-		// handle input
-		// Update game state
-		// Render graphics
+# include "structures.h"
 
-	}
-	return (EXIT_SUCCESS);
-}
+int	parse_map_root(t_global *data, char *file_name);
+
+#endif
