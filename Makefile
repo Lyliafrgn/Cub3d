@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/07/21 19:09:44 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/07/21 19:30:08 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,16 @@ YELLOW	=	\e[1;33m
 #       \/     /_/    \_\ |_|  \_\ |_____| /_/    \_\ |____/  |______| |______| |_____/
 #
 NAME	=	cub3D
+
 CC		=	cc
-INC 	=	-I./headers -I./libs/libft
-LNK_FLAGS	=	-lm
 CFLAGS	=	-Wall -Wextra -Werror #$(INC) $(LNK_FLAGS)
 DEBUG	=	-g -O0
+
+MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+LNK_FLAGS	=-lm $(MLX_FLAGS)
+
+INC 	=	-I./headers -I./libs/libft
+
 
 #   ////////////////// SOURCES FILES //////////////////
 SIGNALS	=	src/signals/signal_main.c
@@ -61,6 +66,14 @@ SRC		=	main.c \
 #   | |__| | | |_) | | |__| | | |____  | |____     | |     ____) |
 #    \____/  |____/   \____/  |______|  \_____|    |_|    |_____/
 #
+#////////////////// MLX && LIBS//////////////////
+LIB_DIR =	libs
+
+MLX_DIR	=	$(LIB_DIR)/minilibx
+MLX		=	$(MLX_DIR)/libmlx.a
+MLX_OBJ	=	$(MLX_DIR:.c=.o) #### TO CONFIRM ####
+
+#### OBJ ####
 BUILD_DIR	=	build
 OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
@@ -80,13 +93,16 @@ $(BUILD_DIR)/%.o	:	%.c Makefile
 						@printf "$(YELLOW)[cub3D] Compiling $< ...$(DEFAULT)                  \r"
 						@$(CC) $(CFLAGS) $(INC) $(LNK_FLAGS) $(DEBUG) -c $< -o $@
 
-$(NAME) 			:	$(OBJ) $(LIBFT_PATH)
+$(NAME) 			:	$(OBJ) $(LIBFT_PATH) $(MLX)
 						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) $(INC) $(LNK_FLAGS) -o $@
 						@printf "\n$(GREEN)[cub3D] Compiled successfully.$(DEFAULT)\n"
 
 $(LIBFT_PATH)		:	$(LIBFT_OBJ)
 						@$(MAKE) -C ./libs/libft
 						@printf "\n$(GREEN)[cub3D] libft compiled successfully.$(DEFAULT)\n" > /dev/null
+
+$(MLX)				:	$(MLX_OBJ)
+						make -C $(MLX_DIR) all
 
 #    _____   _    _   ____   _   _ __     __    _______         _____    _____  ______  _______  _____
 #   |  __ \ | |  | | / __ \ | \ | |\ \   / /   |__   __| /\    |  __ \  / ____||  ____||__   __|/ ____|
@@ -102,6 +118,7 @@ all		:	$(NAME)
 
 clean	:
 			@make -s clean -C ./libs/libft
+			@make -C $(MLX_DIR) clean
 			@rm -rf $(BUILD_DIR)
 			@printf "$(RED)[minishell] Object files cleaned.$(DEFAULT)\n"
 

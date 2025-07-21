@@ -1,3 +1,6 @@
 **/*.o
 **/*.out
+**/*.a
 .vscode
+**/minilibx/*
+cub3D
