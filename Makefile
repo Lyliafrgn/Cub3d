@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/07/21 17:08:33 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/07/21 17:37:02 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,10 @@ YELLOW	=	\e[1;33m
 #
 NAME	=	cub3D
 CC		=	cc
-INC 	=	-I./header
-LDFLAGS	=	-lm -lmlx
-CFLAGS	=	-Wall -Wextra -Werror -g $(INC)
-
-LIBFLAGS	=	#-lreadline
+INC 	=	-I./headers
+LINK_FLAGS	=	-lm -lmlx
+CFLAGS	=	-Wall -Wextra -Werror $(INC) $(LINK_FLAGS)
+DEBUG	=	-g -O0
 
 #   ////////////////// SOURCES FILES //////////////////
 SIGNALS	=	./src/signals/signals.c
@@ -78,7 +77,7 @@ $(BUILD_DIR)/%.o	:	%.c $(INC) Makefile
 						@$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
 
 $(NAME) 			:	$(OBJ) $(LIBFT_PATH)
-						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) -o $@ $(LDFLAGS)
+						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) $(LINK_FLAGS) -o $@ $(LDFLAGS)
 						@printf "\n$(GREEN)[cub3D] Compiled successfully.$(DEFAULT)\n"
 
 $(LIBFT_PATH)		:	$(LIBFT_OBJ)
@@ -110,5 +109,4 @@ fclean	:	clean
 re		:	fclean all
 
 test	:	$(NAME)
-			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes \
-			--child-silent-after-fork=no --suppressions=readline.supp -s ./cub3D
+			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./cub3D
