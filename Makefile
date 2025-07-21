@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/07/21 16:51:01 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/07/21 17:08:33 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ YELLOW	=	\e[1;33m
 NAME	=	cub3D
 CC		=	cc
 INC 	=	-I./header
+LDFLAGS	=	-lm -lmlx
 CFLAGS	=	-Wall -Wextra -Werror -g $(INC)
 
 LIBFLAGS	=	#-lreadline
