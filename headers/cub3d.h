@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 17:16:09 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:48:25 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 
 # include <stdbool.h>
 # include <limits.h>
+
+///CUSTOMS HEADERS
+# include "structures.h"	// Structures for player, map, and global data
+# include "libft.h"
 
 #endif
 
