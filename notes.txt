@@ -1,0 +1,8 @@
+
+Structures :
+	une structure globale avec tous les éléments.
+		- une structure joueur
+		- structure minilibix
+		-
+
+
