@@ -30,5 +30,41 @@ int	init_mlx(t_global *data)
 // IN PROGRESS
 
 int ft_key_pressed(int keycode, t_global *data)
+{
+	if (keycode == XK_w || keycode == XK_W)
+		data->up = 1;
+	else if (keycode == XK_s || keycode == XK_S)
+		data->down = 1;
+	else if (keycode == XK_d || keycode == XK_D)
+		data->right = 1;
+	else if (keycode == XK_a || keycode == XK_A)
+		data->left = 1;
+	else if (keycode == XK_Left)
+		data->cam_left = 1;
+	else if (keycode == XK_Right)
+		data->cam_right = 1;
+	else if (keycode == XK_Escape
+	{
+		printf("Escape key pressed\n");//AJOUTER UN MESSAGE SYMPA ? 
+		ft_ree(data); // TO DO
+		exit (0);
+	}
+	return (0);
+}
 
 int ft_key_released(int keycode, t_global *data)
+{
+	if (keycode == XK_w || keycode == XK_W)
+		data->up = 0;
+	else if (keycode == XK_s || keycode == XK_S)
+		data->down = 0;
+	else if (keycode == XK_d || keycode == XK_D)
+		data->right = 0;
+	else if (keycode == XK_a || keycode == XK_A)
+		data->left = 0;
+	else if (keycode == XK_Left)
+		data->cam_left = 0;
+	else if (keycode == XK_Right)
+		data->cam_right = 0;
+	return (0);
+}

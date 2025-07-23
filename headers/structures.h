@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 17:36:31 by ly               ###   ########.fr       */
+/*   Updated: 2025/07/23 18:45:19 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ typedef struct s_global
 	int			winw;
 	int			winh;
 	int			colors[2][3]; // 2= floor and ceiling colors & 3= RGB
+	int			left;
+	int			right;
+	int			up;
+	int			down;
+	int			cam_left;
+	int			cam_right;
 }	t_global;
 
 #endif
