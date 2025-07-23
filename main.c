@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 19:02:26 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:04:06 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int	main(int ac, char **av, char **env)
 	if (!data.map || !data.player)
 	{
 		write(STDERR_FILENO, "Err: Map or player data not initialized.\n", 42);
+		return (1);
+	}
+	init_mlx(&data);
+	if (init_mlx(&data) == FAILURE)
+	{
+		write(2, "Err: Failed to initialize MLX.\n", 31);
 		return (1);
 	}
 	run_game_main_loop(&data);

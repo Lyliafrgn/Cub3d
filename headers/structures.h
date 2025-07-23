@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 17:47:29 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:36:31 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,27 @@ typedef struct s_map
 	int		height;		// Height of the map
 }	t_map;
 
+typedef struct s_img
+{
+	void	*mlx_img; // ptr to mlx's image (returned by mlx_xpm_file_to_image)
+	char	*addr; // memory addr of the img
+	int		bpp; // bits per pixel
+	int		llen; // lenght of a line of pixels in the img (in octets)
+	int		endian; //if 0 = little endian (RGB order), if 1 = big endian (RGB)
+	int		imgw; // Width of the img
+	int		imgh; // Height of the img
+}	t_ing;
+
 typedef struct s_global
 {
 	t_map		*map;
 	t_player	*player;
+	t_img		img[5]; // macro defined in cub3d.h (textures + screen)
+	void		*mlx.ptr;
+	void		*win_ptr;
+	int			winw;
+	int			winh;
+	int			colors[2][3]; // 2= floor and ceiling colors & 3= RGB
 }	t_global;
 
 #endif

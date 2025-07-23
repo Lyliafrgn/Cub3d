@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 18:59:19 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:07:53 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@
 # include "sig.h"			// Signal handling functions
 
 # include "libft.h"
+
+# define SUCCESS 0
+# define FAILURE -1
+
+# define TX_NORTH 0
+# define TX_SOUTH 1
+# define TX_EAST  2
+# define TX_WEST  3
+# define TX_FRAME 4
 
 #endif
 
