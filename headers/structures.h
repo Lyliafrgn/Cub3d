@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 18:45:19 by ly               ###   ########.fr       */
+/*   Updated: 2025/07/23 20:08:25 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_global
 {
 	t_map		*map;
 	t_player	*player;
-	t_img		img[5]; // macro defined in cub3d.h (textures + screen)
+	t_img		path[5]; // macro defined in cub3d.h (textures + screen)
 	void		*mlx.ptr;
 	void		*win_ptr;
 	int			winw;

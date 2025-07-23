@@ -20,7 +20,7 @@ int	init_mlx(t_global *data)
 
 	if (load_img(data) == FAILURE)
 		return (ft_free_data(data), FAILURE); // ajouter message d erreur ? 
-	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data;
+	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data);
 	mlx_hook(data->win_ptr, 3, KeyReleaseMask, ft_key_released, data);
 	mlx_hook(data->win_ptr, 17, ButtonPresMask, ft_close_window, data);
 	mlx_loop_hook(data->mlx_ptr, ft_render, data);
@@ -43,7 +43,7 @@ int ft_key_pressed(int keycode, t_global *data)
 		data->cam_left = 1;
 	else if (keycode == XK_Right)
 		data->cam_right = 1;
-	else if (keycode == XK_Escape
+	else if (keycode == XK_Escape)
 	{
 		printf("Escape key pressed\n");//AJOUTER UN MESSAGE SYMPA ? 
 		ft_ree(data); // TO DO
