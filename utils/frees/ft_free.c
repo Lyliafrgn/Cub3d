@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 18:39:07 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 18:25:16 by ofilloux         ###   ########.fr       */
+/*   Created: 2025/07/23 18:21:57 by ofilloux          #+#    #+#             */
+/*   Updated: 2025/07/23 18:22:30 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "cub3d.h"
 
-# include "structures.h"
-
-# define BUFFER_SIZE 1024
-
-int		initialize_structures(t_global *data);
-
-/// FREES /////
-void	ft_free(void **ptr);
-int		free_resources(t_global *data);
-
-/// GET NEXT LINE /////
-char	*ft_get_next_line(int fd);
-char	*s_truncate(char *s, int n);
-int		eol(char *line);
-char	*str_cpy(char *dest, char *src);
-char	*concat(char *s1, char *s2);
-
-#endif
+void	ft_free(void **ptr)
+{
+	if (ptr && *ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+}
