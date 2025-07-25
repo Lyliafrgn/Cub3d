@@ -22,14 +22,16 @@ static int  upload_textures(t_global *data)
 	i = 0;
 	while(i < 4)
 	{
-		img = &(data->path[i]);
-		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, data->path[i], 
+		img = &(data->txtr[i]);
+		if (!img->path)
+			return (FAILURE); // missing textr err
+		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path, 
 			&img->imgw, &img->imgh);
 		if (!img->mlx_img)
-			(return(FAILURE));
+			return(FAILURE); // msg erreur
 		img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->llen, &img->endian);
-		if (!img->mlx_img)
-		(return(FAILURE));
+		if (!img->addr)
+			return (FAILURE); // msg erreur
 		i++;
 	}
 	return (SUCCESS);
@@ -37,20 +39,17 @@ static int  upload_textures(t_global *data)
 
 int upload_img(t_global *data)
 {
-	int	i;
-
-	i = 0;
-	if (!data->path[i])
-		return (ft_err("Missing texture path", FAILURE));
     if (upload_textures(data) == FAILURE)
 		return (FAILURE);
-	data->path[TX_FRAME].mlx_img = mlx_new_image(data->mlx_ptr, data->winw, data->winh);
-	if (dat->path[TX_FRAME].mlx_img == NULL)
+	data->screen.mlx_img = mlx_new_image(data->mlx_ptr, data->winw, data->winh);
+	if (!data->screen.mlx_img)
 		return (FAILURE);
-	data->path[TX_FRAME].addr = mlx_get_data_addr(data->path[TX_FRAME].mlx_img,
-			&data->img[TX_FRAME].bpp, &data->path[TX_FRAME].llen,
-			&data->img[TX_FRAME].endian);
-	if (data->path[TX_FRAME].addr = NULL)
+	data->screen.addr = mlx_get_data_addr(data->screen.mlx_img,
+			&data->screen.bpp, &data->screen.llen,
+			&data->screen.endian);
+	if (!data->screen.addr)
 		return (FAILURE);
 	return (SUCCESS);
 }
+
+//AJOUTER FT DESTROY IMAGE

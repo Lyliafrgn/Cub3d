@@ -36,11 +36,14 @@
 # define SUCCESS 0
 # define FAILURE -1
 
-# define TX_NORTH 0
-# define TX_SOUTH 1
-# define TX_EAST  2
-# define TX_WEST  3
-# define TX_FRAME 4
+# define TX_NO 0
+# define TX_SO 1
+# define TX_EA 2
+# define TX_WE 3
+
+# define R 0
+# define G 1
+# define B 2
 
 #endif
 

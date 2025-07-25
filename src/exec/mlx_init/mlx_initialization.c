@@ -22,7 +22,7 @@ int	init_mlx(t_global *data)
 		return (ft_free_data(data), FAILURE); // ajouter message d erreur ? 
 	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data);
 	mlx_hook(data->win_ptr, 3, KeyReleaseMask, ft_key_released, data);
-	mlx_hook(data->win_ptr, 17, ButtonPresMask, ft_close_window, data);
+	mlx_hook(data->win_ptr, 17, 0, ft_close_window, data);
 	mlx_loop_hook(data->mlx_ptr, ft_render, data);
 	return (SUCCESS);
 }

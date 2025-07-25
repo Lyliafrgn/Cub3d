@@ -31,13 +31,12 @@ int	main(int ac, char **av, char **env)
 		write(STDERR_FILENO, "Err: Map or player data not initialized.\n", 42);
 		return (1);
 	}
-	init_mlx(&data);
 	if (init_mlx(&data) == FAILURE)
 	{
-		write(2, "Err: Failed to initialize MLX.\n", 31);
+		write(2, "Err: MLX initialization failed.\n", 31);
 		return (1);
 	}
-	run_game_main_loop(&data);
+	mlx_loop(data.mlx_ptr);
 	free_resources(&data);
 	write(STDIN_FILENO, "Game exited successfully.\n", 26);
 	return (0);
