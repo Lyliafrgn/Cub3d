@@ -6,16 +6,18 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:39:07 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 18:25:16 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/28 22:38:09 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# include "structures.h"
+# ifdef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
-# define BUFFER_SIZE 1024
+# include "structures.h"
 
 int		initialize_structures(t_global *data);
 

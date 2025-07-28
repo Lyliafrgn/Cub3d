@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:08:04 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 18:24:18 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/28 22:33:07 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*s_truncate(char *s, int n)
 	int		i;
 
 	i = 0;
-	if (!s || n <= 0)
+	if (!s || n < 0)
 		return (NULL);
 	cpy = malloc ((n + 1) * sizeof(char));
 	if (!cpy)
@@ -30,7 +30,6 @@ char	*s_truncate(char *s, int n)
 	}
 	cpy[i] = '\0';
 	return (cpy);
-
 }
 
 int	eol(char *line)
@@ -67,11 +66,13 @@ char	*str_cpy(char *dest, char *src)
 
 char	*concat(char *s1, char *s2)
 {
-	int		i = 0;
-	int		j = 0;
+	int		i;
+	int		j;
 	char	*cpy;
 	int		len;
 
+	i = 0;
+	j = 0;
 	if (!s1 && !s2)
 		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
@@ -91,4 +92,3 @@ char	*concat(char *s1, char *s2)
 	cpy[i + j] = '\0';
 	return (cpy);
 }
-

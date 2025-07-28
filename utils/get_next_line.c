@@ -6,22 +6,26 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:55:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 22:40:35 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/28 22:32:35 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
 static void	init_gnl_vars(char **line, char *buf, int *bits, int *npos)
 {
 	*npos = -2;
-	*line = ft_strdup(buf);
-	*npos = eol(*line);
+	if (buf[0] != '\0')
+	{
+		*line = ft_strdup(buf);
+		*npos = eol(*line);
+	}
+	else
+		*line = NULL;
 	*bits = 0;
 }
 
-static int	eol_found_handler(char **line, char *buf, int *bits, int *npos)
+static int	eol_found_handler(char **line, char *buf, int *npos)
 {
 	char	*tmp;
 
@@ -42,18 +46,21 @@ static int	read_and_check(int fd, char *buf, char **line, int *bits)
 	*bits = read(fd, buf, BUFFER_SIZE);
 	if (*bits < 0)
 	{
+		buf[0] = '\0';
+		ft_free((void **) line);
 		perror("Error reading file");
 		return (-1);
 	}
-	if ((bits == 0 && !(*line)) || (bits == 0 && (*line) && !(*line)[0]))
+	if ((*bits == 0 && !(*line)) || (*bits == 0 && (*line) && !(*line)[0]))
 	{
-		if (*line)
-			ft_free((void **) line);
+		buf[0] = '\0';
+		ft_free((void **) line);
 		return (0);
 	}
-	if (bits == 0)
-		return (1);
+	if (*bits == 0)
+		return (buf[0] = '\0', 1);
 	buf[*bits] = '\0';
+	return (2);
 }
 
 static int	concat_and_check(char **line, char *buf, int npos)
@@ -75,23 +82,26 @@ static int	concat_and_check(char **line, char *buf, int npos)
 	return (EXIT_FAILURE);
 }
 
-char	*ft_get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
 	int			bits;
 	int			npos;
+	int			status;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	status = 0;
 	init_gnl_vars(&line, buf, &bits, &npos);
-	if (eol_found_handler(&line, buf, &bits, &npos) == EXIT_SUCCESS)
+	if (eol_found_handler(&line, buf, &npos) == EXIT_SUCCESS)
 		return (line);
 	while (1)
 	{
-		if (read_and_check(fd, buf, &line, &bits) <= 0)
+		status = read_and_check(fd, buf, &line, &bits);
+		if (status <= 0)
 			return (NULL);
-		else
+		else if (status == 1)
 			return (line);
 		if (concat_and_check(&line, buf, npos) == EXIT_SUCCESS)
 			return (line);

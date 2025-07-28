@@ -4,3 +4,6 @@
 .vscode
 **/minilibx/*
 cub3D
+./libs/minilibx
+minilibx
+libs/minilibx
