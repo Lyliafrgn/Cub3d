@@ -16,5 +16,10 @@
 # include "structures.h"
 
 int	run_game_main_loop(t_global *data);
+int	init_mlx(t_global *data);
+int ft_close_window(void);
+int ft_key_pressed(int keycode, t_global *data);
+int ft_key_released(int keycode, t_global *data);
+int upload_img(t_global *data);
 
 #endif

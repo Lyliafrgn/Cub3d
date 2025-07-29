@@ -19,7 +19,9 @@
 # include <fcntl.h>		// open
 # include <string.h>	// strerror
 # include <errno.h>		// errno
-# include <math.h>		// sin, cos, tan, sqrt, fabs
+# include <math.h>		// sin, cos, tan, sqrt, fabs# include
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # include <stdbool.h>
 # include <limits.h>
@@ -32,6 +34,7 @@
 # include "sig.h"			// Signal handling functions
 
 # include "libft.h"
+# include "mlx.h"
 
 # define SUCCESS 0
 # define FAILURE -1

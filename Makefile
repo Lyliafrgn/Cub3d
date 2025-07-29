@@ -39,13 +39,15 @@ DEBUG	=	-g -O0
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 LNK_FLAGS	=-lm $(MLX_FLAGS)
 
-INC 	=	-I./headers -I./libs/libft
+INC 	=	-I./headers -I./libs/libft -I./libs/minilibx
 
 
 #   ////////////////// SOURCES FILES //////////////////
 SIGNALS	=	src/signals/signal_main.c
 
 EXEC	=	src/exec/run_game_main_loop.c
+
+MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 
 PARSING	=	src/parsing/parse_map.c
 
@@ -56,7 +58,8 @@ SRC		=	main.c \
 			$(SIGNALS) \
 			$(UTILS) \
 			$(PARSING) \
-			$(EXEC)
+			$(EXEC) \
+			$(MLX_INIT)
 
 
 #     ____    ____         _   ______    _____   _______    _____
@@ -91,7 +94,7 @@ LIBFT_OBJ	:=	$(patsubst %.c,%.o,$(wildcard ./libs/libft/build/*.c))
 $(BUILD_DIR)/%.o	:	%.c Makefile
 						@mkdir -p $(dir $@)
 						@printf "$(YELLOW)[cub3D] Compiling $< ...$(DEFAULT)                  \r"
-						@$(CC) $(CFLAGS) $(INC) $(LNK_FLAGS) $(DEBUG) -c $< -o $@
+						@$(CC) $(CFLAGS) $(INC) $(DEBUG) -c $< -o $@
 
 $(NAME) 			:	$(OBJ) $(LIBFT_PATH) $(MLX)
 						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) $(INC) $(LNK_FLAGS) -o $@

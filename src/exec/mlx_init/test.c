@@ -1,3 +1,8 @@
+
+//main actuelle
+
+#include "cub3d.h"
+
 int	main(int ac, char **av, char **env)
 {
 	t_global	data;
@@ -17,10 +22,9 @@ int	main(int ac, char **av, char **env)
 		write(STDERR_FILENO, "Err: Map or player data not initialized.\n", 42);
 		return (1);
 	}
-	init_mlx(&data);
 	if (init_mlx(&data) == FAILURE)
 	{
-		write(2, "Err: Failed to initialize MLX.\n", 31);
+		write(2, "Err: MLX initialization failed.\n", 31);
 		return (1);
 	}
 	mlx_loop(data.mlx_ptr);

@@ -37,7 +37,7 @@ typedef struct s_img
 	int		endian; //if 0 = little endian (RGB order), if 1 = big endian (RGB)
 	int		imgw; // Width of the img
 	int		imgh; // Height of the img
-}	t_ing;
+}	t_img;
 
 
 typedef struct s_global
