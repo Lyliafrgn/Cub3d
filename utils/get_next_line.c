@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:55:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/28 22:32:35 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/30 16:09:17 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	concat_and_check(char **line, char *buf, int npos)
 	return (EXIT_FAILURE);
 }
 
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
