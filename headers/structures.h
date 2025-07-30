@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 16:39:28 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:53:27 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	int	fd;			// File descriptor for the map file
-	int	**map_data;	// 2D array for the map
-	int	width;		// Width of the map
-	int	height;		// Height of the map
+	int		fd;			// File descriptor for the map file
+	char	*map_string;	//to save map_line when exploring map file
+	int		**map_data;	// 2D array for the map
+	int		width;		// Width of the map
+	int		height;		// Height of the map
 }	t_map;
 
 typedef struct s_img
@@ -46,6 +47,7 @@ typedef struct s_global
 
 	t_map		*map;
 	t_player	*player;
+	t_pars		parsing_state; // to know in which type of line we are
 	t_img		txtr[4]; // NO, SO, EA, WE
 	t_img		screen;
 	void		*mlx_ptr;

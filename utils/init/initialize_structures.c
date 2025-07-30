@@ -6,11 +6,23 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 16:38:10 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:42:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_parsing_state(t_pars *parsing_state)
+{
+	parsing_state.empty = true;
+	parsing_state.map = 0;
+	parsing_state.no = false;
+	parsing_state.so = false;
+	parsing_state.we = false;
+	parsing_state.ea = false;
+	parsing_state.roof = false;
+	parsing_state.ceilling = false;
+}
 
 int	init_map(t_global *data)
 {
@@ -20,6 +32,7 @@ int	init_map(t_global *data)
 		write(STDERR_FILENO, "Error: Could not allocate memory for map.\n", 42);
 		exit(EXIT_FAILURE);
 	}
+	data->map->map_string = NULL;
 	data->map->map_data = NULL;
 	data->map->width = 0;
 	data->map->height = 0;
@@ -53,12 +66,7 @@ int	initialize_structures(t_global *data)
 		write(STDERR_FILENO, "Error: Could not initialize player.\n", 37);
 		exit(EXIT_FAILURE);
 	}
-	data->player = malloc(sizeof(t_player));
-	if (!data->player)
-	{
-		write(STDERR_FILENO, "Error: Couldn't malloc for player.\n", 36);
-		exit(EXIT_FAILURE);
-	}
+	init_parsing_state(&data->map.parsing_state);
 	return (EXIT_SUCCESS);
 }
 

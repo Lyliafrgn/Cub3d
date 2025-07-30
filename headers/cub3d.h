@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 18:07:53 by ly               ###   ########.fr       */
+/*   Updated: 2025/07/30 18:53:45 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,17 @@
 # define R 0
 # define G 1
 # define B 2
+
+enum e_map_elem
+{
+	IN,
+	WALL,
+	S,
+	N,
+	E,
+	W,
+	EMPTY
+};
 
 #endif
 
