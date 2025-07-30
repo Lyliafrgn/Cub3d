@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 17:51:13 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/30 16:38:10 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,43 @@ int	initialize_structures(t_global *data)
 		exit(EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
+}
+
+static void	init_img(t_img *img)
+{
+	img->path = NULL;
+	img->mlx_img = NULL;
+	img->addr = NULL;
+	img->bpp = 0;
+	img->llen = 0;
+	img->endian = 0;
+	img->imgw = 64;
+	img->imgh = 64;
+}
+
+static void	init_color(int color[3])
+{
+	color[R] = -1;
+	color[G] = -1;
+	color[B] = -1;
+}
+
+void	initialize_structures(t_global *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		init_img(&data->txtr[i]);
+		i++;
+	}
+	init_img(&data->screen);
+	i = 0;
+	while (i < 2)
+	{
+		init_color(data->colors[i]);
+		i++;
+	}
+	init_data(data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 18:59:19 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:07:53 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include <fcntl.h>		// open
 # include <string.h>	// strerror
 # include <errno.h>		// errno
-# include <math.h>		// sin, cos, tan, sqrt, fabs
+# include <math.h>		// sin, cos, tan, sqrt, fabs# include
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # include <stdbool.h>
 # include <limits.h>
@@ -32,6 +34,19 @@
 # include "sig.h"			// Signal handling functions
 
 # include "libft.h"
+# include "mlx.h"
+
+# define SUCCESS 0
+# define FAILURE -1
+
+# define TX_NO 0
+# define TX_SO 1
+# define TX_EA 2
+# define TX_WE 3
+
+# define R 0
+# define G 1
+# define B 2
 
 #endif
 
