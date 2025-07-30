@@ -3,7 +3,7 @@
 
 #include "cub3d.h"
 
-int	main(int ac, char **av, char **env)
+/*int	main(int ac, char **av, char **env)
 {
 	t_global	data;
 
@@ -31,4 +31,4 @@ int	main(int ac, char **av, char **env)
 	free_resources(&data);
 	write(STDIN_FILENO, "Game exited successfully.\n", 26);
 	return (0);
-}
+}*/

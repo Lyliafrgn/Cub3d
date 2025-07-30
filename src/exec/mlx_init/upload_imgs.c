@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/23 20:12:02 by ly               ###   ########.fr       */
+/*   Updated: 2025/07/30 01:52:06 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int  upload_textures(t_global *data)
 	{
 		img = &(data->txtr[i]);
 		if (!img->path)
-			return (FAILURE); // missing textr err
+			return (ft_err("missing path"), FAILURE); // missing textr err
 		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path, 
 			&img->imgw, &img->imgh);
 		if (!img->mlx_img)
@@ -40,7 +40,7 @@ static int  upload_textures(t_global *data)
 int upload_img(t_global *data)
 {
     if (upload_textures(data) == FAILURE)
-		return (FAILURE);
+		return (ft_err("failed uploading textures"), FAILURE);
 	data->screen.mlx_img = mlx_new_image(data->mlx_ptr, data->winw, data->winh);
 	if (!data->screen.mlx_img)
 		return (FAILURE);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/21 18:55:23 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/30 01:45:44 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_data(t_global *data)
+static void	init_data(t_global *data)
 {
 	data->map = malloc(sizeof(t_map));
 	if (!data->map)
@@ -35,7 +35,7 @@ void	init_data(t_global *data)
 	data->player->angle = 0.0f;
 }
 
-void	init_img(t_img *img)
+static void	init_img(t_img *img)
 {
 	img->path = NULL;
 	img->mlx_img = NULL;
@@ -47,7 +47,7 @@ void	init_img(t_img *img)
 	img->imgh = 64;
 }
 
-void	init_color(int color[3])
+static void	init_color(int color[3])
 {
 	color[R] = -1;
 	color[G] = -1;

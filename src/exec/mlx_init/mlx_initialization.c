@@ -10,14 +10,20 @@ int ft_close_window(void) //(t_global *data)
 
 int	init_mlx(t_global *data)
 {
+	data->winw = 640; //pour tests
+    data->winh = 480; //pour tests
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (FAILURE);
+    data->txtr[0].path = "textures/textureNO.xpm"; //pour tests
+    data->txtr[1].path = "textures/textureSO.xpm"; //pour tests
+    data->txtr[2].path = "textures/textureEA.xpm"; //pour tests
+    data->txtr[3].path = "textures/textureWE.xpm"; //pour tests
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->winw, data->winh, "Cub3d");
 	if (!data->win_ptr)
 		return (FAILURE);
 	if (upload_img(data) == FAILURE)
-		return (FAILURE); // return (ft_free_data(data), FAILURE);ajouter message d erreur ? 
+		return (ft_err("image upload failed"), FAILURE); // return (ft_free_data(data), FAILURE);ajouter message d erreur ? 
 	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data);
 	mlx_hook(data->win_ptr, 3, KeyReleaseMask, ft_key_released, data);
 	mlx_hook(data->win_ptr, 17, 0, ft_close_window, data);
