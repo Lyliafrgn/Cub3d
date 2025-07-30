@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 18:53:27 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/30 19:54:53 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	int		fd;			// File descriptor for the map file
-	char	*map_string;	//to save map_line when exploring map file
-	int		**map_data;	// 2D array for the map
-	int		width;		// Width of the map
-	int		height;		// Height of the map
+	int			fd;			// File descriptor for the map file
+	char		*map_string;	//to save map_line when exploring map file
+	t_int_arr	**map_data;	// 2D array for the map
+	int			width;		// Width of the map
+	int			height;		// Height of the map
 }	t_map;
 
 typedef struct s_img
@@ -40,7 +40,6 @@ typedef struct s_img
 	int		imgw; // Width of the img
 	int		imgh; // Height of the img
 }	t_img;
-
 
 typedef struct s_global
 {
@@ -62,5 +61,13 @@ typedef struct s_global
 	int			cam_left;
 	int			cam_right;
 }	t_global;
+
+
+////// Global structure
+typedef struct s_int_array
+{
+	int	*array;
+	int	size;
+}	t_int_arr;
 
 #endif

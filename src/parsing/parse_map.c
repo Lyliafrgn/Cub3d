@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 18:57:09 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/07/30 19:56:10 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ void	read_file(t_global *data, t_map *map)
 		update_do_read_status(&do_read, line);
 		if (!do_read)
 			return (close(map->fd), ft_free((void **) &line), EXIT_SUCCESS);
-		// Process the line and fill map_data
-		if(process_line(map, line))
-		ft_free((void **) &line); // Free the line after processing
+		if (process_line(map, line) == EXIT_FAILURE)
+		{
+			perror("Err : invalid line");
+			close(map->fd);
+			ft_free((void **) &line);
+			// free_resources
+			exit(EXIT_FAILURE);
+		}
+		ft_free((void **) &line);
 	}
-	if (!do_read)
-	{
-		perror("Error reading map file");
-		close(map->fd);
-		exit(EXIT_FAILURE);
-	}
-	close(map->fd);
+	printf("saved map is :\n %s\n", map->map_string);//debug
 }
 
 int	parse_map_root(t_global *data, char *file_name)

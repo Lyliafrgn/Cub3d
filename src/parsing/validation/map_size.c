@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_line_main.c                                :+:      :+:    :+:   */
+/*   map_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:49:59 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 19:41:01 by ofilloux         ###   ########.fr       */
+/*   Created: 2025/07/30 19:09:46 by ofilloux          #+#    #+#             */
+/*   Updated: 2025/07/30 19:13:13 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	process_line(t_global *data, t_map *map, char *line)
+int	map_height_is_valid(t_map *map)
 {
-	data->parsing_state.empty = line_is_only_spaces(line);
-	if (process_texture_line(data, line) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (process_colore_line(data, line) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (process_map_line(data, map, line) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+	if (map->height < 3)
+		return (write(stderr, "Err: map is too small\n", 33), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+int	map_width_is_valid(t_map *map)
+{
+	if (map->width < 3)
+		return (write(stderr, "Err: map is too small\n", 33), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
