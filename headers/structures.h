@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/31 02:08:58 by ly               ###   ########.fr       */
+/*   Updated: 2025/07/31 03:59:16 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_vec //Représente un vecteur (x, y) en coordonnées flottantes
 	double	y;
 }	t_vec;
 
-// Représente un point (x, y) en coordonnées entières (souvent utilisé pour la grille)
+// Représente un point (x, y) en coordonnées entières
 typedef struct s_point
 {
 	int		x;
@@ -75,7 +75,7 @@ typedef struct s_ray
 typedef struct s_global
 {
 	t_map		*map;
-	t_player	*player;
+	t_player	player;
 	t_ray		ray;
 	t_img		txtr[4]; // NO, SO, EA, WE
 	t_img		screen;

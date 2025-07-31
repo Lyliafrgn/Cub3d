@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 01:45:44 by ly               ###   ########.fr       */
+/*   Updated: 2025/07/31 03:52:36 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@ static void	init_data(t_global *data)
 	data->map->map_data = NULL;
 	data->map->width = 0;
 	data->map->height = 0;
-	data->player = malloc(sizeof(t_player));
-	if (!data->player)
-	{
-		free(data->map);
-		write(STDERR_FILENO, "Error: Couldn't malloc for player.\n", 36);
-		exit(EXIT_FAILURE);
-	}
-	data->player->x = 0.0f;
-	data->player->y = 0.0f;
-	data->player->angle = 0.0f;
 }
 
 static void	init_img(t_img *img)
@@ -54,6 +44,35 @@ static void	init_color(int color[3])
 	color[B] = -1;
 }
 
+static void	init_player(t_player *player) //initialisé en direction de l'est
+{
+	player->x = 0.0;
+	player->y = 0.0;
+	player->angle = 0.0;
+	player->planex = 0.0;
+	player->planey = 0.66;
+	player->dirx = 1.0;
+	player->diry = 0.0;
+	player->ms = 0.055;
+	player->rs = 0.02;
+}
+
+static void	init_ray(t_ray *ray)
+{
+	ray->dir.x = 0;
+	ray->dir.y = 0;
+	ray->mapx = 0;
+	ray->mapy = 0;
+	ray->sidedist.x = 0;
+	ray->sidedist.y = 0;
+	ray->deltadist.x = 0;
+	ray->deltadist.y = 0;
+	ray->perp_wall_dist = 0;
+	ray->stepx = 0;
+	ray->stepy = 0;
+	ray->side = 0;
+}
+
 void	initialize_structures(t_global *data)
 {
 	int	i;
@@ -72,4 +91,6 @@ void	initialize_structures(t_global *data)
 		i++;
 	}
 	init_data(data);
+	init_ray(&data->ray);
+	init_player(&data->player);
 }
