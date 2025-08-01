@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:28:02 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:37:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	process_texture_line(t_global *data, char *line)
 			return (write(STDERR_FILENO,"Err: Use juste 1 north texture\n", 32), EXIT_FAILURE);
 		if (!data->pars_sta.txtr[i] && ft_strncmp(line, txtr_code[i], 2) == 0)
 		{
-			data->txtr[0].path = get_texture(line + 2);
+			data->txtr[i].path = get_texture(line + 2);
 			data->pars_sta.txtr[i] = true;
 		}
 		i++;

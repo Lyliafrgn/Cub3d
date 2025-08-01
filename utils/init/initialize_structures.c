@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:21:18 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:33:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	init_pars_sta(t_pars *pars_sta)
 	pars_sta->empty = true;
 	pars_sta->map = 0;
 	ft_memset(pars_sta->txtr, false, sizeof(pars_sta->txtr));
-	pars_sta->roof = false;
-	pars_sta->ceilling = false;
+	ft_memset(pars_sta->color, false, sizeof(pars_sta->color));
 }
 
 int	init_map(t_global *data)

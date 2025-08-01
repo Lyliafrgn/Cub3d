@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:20:37 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:35:00 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ typedef struct s_parsing
 	bool	empty; //empty line
 	int		map; //map line : init 0, 1 = true, -1 = map already parsed
 	bool	txtr[4]; // NO, SO, EA, WE //texture line : init false, true = already parsed
-	bool	roof; //roof line : init false, true = already parsed
-	bool	ceilling;
+	bool	color[2]; //floor,ceilling // init false, true = already parsed
 }	t_pars;
 
 int		parse_map_root(t_global *data, char *file_name);
