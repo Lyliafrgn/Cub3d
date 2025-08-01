@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:22:44 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:28:02 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_texture(char *line)
 			break ;
 		i++;
 	}
-	if (i == (int) ft_strlen(line))
+	if (!line[i] || i == (int) ft_strlen(line))
 		return (write(STDERR_FILENO, "Err: texture path not found\n", 29), NULL);
 	return (ft_strdup(line + i - 1));
 }
