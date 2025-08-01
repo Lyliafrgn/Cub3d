@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 17:04:06 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:09:11 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	save_map_line(t_map *map, char *line)
 
 int	process_map_line(t_global *data, t_map *map, char *line)
 {
-	if (!(data->parsing_state.empty || data->parsing_state.map >= 0))
+	if (!(data->pars_sta.empty || data->pars_sta.map >= 0))
 		return (0);
 	if (!is_valide_map_line(line))
 		return (write(STDERR_FILENO, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
-	data->parsing_state.map = 1;
+	data->pars_sta.map = 1;
 	map->height++;
 	if (map->height == 1 && !all_line_is_one(line))
 		return (write(STDERR_FILENO, "Err: outer nothern wall contain invalid char\n", 46), EXIT_FAILURE);

@@ -6,22 +6,20 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 16:44:11 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:21:18 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_parsing_state(t_pars *parsing_state)
+void	init_pars_sta(t_pars *pars_sta)
 {
-	parsing_state->empty = true;
-	parsing_state->map = 0;
-	parsing_state->no = false;
-	parsing_state->so = false;
-	parsing_state->we = false;
-	parsing_state->ea = false;
-	parsing_state->roof = false;
-	parsing_state->ceilling = false;
+
+	pars_sta->empty = true;
+	pars_sta->map = 0;
+	ft_memset(pars_sta->txtr, false, sizeof(pars_sta->txtr));
+	pars_sta->roof = false;
+	pars_sta->ceilling = false;
 }
 
 int	init_map(t_global *data)
@@ -105,7 +103,7 @@ int	initialize_structures(t_global *data)
 		write(STDERR_FILENO, "Error: Could not initialize player.\n", 37);
 		exit(EXIT_FAILURE);
 	}
-	init_parsing_state(&data->parsing_state);
+	init_pars_sta(&data->pars_sta);
 	initialize_img_colors(data);
 	return (EXIT_SUCCESS);
 }
