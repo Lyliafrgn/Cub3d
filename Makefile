@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ly <ly@student.42.fr>                      +#+  +:+       +#+         #
+#    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/07/23 13:58:57 by ly               ###   ########.fr        #
+#    Updated: 2025/08/01 17:08:37 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,22 @@ EXEC	=	src/exec/run_game_main_loop.c
 
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 
-PARSING	=	src/parsing/parse_map.c
+PARSING	=	src/parsing/parse_map.c \
+			src/parsing/process_line_main.c \
+			src/parsing/process_line_color.c \
+			src/parsing/process_line_texture.c \
+			src/parsing/process_line_map.c \
+			src/parsing/validation/map_size.c \
+			src/parsing/utils/map_line_utils.c \
+			src/parsing/utils/string.c \
+
 
 UTILS	=	utils/frees/free_resources.c \
-			utils/init/initialize_structures.c
+			utils/frees/ft_free.c \
+			utils/init/initialize_structures.c\
+			utils/get_next_line.c \
+			utils/get_next_line_utils.c \
+			utils/array/char.c
 
 SRC		=	main.c \
 			$(SIGNALS) \

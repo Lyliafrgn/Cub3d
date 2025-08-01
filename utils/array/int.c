@@ -6,11 +6,13 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 19:50:11 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 19:53:40 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 16:11:05 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+///////////////NOT USED YET ////////////
 
 /// @brief Check if a variable is registred in the ARR
 /// @param var int

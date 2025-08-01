@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:21:43 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 19:46:13 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 17:07:05 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	start_with_one(char *line)
 	while (line)
 	{
 		flag = is_permited_char_for_map(*line);
-		if (flag != EMPTY || flag != WALL)
+		if (flag != EMPTY && flag != WALL)
 			return (false);
 		if (flag == WALL)
 			return (true);
@@ -60,7 +60,7 @@ bool	finish_with_one(char *line)
 	while (i >= 0)
 	{
 		flag = is_permited_char_for_map(line[i]);
-		if (flag != EMPTY || flag != WALL || line[i] != '/n')
+		if (flag != EMPTY && flag != WALL && line[i] != '\n')
 			return (false);
 		if (flag == WALL)
 			return (true);
@@ -77,7 +77,7 @@ bool	all_line_is_one(char *line)
 	while (line)
 	{
 		flag = is_permited_char_for_map(*line);
-		if (flag != EMPTY || flag != WALL || line[i] != '/n')
+		if (flag != EMPTY && flag != WALL && *line != '\n')
 			return (false);
 		line++;
 	}
@@ -108,7 +108,7 @@ bool	line_is_only_spaces(char *line)
 		return (true);
 	while (line[++i])
 	{
-		if (!ft_isspace(line[i]) || line[i] != '/n')
+		if (!ft_isspace(line[i]) && line[i] != '\n')
 			return (false);
 	}
 	return (true);

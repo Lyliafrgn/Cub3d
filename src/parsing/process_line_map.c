@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 19:32:32 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 17:04:06 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,24 @@ int	save_map_line(t_map *map, char *line)
 	tmp = ft_strjoin3(map->map_string, line, "\n");
 	ft_free((void **) &map->map_string);
 	map->map_string = tmp;
+	return (EXIT_SUCCESS);
 }
 
 int	process_map_line(t_global *data, t_map *map, char *line)
 {
-	if (!(data.parsing_state.empty || data.parsing_state.map >= 0))
-		retrun (0);
+	if (!(data->parsing_state.empty || data->parsing_state.map >= 0))
+		return (0);
 	if (!is_valide_map_line(line))
-		return (write(stderr, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
-	data.parsing_state.map = 1;
+		return (write(STDERR_FILENO, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
+	data->parsing_state.map = 1;
 	map->height++;
 	if (map->height == 1 && !all_line_is_one(line))
-		return (write(stderr, "Err: outer nothern wall contain invalid char\n", 46), EXIT_FAILURE);
+		return (write(STDERR_FILENO, "Err: outer nothern wall contain invalid char\n", 46), EXIT_FAILURE);
 	if (map->height > 1 && !start_with_one(line))
-		return (write(stderr, "Err: outer western wall contain invalid char\n", 46), EXIT_FAILURE);
+		return (write(STDERR_FILENO, "Err: outer western wall contain invalid char\n", 46), EXIT_FAILURE);
 	if (map->height > 1 && !finish_with_one(line))
-		return (write(stderr, "Err: outer eastern wall contain invalid char\n", 46), EXIT_FAILURE);
-	if (save_map_line(map, line) == EXIT_FAILURE);
-		return (write(stderr, "Err: saving map line\n", 22), EXIT_FAILURE);
+		return (write(STDERR_FILENO, "Err: outer eastern wall contain invalid char\n", 46), EXIT_FAILURE);
+	if (save_map_line(map, line) == EXIT_FAILURE)
+		return (write(STDERR_FILENO, "Err: saving map line\n", 22), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

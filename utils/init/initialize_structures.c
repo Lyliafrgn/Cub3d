@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 18:42:51 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 16:44:11 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	init_parsing_state(t_pars *parsing_state)
 {
-	parsing_state.empty = true;
-	parsing_state.map = 0;
-	parsing_state.no = false;
-	parsing_state.so = false;
-	parsing_state.we = false;
-	parsing_state.ea = false;
-	parsing_state.roof = false;
-	parsing_state.ceilling = false;
+	parsing_state->empty = true;
+	parsing_state->map = 0;
+	parsing_state->no = false;
+	parsing_state->so = false;
+	parsing_state->we = false;
+	parsing_state->ea = false;
+	parsing_state->roof = false;
+	parsing_state->ceilling = false;
 }
 
 int	init_map(t_global *data)
@@ -33,7 +33,7 @@ int	init_map(t_global *data)
 		exit(EXIT_FAILURE);
 	}
 	data->map->map_string = NULL;
-	data->map->map_data = NULL;
+	data->map->map = NULL;
 	data->map->width = 0;
 	data->map->height = 0;
 	return (EXIT_SUCCESS);
@@ -51,22 +51,6 @@ int	init_player(t_global *data)
 	data->player->x = 0.0f;
 	data->player->y = 0.0f;
 	data->player->angle = 0.0f;
-	return (EXIT_SUCCESS);
-}
-
-int	initialize_structures(t_global *data)
-{
-	if (init_map(data) == EXIT_FAILURE)
-	{
-		write(STDERR_FILENO, "Error: Could not initialize map.\n", 34);
-		exit(EXIT_FAILURE);
-	}
-	if (init_player(data) == EXIT_FAILURE)
-	{
-		write(STDERR_FILENO, "Error: Could not initialize player.\n", 37);
-		exit(EXIT_FAILURE);
-	}
-	init_parsing_state(&data->map.parsing_state);
 	return (EXIT_SUCCESS);
 }
 
@@ -89,7 +73,7 @@ static void	init_color(int color[3])
 	color[B] = -1;
 }
 
-void	initialize_structures(t_global *data)
+void	initialize_img_colors(t_global *data)
 {
 	int	i;
 
@@ -106,5 +90,23 @@ void	initialize_structures(t_global *data)
 		init_color(data->colors[i]);
 		i++;
 	}
-	init_data(data);
 }
+
+
+int	initialize_structures(t_global *data)
+{
+	if (init_map(data) == EXIT_FAILURE)
+	{
+		write(STDERR_FILENO, "Error: Could not initialize map.\n", 34);
+		exit(EXIT_FAILURE);
+	}
+	if (init_player(data) == EXIT_FAILURE)
+	{
+		write(STDERR_FILENO, "Error: Could not initialize player.\n", 37);
+		exit(EXIT_FAILURE);
+	}
+	init_parsing_state(&data->parsing_state);
+	initialize_img_colors(data);
+	return (EXIT_SUCCESS);
+}
+

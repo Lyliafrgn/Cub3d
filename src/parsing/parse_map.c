@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 19:56:10 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 16:55:01 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void	update_do_read_status(bool *do_read, char *line)
 
 
 
-void	read_file(t_global *data, t_map *map)
+int	read_file(t_global *data, t_map *map)
 {
 	char	*line;
-	int		ret;
+	//int		ret;
 	bool	do_read;
 
 	do_read = true;
@@ -45,7 +45,7 @@ void	read_file(t_global *data, t_map *map)
 		update_do_read_status(&do_read, line);
 		if (!do_read)
 			return (close(map->fd), ft_free((void **) &line), EXIT_SUCCESS);
-		if (process_line(map, line) == EXIT_FAILURE)
+		if (process_line(data, map, line) == EXIT_FAILURE)
 		{
 			perror("Err : invalid line");
 			close(map->fd);
@@ -56,14 +56,15 @@ void	read_file(t_global *data, t_map *map)
 		ft_free((void **) &line);
 	}
 	printf("saved map is :\n %s\n", map->map_string);//debug
+	return (0);
 }
 
 int	parse_map_root(t_global *data, char *file_name)
 {
 	if (open_map_file(data, file_name) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
-	init_map(data->map);
-	read_file(data, &data->map);
+	//init_map(data->map); //@info normalement deja initialised
+	read_file(data, data->map);
 	// transform_map_data(&data->map) // remplir map_data grace a map_string
 	//validate_map();
 	printf("Starting the map parsing: %s\n", file_name);
