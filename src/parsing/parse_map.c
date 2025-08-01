@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 16:55:01 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/01 19:04:21 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	read_file(t_global *data, t_map *map)
 		ft_free((void **) &line);
 	}
 	printf("saved map is :\n %s\n", map->map_string);//debug
+	data->map->map = ft_split(map->map_string, '\n');
 	return (0);
 }
 
