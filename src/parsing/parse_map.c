@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 18:33:34 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:40:40 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,35 @@ int	read_file(t_global *data, t_map *map)
 	return (0);
 }
 
+/**
+ * @brief fonction that prints the maps for debugging purpose
+ * @debug
+ */
+void	print_maps(t_global *data)
+{
+	printf("saved map is :\n%s\n", data->map->map_string);
+	data->map->map = ft_split(data->map->map_string, '\n');
+	printf("Map width: %d, height: %d\n", data->map->width, data->map->height);
+	printf("Map content:\n");
+	print_pp_char_arr(data->map->map);
+	printf("____________\n");
+}
+
 int	parse_map_root(t_global *data, char *file_name)
 {
 	if (open_map_file(data, file_name) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
 	//init_map(data->map); //@info normalement deja initialised
 	read_file(data, data->map);
-	printf("saved map is :\n%s\n", data->map->map_string);//debug
-	data->map->map = ft_split(data->map->map_string, '\n');
-	// transform_map_data(&data->map) // remplir map_data grace a map_string
-	//validate_map();
-
-	printf("Starting the map parsing: %s\n", file_name);
-
+	//validate_map(data);
 	return (EXIT_SUCCESS);
 }
+
+/// a 0 can't be surrounded by a space
+
+// Only one letter is possible
+
+// calculate max width and max height from 0 and letters. it can'b be inferior to 3 (map to small to place the player)
+ // a map with only the player is possible
+
+/// a map shouldn't contain empty space. --> add parsing state IN, OUT, WALL
