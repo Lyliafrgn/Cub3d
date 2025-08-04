@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:12:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 22:22:11 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:52:08 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ int	map_has_one_letter(t_map *map)
 	int	letter_count;
 
 	i = 0;
-	j = 0;
 	letter_count = 0;
-	while (i < map->width)
+	while (i < map->height)
 	{
-		while (map->map[i][j] != 0)
+		j = 0;
+		while (map->map[i][j])
 		{
-			if (ok_char_for_map(map->map[i][j] >= 2) && map->map[i][j] != ' ')
+			if (ok_char_for_map(map->map[i][j]) >= 2 && map->map[i][j] != ' ')
 				letter_count++;
 			if (letter_count > 1)
 				return (EXIT_FAILURE);

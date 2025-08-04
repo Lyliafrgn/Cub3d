@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:18:13 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 22:17:05 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 23:02:22 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ int	check_wrong_surrounding_letters(t_map *map)
 	int	flag;
 
 	i = 0;
-	j = 0;
 	flag = 0;
-	while (i < map->width)
+	while (i < map->height)
 	{
+		j = 0;
 		while (map->map[i][j] != 0)
 		{
-			if ((ok_char_for_map(map->map[i][j] >= 2) && map->map[i][j] != ' ') \
-					|| map->map[i][j] == 0)
+			if ((ok_char_for_map(map->map[i][j]) >= 2 && map->map[i][j] != ' ') \
+					|| map->map[i][j] == '0')
 			{
 				flag += check_up(map, i, j) + check_down(map, i, j);
 				flag += check_left(map, i, j) + check_right(map, i, j);

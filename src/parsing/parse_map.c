@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 22:08:48 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:40:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	read_file(t_global *data, t_map *map)
 void	print_maps(t_global *data)
 {
 	printf("saved map is :\n%s\n", data->map->map_string);
-	data->map->map = ft_split(data->map->map_string, '\n');
 	printf("Map width: %d, height: %d\n", data->map->width, data->map->height);
 	printf("Map content:\n");
 	print_pp_char_arr(data->map->map);
@@ -78,7 +77,9 @@ int	parse_map_root(t_global *data, char *file_name)
 		return (EXIT_FAILURE);
 	//init_map(data->map); //@info normalement deja initialised
 	read_file(data, data->map);
-	if (validate_map(data) != EXIT_SUCCESS)
+	data->map->map = ft_split(data->map->map_string, '\n');
+	print_maps(data);
+	if (data->map && validate_map(data) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
