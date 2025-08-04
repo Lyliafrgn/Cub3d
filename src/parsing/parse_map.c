@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 19:40:40 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 20:05:00 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,8 @@ int	parse_map_root(t_global *data, char *file_name)
 
 // calculate max width and max height from 0 and letters. it can'b be inferior to 3 (map to small to place the player)
  // a map with only the player is possible
+// in other words, it is validated if other conditions are met + if there is at least one letter in the map, or one 0
 
 /// a map shouldn't contain empty space. --> add parsing state IN, OUT, WALL
+
+// a map size should be of maximum 1000x1000

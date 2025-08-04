@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 18:53:45 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 21:04:08 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@
 # define R 0
 # define G 1
 # define B 2
+
+/// define a max size for the map so we don't overflow use to much memory
+# define MAP_MAX_HEIGHT 500
+# define MAP_MAX_WIDTH 500
 
 enum e_map_elem
 {

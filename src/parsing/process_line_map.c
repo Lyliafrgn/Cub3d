@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 19:43:31 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 20:32:29 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	process_map_line(t_global *data, t_map *map, char *line)
 		return (write(STDERR_FILENO, "Err: outer eastern wall contain invalid char\n", 46), EXIT_FAILURE);
 	if (map->height > 1 && all_line_is_one(line))
 		data->pars_sta.map = -1;
+	if (map->height > MAP_MAX_HEIGHT)
+		return (write(STDERR_FILENO, "Err: map too big\n", 18), EXIT_FAILURE);
 	if (save_map_line(map, line) == EXIT_FAILURE)
 		return (write(STDERR_FILENO, "Err: saving map line\n", 22), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
