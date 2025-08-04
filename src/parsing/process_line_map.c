@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 16:56:48 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:27:21 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	save_map_line(t_map *map, char *line)
 	tmp = malloc(sizeof(char) * (actual_len + line_len + 2));
 	if (!tmp)
 		return (EXIT_FAILURE);
-	tmp = ft_strjoin3(map->map_string, line, "\n");
+	tmp = ft_strjoin(map->map_string, line);
 	ft_free((void **) &map->map_string);
 	map->map_string = tmp;
 	return (EXIT_SUCCESS);
@@ -45,7 +45,7 @@ int	process_map_line(t_global *data, t_map *map, char *line)
 {
 	if (!(data->pars_sta.empty || data->pars_sta.map >= 0))
 		return (0);
-	if (!is_valide_map_line(line))
+	if (!is_valide_map_line(line) || line_is_only_spaces(line))
 		return (0);
 		//return (write(STDERR_FILENO, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
 	data->pars_sta.map = 1;

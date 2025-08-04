@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 16:47:57 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:33:34 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ int	read_file(t_global *data, t_map *map)
 		}
 		ft_free((void **) &line);
 	}
-	printf("saved map is :\n %s\n", map->map_string);//debug
-	data->map->map = ft_split(map->map_string, '\n');
 	return (0);
 }
 
@@ -66,8 +64,11 @@ int	parse_map_root(t_global *data, char *file_name)
 		return (EXIT_FAILURE);
 	//init_map(data->map); //@info normalement deja initialised
 	read_file(data, data->map);
+	printf("saved map is :\n%s\n", data->map->map_string);//debug
+	data->map->map = ft_split(data->map->map_string, '\n');
 	// transform_map_data(&data->map) // remplir map_data grace a map_string
 	//validate_map();
+
 	printf("Starting the map parsing: %s\n", file_name);
 
 	return (EXIT_SUCCESS);

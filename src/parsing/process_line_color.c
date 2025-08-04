@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:47 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:59:46 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:55:35 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	get_colors(char *line, int colors[3])
 	tmp = NULL;
 	if (!line[i] || i == (int) ft_strlen(line))
 		return (write(STDERR_FILENO, "Err: colors not found\n", 23), EXIT_FAILURE);
-	tmp = ft_split(line + i -1, ',');
+	tmp = ft_split(line + i, ',');
 	if (pp_char_len(tmp) != 3)
 		return (write(STDERR_FILENO, "Err: 3 colors are needed\n", 26), EXIT_FAILURE);
 	colors[0] = ft_atoi(tmp[0]);
@@ -60,12 +60,12 @@ int	process_colore_line(t_global *data, char *line)
 	i = 0;
 	while (i < 2)
 	{
-		if (data->pars_sta.color[i] && ft_strncmp(line, col_code[i], 2) == 0)
+		if (data->pars_sta.color[i] && ft_strncmp(line, col_code[i], 1) == 0)
 			return (write(STDERR_FILENO,"Err: 2colors for same use\n", 27), EXIT_FAILURE);
-		if (!data->pars_sta.color[i] && ft_strncmp(line, col_code[i], 2) == 0)
+		if (!data->pars_sta.color[i] && ft_strncmp(line, col_code[i], 1) == 0)
 		{
 			data->pars_sta.color[i] = true;
-			if (get_colors(line + 2, data->colors[i]) == EXIT_FAILURE)
+			if (get_colors(line + 1, data->colors[i]) == EXIT_FAILURE)
 				return (EXIT_FAILURE);
 		}
 		i++;

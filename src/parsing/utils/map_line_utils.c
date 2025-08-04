@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_line_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:21:43 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 17:07:05 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:18:29 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ bool	all_line_is_one(char *line)
 	int	flag;
 
 	flag = -1;
-	while (line)
+	while (line && *line)
 	{
 		flag = is_permited_char_for_map(*line);
 		if (flag != EMPTY && flag != WALL && *line != '\n')
@@ -89,7 +89,7 @@ bool	is_valide_map_line(char *line)
 	int	flag;
 
 	flag = -1;
-	while (line)
+	while (line && *line)
 	{
 		flag = is_permited_char_for_map(*line);
 		if (flag == -1)
