@@ -6,14 +6,14 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:12:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 22:04:43 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:22:11 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 //RULES FOR A MAP TO BE VALID
-/*	1.	a 0 or letter can't be surrounded by a space or '\0'
+/*✅	1.	a 0 or letter can't be surrounded by a space or '\0'
 *✅	2.	The Map should contains at least one letter or one '0'
 *✅	3.	The map should contains one letter and only one
 *✅	4.	The map should be of dimensions inferior to MAP_MAX_HEIGHT
