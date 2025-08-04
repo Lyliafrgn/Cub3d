@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:12:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 21:09:59 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 21:38:53 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	map_has_one_letter(t_map *map)
 	{
 		while (map->map[i][j] != 0)
 		{
-			if (is_permited_char_for_map(map->map[i][j] >= 2))
+			if (ok_char_for_map(map->map[i][j] >= 2) && map->map[i][j] != ' ')
 				letter_count++;
 			if (letter_count > 1)
 				return (EXIT_FAILURE);
@@ -89,6 +89,8 @@ int	validate_map(t_global *data)
 		return (EXIT_FAILURE);
 	if (map_has_zero_or_letter(data->map) != EXIT_SUCCESS)
 		return (write(STDERR_FILENO, "Err: Map : no space for spawn\n", 31), EXIT_FAILURE);
+	if (map_has_one_letter(data->map) != EXIT_SUCCESS)
+		return (write(STDERR_FILENO, "Err: Map : 0 or more than one spawn\n", 37), EXIT_FAILURE);
 	if (map_has_one_letter(data->map) != EXIT_SUCCESS)
 		return (write(STDERR_FILENO, "Err: Map : 0 or more than one spawn\n", 37), EXIT_FAILURE);
 	return (EXIT_SUCCESS);

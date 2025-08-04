@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:35:00 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 21:28:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		process_texture_line(t_global *data, char *line);
 
 //MAPS
 /// lines
-int		is_permited_char_for_map(char c);
+int		ok_char_for_map(char c);
 bool	start_with_one(char *line);
 bool	all_line_is_one(char *line);
 bool	is_valide_map_line(char *line);

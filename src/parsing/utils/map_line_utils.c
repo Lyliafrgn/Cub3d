@@ -6,13 +6,13 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:21:43 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 18:18:29 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 21:28:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_permited_char_for_map(char c)
+int	ok_char_for_map(char c)
 {
 	if (c == ' ')
 		return (EMPTY);
@@ -40,7 +40,7 @@ bool	start_with_one(char *line)
 	flag = -1;
 	while (line)
 	{
-		flag = is_permited_char_for_map(*line);
+		flag = ok_char_for_map(*line);
 		if (flag != EMPTY && flag != WALL)
 			return (false);
 		if (flag == WALL)
@@ -59,7 +59,7 @@ bool	finish_with_one(char *line)
 	i = ft_strlen(line) - 1;
 	while (i >= 0)
 	{
-		flag = is_permited_char_for_map(line[i]);
+		flag = ok_char_for_map(line[i]);
 		if (flag != EMPTY && flag != WALL && line[i] != '\n')
 			return (false);
 		if (flag == WALL)
@@ -76,7 +76,7 @@ bool	all_line_is_one(char *line)
 	flag = -1;
 	while (line && *line)
 	{
-		flag = is_permited_char_for_map(*line);
+		flag = ok_char_for_map(*line);
 		if (flag != EMPTY && flag != WALL && *line != '\n')
 			return (false);
 		line++;
@@ -91,7 +91,7 @@ bool	is_valide_map_line(char *line)
 	flag = -1;
 	while (line && *line)
 	{
-		flag = is_permited_char_for_map(*line);
+		flag = ok_char_for_map(*line);
 		if (flag == -1)
 			return (false);
 		line++;
