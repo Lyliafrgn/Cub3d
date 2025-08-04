@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 21:28:51 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:16:23 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,13 @@ int		process_colore_line(t_global *data, char *line);
 int		process_texture_line(t_global *data, char *line);
 
 
-/////////UTILS/////////
+///////VALIDATION/////
+int		validate_map(t_global *data);
+int		check_wrong_surrounding_letters(t_map *map);
+int		map_width_is_valid(t_map *map);
+int		map_height_is_valid(t_map *map);
 
+/////////UTILS/////////
 //MAPS
 /// lines
 int		ok_char_for_map(char c);

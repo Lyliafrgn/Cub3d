@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:12:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 21:38:53 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:04:43 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	validate_map(t_global *data)
 		return (write(STDERR_FILENO, "Err: Map : no space for spawn\n", 31), EXIT_FAILURE);
 	if (map_has_one_letter(data->map) != EXIT_SUCCESS)
 		return (write(STDERR_FILENO, "Err: Map : 0 or more than one spawn\n", 37), EXIT_FAILURE);
-	if (map_has_one_letter(data->map) != EXIT_SUCCESS)
-		return (write(STDERR_FILENO, "Err: Map : 0 or more than one spawn\n", 37), EXIT_FAILURE);
+	if (check_wrong_surrounding_letters(data->map) != EXIT_SUCCESS)
+		return (write(STDERR_FILENO, "Err: Map : missing wall or empty inside\n", 41), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

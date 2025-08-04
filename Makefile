@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
+#    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/01 17:08:37 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/08/04 22:15:29 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,9 +54,13 @@ PARSING	=	src/parsing/parse_map.c \
 			src/parsing/process_line_color.c \
 			src/parsing/process_line_texture.c \
 			src/parsing/process_line_map.c \
-			src/parsing/validation/map_size.c \
 			src/parsing/utils/map_line_utils.c \
 			src/parsing/utils/string.c \
+
+VALIDATION = src/parsing/validation/validation_root.c \
+			src/parsing/validation/map_size.c \
+			src/parsing/validation/surrounding_elements.c
+
 
 
 UTILS	=	utils/frees/free_resources.c \
@@ -70,6 +74,7 @@ SRC		=	main.c \
 			$(SIGNALS) \
 			$(UTILS) \
 			$(PARSING) \
+			$(VALIDATION) \
 			$(EXEC) \
 			$(MLX_INIT)
 

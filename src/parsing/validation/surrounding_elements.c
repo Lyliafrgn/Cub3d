@@ -1,35 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sourrounding_elements.c                            :+:      :+:    :+:   */
+/*   surrounding_elements.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:18:13 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 21:38:02 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 22:17:05 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_left()
+int	check_left(t_map *map, int i, int j)
 {
-
+	if (j == 0)
+		return (EXIT_FAILURE);
+	if (ft_isspace(map->map[i][j - 1]))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
-int	check_right()
+int	check_right(t_map *map, int i, int j)
 {
-
+	if (j == (int) ft_strlen(map->map[i]) - 1)
+		return (EXIT_FAILURE);
+	if (ft_isspace(map->map[i][j + 1]))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
-int	check_up()
+int	check_up(t_map *map, int i, int j)
 {
-
+	if (i <= 0)
+		return (0);
+	if (j >= (int) ft_strlen(map->map[i - 1]))
+		return (EXIT_FAILURE);
+	if (ft_isspace(map->map[i - 1][j]))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
-int	check_down()
+int	check_down(t_map *map, int i, int j)
 {
-
+	if (i >= map->height)
+		return (0);
+	if (j >= (int) ft_strlen(map->map[i + 1]))
+		return (EXIT_FAILURE);
+	if (map->map[i + 1] && ft_isspace(map->map[i + 1][j]))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int	check_wrong_surrounding_letters(t_map *map)
@@ -56,6 +76,6 @@ int	check_wrong_surrounding_letters(t_map *map)
 		i++;
 	}
 	if (flag > 0)
-		return (write(STDERR_FILENO, "Err: map contains errors\n", 26), EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
