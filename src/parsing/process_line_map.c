@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:09:11 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:56:48 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	process_map_line(t_global *data, t_map *map, char *line)
 	if (!(data->pars_sta.empty || data->pars_sta.map >= 0))
 		return (0);
 	if (!is_valide_map_line(line))
-		return (write(STDERR_FILENO, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
+		return (0);
+		//return (write(STDERR_FILENO, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
 	data->pars_sta.map = 1;
 	map->height++;
 	if (map->height == 1 && !all_line_is_one(line))

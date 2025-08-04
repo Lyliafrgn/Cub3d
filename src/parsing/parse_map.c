@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 19:04:21 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:47:57 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	read_file(t_global *data, t_map *map)
 			return (close(map->fd), ft_free((void **) &line), EXIT_SUCCESS);
 		if (process_line(data, map, line) == EXIT_FAILURE)
 		{
-			perror("Err : invalid line");
+			write(STDERR_FILENO, "Err : invalid line\n", 20);
 			close(map->fd);
 			ft_free((void **) &line);
 			// free_resources

@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_texture.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:37:04 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:31:36 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	get_texture_len(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '\0' && !ft_isspace(line[i]) && line[i] != '\n')
+		i++;
+	return (i - 1);
+}
 
 char	*get_texture(char *line)
 {
@@ -32,7 +42,7 @@ char	*get_texture(char *line)
 	}
 	if (!line[i] || i == (int) ft_strlen(line))
 		return (write(STDERR_FILENO, "Err: texture path not found\n", 29), NULL);
-	return (ft_strdup(line + i - 1));
+	return (ft_substr(line + i, 0, (size_t) get_texture_len(line)));
 }
 
 int	process_texture_line(t_global *data, char *line)
