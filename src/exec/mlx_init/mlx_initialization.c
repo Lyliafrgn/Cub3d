@@ -27,7 +27,7 @@ int	init_mlx(t_global *data)
 	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data);
 	mlx_hook(data->win_ptr, 3, KeyReleaseMask, ft_key_released, data);
 	mlx_hook(data->win_ptr, 17, 0, ft_close_window, data);
-//	mlx_loop_hook(data->mlx_ptr, ft_render, data);
+	mlx_loop_hook(data->mlx_ptr, render_scene, data);
 	return (SUCCESS);
 }
 
