@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 20:32:29 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:16:20 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,50 @@ int	save_map_line(t_map *map, char *line)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Process a map line.
+ *
+ * Logique :
+ *			1.	si la ligne est déjà parsée (data->pars_sta.map < 0),
+ * 				on ne la traite pas.
+ * 			2.	si parsing non commencé (data->pars_sta.map == 0) et ligne vide,
+ * 				on ne la traite pas.
+ * 			3.	si le parsing n'est pas en cours, et que la ligne n'est pas valide ou vide -> ignorer
+ *
+ *
+ * @param data Global data structure.
+ * @param map Map structure.
+ * @param line Line to process.
+ * @return int EXIT_SUCCESS or EXIT_FAILURE.
+ */
+
+
 int	process_map_line(t_global *data, t_map *map, char *line)
 {
-	if (!(data->pars_sta.empty || data->pars_sta.map >= 0))
+	//Si déjà parsé, ligne non traitée
+	if (data->pars_sta.map < 0)
 		return (0);
-	if (!is_valide_map_line(line) || line_is_only_spaces(line))
+
+// parsing pas encore commencé OU parssing en cours
+	if (data->pars_sta.map == 0 && data->pars_sta.empty)
 		return (0);
+
+	//Si parsing pas encore commencé et que ligne non valide --> pas traité
+	if (data->pars_sta.map != 1 && (!is_valide_map_line(line) || line_is_only_spaces(line)))
+		return (0);
+
+
+
+	//if (!(data->pars_sta.empty || data->pars_sta.map >= 0))
+	/* if (data->pars_sta.empty && data->pars_sta.map == 1) // pas vide mais dejà parsé
+	{
+		data->pars_sta.map = -1;
+		return (0);
+	} */
+
+
+
+
 		//return (write(STDERR_FILENO, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
 	data->pars_sta.map = 1;
 	map->height++;

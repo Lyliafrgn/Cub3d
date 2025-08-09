@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:12:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 22:52:08 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:23:01 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,20 @@ int	map_has_one_letter(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
+int map_lines_are_valid(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		if (!is_valide_map_line(map->map[i]))
+			return (EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	validate_map(t_global *data)
 {
 	if (map_height_is_valid(data->map) != EXIT_SUCCESS)
@@ -91,6 +105,8 @@ int	validate_map(t_global *data)
 		return (write(STDERR_FILENO, "Err: Map : no space for spawn\n", 31), EXIT_FAILURE);
 	if (map_has_one_letter(data->map) != EXIT_SUCCESS)
 		return (write(STDERR_FILENO, "Err: Map : 0 or more than one spawn\n", 37), EXIT_FAILURE);
+	if (map_lines_are_valid(data->map) != EXIT_SUCCESS)
+		return (write(STDERR_FILENO, "Err: Map : invalid characters in map\n", 37), EXIT_FAILURE);
 	if (check_wrong_surrounding_letters(data->map) != EXIT_SUCCESS)
 		return (write(STDERR_FILENO, "Err: Map : missing wall or empty inside\n", 41), EXIT_FAILURE);
 	return (EXIT_SUCCESS);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 16:42:57 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:24:26 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ int	main(int ac, char **av, char **env)
 	}
 	if (initialize_structures(&data))
 		return (EXIT_FAILURE);
-	if (av && av[1])
-		parse_map_root(&data, av[1]);
+	if (av && av[1] && parse_map_root(&data, av[1]) == EXIT_FAILURE)
+	{
+		write(STDERR_FILENO, "Err: Map parsing failed.\n", 25);
+		free_resources(&data);
+		return (EXIT_FAILURE);
+	}
 
 	if (!data.map || !data.player)
 	{
