@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:39:07 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 16:46:02 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 11:57:54 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 
 # include "structures.h"
 
-int		initialize_structures(t_global *data);
+void	initialize_structures(t_global *data);
+void	init_color(int color[3]);
+void	init_img(t_img *img);
 
 /// FREES /////
 int		free_resources(t_global *data);

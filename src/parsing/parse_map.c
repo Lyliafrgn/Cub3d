@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 10:34:23 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 12:00:14 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	open_map_file(t_global *data, const char *file_name)
 {
-	data->map->fd = open(file_name, O_RDONLY);
-	if (data->map->fd < 0)
+	data->map.fd = open(file_name, O_RDONLY);
+	if (data->map.fd < 0)
 	{
 		perror("Error opening map file");
 		return (EXIT_FAILURE);
@@ -62,10 +62,10 @@ int	read_file(t_global *data, t_map *map)
  */
 void	print_maps(t_global *data)
 {
-	printf("saved map is :\n%s\n", data->map->map_string);
-	printf("Map width: %d, height: %d\n", data->map->width, data->map->height);
+	printf("saved map is :\n%s\n", data->map.map_string);
+	printf("Map width: %d, height: %d\n", data->map.width, data->map.height);
 	printf("Map content:\n");
-	print_pp_char_arr(data->map->map);
+	print_pp_char_arr(data->map.map);
 	printf("____________\n");
 }
 
@@ -76,10 +76,10 @@ int	parse_map_root(t_global *data, char *file_name)
 		write(STDERR_FILENO, MAP_NOT_FOUND, 20);
 		return (EXIT_FAILURE);
 	}
-	read_file(data, data->map);
-	data->map->map = ft_split(data->map->map_string, '\n');
+	read_file(data, &data->map);
+	data->map.map = ft_split(data->map.map_string, '\n');
 	print_maps(data); // @debug
-	if (data->map && validate_map(data) != EXIT_SUCCESS)
+	if (&data->map && validate_map(data) != EXIT_SUCCESS)
 	{
 		write(STDERR_FILENO, MAP_INVALID, 21);
 		return (EXIT_FAILURE);

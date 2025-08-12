@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 10:29:42 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:50:26 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ enum e_map_elem
 	W,
 	EMPTY
 };
+
+# define FLOOR 0
+# define CEILING 1
 
 #endif
 

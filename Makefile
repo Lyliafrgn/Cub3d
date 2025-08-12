@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/04 22:15:29 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/08/12 12:10:23 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,10 @@ INC 	=	-I./headers -I./libs/libft -I./libs/minilibx
 #   ////////////////// SOURCES FILES //////////////////
 SIGNALS	=	src/signals/signal_main.c
 
-EXEC	=	src/exec/run_game_main_loop.c
+EXEC	=	src/exec/raycasting/render_scene.c \
+			src/exec/mlx_init/cast.c \
+			src/exec/mlx_init/movements.c \
+			src/exec/mlx_init/pixels.c \
 
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 
@@ -65,7 +68,8 @@ VALIDATION = src/parsing/validation/validation_root.c \
 
 UTILS	=	utils/frees/free_resources.c \
 			utils/frees/ft_free.c \
-			utils/init/initialize_structures.c\
+			utils/init/initialize_structures.c \
+			utils/init/init_img_colors.c \
 			utils/get_next_line.c \
 			utils/get_next_line_utils.c \
 			utils/array/char.c

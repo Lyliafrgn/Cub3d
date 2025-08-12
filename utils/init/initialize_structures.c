@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:33:04 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 12:05:45 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_pars_sta(t_pars *pars_sta)
+static void	init_pars_sta(t_pars *pars_sta)
 {
 
 	pars_sta->empty = true;
@@ -21,76 +21,61 @@ void	init_pars_sta(t_pars *pars_sta)
 	ft_memset(pars_sta->color, false, sizeof(pars_sta->color));
 }
 
-int	init_map(t_global *data)
+static void	init_map(t_global *data)
 {
-	data->map = malloc(sizeof(t_map));
-	if (!data->map)
-	{
-		write(STDERR_FILENO, "Error: Could not allocate memory for map.\n", 42);
-		exit(EXIT_FAILURE);
-	}
-	data->map->map_string = NULL;
-	data->map->map = NULL;
-	data->map->width = 0;
-	data->map->height = 0;
-	return (EXIT_SUCCESS);
+	data->map.map_string = NULL;
+	data->map.map = NULL;
+	data->map.width = 0;
+	data->map.height = 0;
 }
 
-int	init_player(t_global *data)
+static void	init_player(t_global *data) //initialisé en direction de l'est
 {
-	data->player = malloc(sizeof(t_player));
-	if (!data->player)
-	{
-		free(data->map);
-		write(STDERR_FILENO, "Error: Could not allocate memory for player.\n", 44);
-		exit(EXIT_FAILURE);
-	}
-	data->player->x = 0.0f;
-	data->player->y = 0.0f;
-	data->player->angle = 0.0f;
-	return (EXIT_SUCCESS);
+	data->player.x = 0.0;
+	data->player.y = 0.0;
+	data->player.angle = 0.0;
+	data->player.planex = 0.0;
+	data->player.planey = 0.66;
+	data->player.dirx = 1.0;
+	data->player.diry = 0.0;
+	data->player.ms = 0.055;
+	data->player.rs = 0.02;
 }
 
-static void	init_img(t_img *img)
+static void	init_ray(t_ray *ray)
 {
-	img->path = NULL;
-	img->mlx_img = NULL;
-	img->addr = NULL;
-	img->bpp = 0;
-	img->llen = 0;
-	img->endian = 0;
-	img->imgw = 64;
-	img->imgh = 64;
+	ray->dir.x = 0;
+	ray->dir.y = 0;
+	ray->mapx = 0;
+	ray->mapy = 0;
+	ray->sidedist.x = 0;
+	ray->sidedist.y = 0;
+	ray->deltadist.x = 0;
+	ray->deltadist.y = 0;
+	ray->perp_wall_dist = 0;
+	ray->stepx = 0;
+	ray->stepy = 0;
+	ray->side = 0;
 }
 
-static void	init_color(int color[3])
-{
-	color[R] = -1;
-	color[G] = -1;
-	color[B] = -1;
-}
-
-void	initialize_img_colors(t_global *data)
+void	initialize_structures(t_global *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < 5)
-	{
-		init_img(&data->txtr[i]);
-		i++;
-	}
+		init_img(&data->txtr[i++]);
 	init_img(&data->screen);
-	i = 0;
-	while (i < 2)
-	{
-		init_color(data->colors[i]);
-		i++;
-	}
+	(init_color(data->colors[0]), init_color(data->colors[1]));
+	init_ray(&data->ray);
+	init_map(data);
+	init_player(data);
+	init_pars_sta(&data->pars_sta);
 }
+//init_player(&data->player);
 
 
-int	initialize_structures(t_global *data)
+/* int	initialize_structures(t_global *data)
 {
 	if (init_map(data) == EXIT_FAILURE)
 	{
@@ -105,5 +90,5 @@ int	initialize_structures(t_global *data)
 	init_pars_sta(&data->pars_sta);
 	initialize_img_colors(data);
 	return (EXIT_SUCCESS);
-}
+} */
 
