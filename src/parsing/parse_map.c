@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 22:40:51 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:34:23 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ static void	update_do_read_status(bool *do_read, char *line)
 }
 
 
-
 int	read_file(t_global *data, t_map *map)
 {
 	char	*line;
-	//int		ret;
 	bool	do_read;
 
 	do_read = true;
@@ -74,13 +72,18 @@ void	print_maps(t_global *data)
 int	parse_map_root(t_global *data, char *file_name)
 {
 	if (open_map_file(data, file_name) != EXIT_SUCCESS)
+	{
+		write(STDERR_FILENO, MAP_NOT_FOUND, 20);
 		return (EXIT_FAILURE);
-	//init_map(data->map); //@info normalement deja initialised
+	}
 	read_file(data, data->map);
 	data->map->map = ft_split(data->map->map_string, '\n');
-	print_maps(data);
+	print_maps(data); // @debug
 	if (data->map && validate_map(data) != EXIT_SUCCESS)
+	{
+		write(STDERR_FILENO, MAP_INVALID, 21);
 		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
 

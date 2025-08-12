@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 10:28:51 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:30:45 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int	process_map_line(t_global *data, t_map *map, char *line)
 	return (EXIT_SUCCESS);
 }
 	//if (!(data->pars_sta.empty || data->pars_sta.map >= 0))
-	/* if (data->pars_sta.empty && data->pars_sta.map == 1) // pas vide mais dejà parsé
+	/* if (data->pars_sta.empty && data->pars_sta.map == 1)
+	// pas vide mais dejà parsé
 	{
 		data->pars_sta.map = -1;
 		return (0);
