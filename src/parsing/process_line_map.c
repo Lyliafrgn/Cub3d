@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 10:30:45 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:41:15 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int	save_map_line(t_map *map, char *line)
 int	process_map_line(t_global *data, t_map *map, char *line)
 {
 	if (data->pars_sta.map < 0)
-		return (0);
+		return (EXIT_SUCCESS);
 	if (data->pars_sta.map == 0 && data->pars_sta.empty)
-		return (0);
+		return (EXIT_SUCCESS);
 	if (data->pars_sta.map != 1 && (!is_valide_map_line(line) || line_is_only_spaces(line)))
-		return (0);
+		return (EXIT_SUCCESS);
 	data->pars_sta.map = 1;
 	map->height++;
 	if (map->height == 1 && !all_line_is_one(line))
