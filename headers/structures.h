@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/01 18:09:11 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:21:58 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ typedef struct s_global
 	int			cam_left;
 	int			cam_right;
 }	t_global;
-
-
 
 //////NOT USED YET//////
 ////// Global structure

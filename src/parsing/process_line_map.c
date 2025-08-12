@@ -6,12 +6,11 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/09 16:16:20 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:28:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 /**
  *  0 pour les espaces vides,
@@ -46,59 +45,51 @@ int	save_map_line(t_map *map, char *line)
  *
  * Logique :
  *			1.	si la ligne est déjà parsée (data->pars_sta.map < 0),
- * 				on ne la traite pas.
- * 			2.	si parsing non commencé (data->pars_sta.map == 0) et ligne vide,
- * 				on ne la traite pas.
- * 			3.	si le parsing n'est pas en cours, et que la ligne n'est pas valide ou vide -> ignorer
- *
+ *				on ne la traite pas.
+ *			2.	parsing pas encore commencé et ligne vide --> ignoré
+ *			3.	si parsing non commencé (data->pars_sta.map == 0)
+ *				et ligne non valide, on ne la traite pas.
+ *			Sinon, parsing est en cours OU doit être commencé.
+ *				4.	on incrémente la hauteur de la map.
+ *				5.	si c'est la 1ère ligne, on vérifie qu'elle est valide
+ *				6.	si c'est pas la 1ère ligne, on vérifie les murs ouest et est.
+ *				7.	si la ligne est entièrement composée de 1,
+ *					on marque le parsing comme terminé
+ *				8.	si la hauteur de la map dépasse la limite,
+ *					on retourne une erreur.
  *
  * @param data Global data structure.
  * @param map Map structure.
  * @param line Line to process.
  * @return int EXIT_SUCCESS or EXIT_FAILURE.
  */
-
-
 int	process_map_line(t_global *data, t_map *map, char *line)
 {
-	//Si déjà parsé, ligne non traitée
 	if (data->pars_sta.map < 0)
 		return (0);
-
-// parsing pas encore commencé OU parssing en cours
 	if (data->pars_sta.map == 0 && data->pars_sta.empty)
 		return (0);
-
-	//Si parsing pas encore commencé et que ligne non valide --> pas traité
 	if (data->pars_sta.map != 1 && (!is_valide_map_line(line) || line_is_only_spaces(line)))
 		return (0);
-
-
-
+	data->pars_sta.map = 1;
+	map->height++;
+	if (map->height == 1 && !all_line_is_one(line))
+		return (write(STDERR_FILENO, NORTH_WALL_INVALID, 46), EXIT_FAILURE);
+	if (map->height > 1 && !start_with_one(line))
+		return (write(STDERR_FILENO, WEST_WALL_INVALID, 46), EXIT_FAILURE);
+	if (map->height > 1 && !finish_with_one(line))
+		return (write(STDERR_FILENO, EAST_WALL_INVALID, 46), EXIT_FAILURE);
+	if (map->height > 1 && all_line_is_one(line))
+		data->pars_sta.map = -1;
+	if (map->height > MAP_MAX_HEIGHT)
+		return (write(STDERR_FILENO, MAP_TOO_HIGH, 41), EXIT_FAILURE);
+	if (save_map_line(map, line) == EXIT_FAILURE)
+		return (write(STDERR_FILENO, MAP_SAVING_FAILED, 29), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
 	//if (!(data->pars_sta.empty || data->pars_sta.map >= 0))
 	/* if (data->pars_sta.empty && data->pars_sta.map == 1) // pas vide mais dejà parsé
 	{
 		data->pars_sta.map = -1;
 		return (0);
 	} */
-
-
-
-
-		//return (write(STDERR_FILENO, "Err: outer nothern wall contain\n", 33), EXIT_FAILURE);
-	data->pars_sta.map = 1;
-	map->height++;
-	if (map->height == 1 && !all_line_is_one(line))
-		return (write(STDERR_FILENO, "Err: outer nothern wall contain invalid char\n", 46), EXIT_FAILURE);
-	if (map->height > 1 && !start_with_one(line))
-		return (write(STDERR_FILENO, "Err: outer western wall contain invalid char\n", 46), EXIT_FAILURE);
-	if (map->height > 1 && !finish_with_one(line))
-		return (write(STDERR_FILENO, "Err: outer eastern wall contain invalid char\n", 46), EXIT_FAILURE);
-	if (map->height > 1 && all_line_is_one(line))
-		data->pars_sta.map = -1;
-	if (map->height > MAP_MAX_HEIGHT)
-		return (write(STDERR_FILENO, "Err: map too big\n", 18), EXIT_FAILURE);
-	if (save_map_line(map, line) == EXIT_FAILURE)
-		return (write(STDERR_FILENO, "Err: saving map line\n", 22), EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}

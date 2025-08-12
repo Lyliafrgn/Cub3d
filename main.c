@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/09 16:24:26 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:09:14 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int ac, char **av, char **env)
 		free_resources(&data);
 		return (EXIT_FAILURE);
 	}
-
 	if (!data.map || !data.player)
 	{
 		write(STDERR_FILENO, "Err: Map or player data not initialized.\n", 42);

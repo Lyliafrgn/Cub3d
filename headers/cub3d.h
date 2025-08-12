@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 21:04:08 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:29:42 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # include "utils.h"			// Init and resource managment (frees)
 # include "parsing.h"		// Map parsing functions
 # include "exec.h"			// Game execution functions
+# include "msg_erreurs.h"	// Error messages
+
 # include "sig.h"			// Signal handling functions
 
 # include "libft.h"
