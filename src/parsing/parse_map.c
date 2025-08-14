@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 14:31:32 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 15:20:20 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	print_maps(t_global *data)
 	printf("Map content:\n");
 	print_pp_char_arr(data->map.map);
 	printf("____________\n");
-	printf("Map texture : NO: %s, SO: %s, EA: %s, WE: %s\n",
+	printf("Map texture : \n  NO: `%s`,\n  SO: `%s`,\n  EA: `%s`,\n  WE: `%s`\n",
 		data->txtr[TX_NO].path, data->txtr[TX_SO].path,
 		data->txtr[TX_EA].path, data->txtr[TX_WE].path);
-	printf("colors : floor: %d, %d, %d; ceiling: %d, %d, %d\n",
+	printf("colors : floor: %d, %d, %d; ceiling: %d, %d, %d\n\n",
 		data->colors[0][0], data->colors[0][1], data->colors[0][2],
 		data->colors[1][0], data->colors[1][1], data->colors[1][2]);
 }
@@ -90,7 +90,7 @@ int	parse_map_root(t_global *data, char *file_name)
 		write(STDERR_FILENO, MAP_INVALID, 21);
 		return (EXIT_FAILURE);
 	}
-	print_maps(data); // @debug
+	//print_maps(data); // @debug
 	return (EXIT_SUCCESS);
 }
 

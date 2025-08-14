@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 17:31:36 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 15:19:33 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,25 @@ int	get_texture_len(char *line)
 	int	i;
 
 	i = 0;
+	while (*line != '\0' && *line == ' ')
+		line++;
 	while (line[i] != '\0' && !ft_isspace(line[i]) && line[i] != '\n')
 		i++;
-	return (i - 1);
+	return (i);
 }
+
+/**
+ * @brief Extracts the texture path from a line.
+ * The function assumes the line starts with a texture identifier
+ * (e.g., "NO", "SO", etc.)
+ * and extracts the path that follows.
+ * get_texture_len(line) - 2) for the length to exclude the newline character
+ * 		and the '\0'.
+ *
+ * @param line The line containing the texture path.
+ * @return A dynamically allocated string containing the texture path,
+ * 		or NULL if not found.
+ */
 
 char	*get_texture(char *line)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   upload_imgs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 13:02:37 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/14 15:01:56 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int  upload_textures(t_global *data)
 		img = &(data->txtr[i]);
 		if (!img->path)
 			return (ft_err("missing path", data));
-		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path, 
+		print_maps(data); // @debug
+		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path,
 			&img->imgw, &img->imgh);
 		if (!img->mlx_img)
 			return(FAILURE); // msg erreur

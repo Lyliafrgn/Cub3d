@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:12:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 14:08:59 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 15:23:41 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,20 @@ int	map_lines_are_valid(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
+int	check_textures(t_global *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (!data->txtr[i].path)
+			return (EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	validate_map(t_global *data)
 {
 	if (map_height_is_valid(&data->map) != EXIT_SUCCESS)
@@ -109,5 +123,7 @@ int	validate_map(t_global *data)
 		return (write(STDERR_FILENO, "Err: Map : invalid characters in map\n", 37), EXIT_FAILURE);
 	if (check_wrong_surrounding_letters(&data->map) != EXIT_SUCCESS)
 		return (write(STDERR_FILENO, "Err: Map : missing wall or empty inside\n", 41), EXIT_FAILURE);
+	if (check_textures(data) != EXIT_SUCCESS)
+		return (write(STDERR_FILENO, "Err: textures invalid\n", 23), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
