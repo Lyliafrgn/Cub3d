@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 13:51:46 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/14 15:42:09 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ int	main(int ac, char **av, char **env)
 	data.winh = data.map.height * TILE_SIZE;
 	/// Je pense a première vue que pas utile///
 	if (!data.map.map)
-		return (write(STDERR_FILENO, MAP_PARS_ERR, 27), EXIT_FAILURE);
+		return (free_resources(&data), write(STDERR_FILENO, MAP_PARS_ERR, 27), EXIT_FAILURE);
 	///
 	if (init_mlx(&data) == FAILURE)
 	{
 		write(2, "Err: MLX initialization failed.\n", 31);
+		free_resources(&data);
 		return (EXIT_FAILURE);
 	}
 	mlx_loop(data.mlx_ptr);

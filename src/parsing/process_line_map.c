@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 10:41:15 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 15:52:40 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@
  */
 int	save_map_line(t_map *map, char *line)
 {
-	int		actual_len;
-	int		line_len;
+	// int		actual_len;
+	// int		line_len;
 	char	*tmp;
 
-	actual_len = ft_strlen(map->map_string);
-	line_len = ft_strlen(line);
-	tmp = malloc(sizeof(char) * (actual_len + line_len + 2));
+	//actual_len = ft_strlen(map->map_string);
+	//line_len = ft_strlen(line);
+	// tmp = malloc(sizeof(char) * (actual_len + line_len + 2));
+	tmp = ft_strjoin(map->map_string, line);
 	if (!tmp)
 		return (EXIT_FAILURE);
-	tmp = ft_strjoin(map->map_string, line);
 	ft_free((void **) &map->map_string);
 	map->map_string = tmp;
 	return (EXIT_SUCCESS);
