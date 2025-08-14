@@ -11,3 +11,8 @@ tests
 verif code global 
 
 commenter (en EN)
+
+	data.txtr[TX_NO].path = "./textures/textureEA.xpm";
+	data.txtr[TX_SO].path = "./textures/textureNO.xpm";
+	data.txtr[TX_WE].path = "./textures/textureSO.xpm";
+	data.txtr[TX_EA].path = "./textures/textureWE.xpm";
