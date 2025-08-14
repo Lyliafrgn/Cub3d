@@ -1,3 +1,7 @@
+
+creer fonction pour s assurer que  
+Toutes les lignes de la map ont même longueur logique, sinon :
+
 norminette
 
 rnm ft
@@ -7,7 +11,3 @@ tests
 verif code global 
 
 commenter (en EN)
-
-creer fonction rdg 
-
-changer fonctions avec map
