@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pixels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 12:13:04 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 11:40:42 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
-
-/*revenir sur ces fonctions */
 
 void	ft_pixel_put(t_global *data, int c, int r, int color)
 {
@@ -25,7 +23,7 @@ void	ft_pixel_put(t_global *data, int c, int r, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	ft_get_texpixel(t_global *data, int texx, int texy) //revenir dessus
+int	ft_get_texpixel(t_global *data, int texx, int texy)
 {
 	t_img	tex;
 	char	*color;
@@ -59,7 +57,7 @@ int	ft_get_texx(t_global *data)
 		wallx = data->player.y + data->ray.perp_wall_dist * data->ray.dir.y;
 	else
 		wallx = data->player.x + data->ray.perp_wall_dist * data->ray.dir.x;
-	wallx -= floor((wallx)); //changer name
+	wallx -= floor((wallx));
 	texx = (int)(wallx * (double)(data->txtr[TX_NO].imgw));
 	if (data->ray.side == 0 && data->ray.dir.x > 0)
 		texx = data->txtr[TX_NO].imgh - texx - 1;

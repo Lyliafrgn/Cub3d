@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 12:15:55 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:02:01 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ by a map and to rotate his view.
 
 	-> base map[row][column] (y, x)
 */
-static void	ft_horizontal_move(t_data *data)
+static void	ft_horizontal_move(t_global *data)
 {
 	t_vec	step;
 
@@ -27,21 +27,21 @@ static void	ft_horizontal_move(t_data *data)
 	step.y = data->player.planey * data->player.ms;
 	if (data->left)
 	{
-		if (data->map->map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
 			data->player.x -= step.x;
-		if (data->map->map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
 			data->player.y -= step.y;
 	}
 	if (data->right)
 	{
-		if (data->map->map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
 			data->player.x += step.x;
-		if (data->map->map[(int)(data->player.y + step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y + step.y)][(int)(data->player.x)] == '0')
 			data->player.y += step.y;
 	}
 }
 
-static void	ft_vertical_move(t_data *data)
+static void	ft_vertical_move(t_global *data)
 {
 	t_vec	step;
 
@@ -49,21 +49,21 @@ static void	ft_vertical_move(t_data *data)
 	step.y = data->player.diry * data->player.ms;
 	if (data->down)
 	{
-		if (data->map->map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
 			data->player.x -= step.x;
-		if (data->map->map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
 			data->player.y -= step.y;
 	}
 	if (data->up)
 	{
-		if (data->map->map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
 			data->player.x += step.x;
-		if (data->map->map[(int)(data->player.y + step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y + step.y)][(int)(data->player.x)] == '0')
 			data->player.y += step.y;
 	}
 }
 
-static void	ft_rotate(t_data *data)
+static void	ft_rotate(t_global *data)
 {
 	double	old_dirx;
 	double	old_planex;
@@ -89,6 +89,6 @@ void	ft_move(t_global *data)
 		ft_vertical_move(data);
 	if (data->left || data->right)
 		ft_horizontal_move(data);
-	if (data->rotleft || data->rotright)
+	if (data->cam_left || data->cam_right)
 		ft_rotate(data);
 }

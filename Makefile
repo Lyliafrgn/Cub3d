@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
+#    By: ly <ly@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/12 12:10:23 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/08/14 13:35:55 by ly               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,9 @@ INC 	=	-I./headers -I./libs/libft -I./libs/minilibx
 SIGNALS	=	src/signals/signal_main.c
 
 EXEC	=	src/exec/raycasting/render_scene.c \
-			src/exec/mlx_init/cast.c \
-			src/exec/mlx_init/movements.c \
-			src/exec/mlx_init/pixels.c \
+			src/exec/raycasting/movements.c \
+			src/exec/raycasting/pixels.c \
+			src/exec/raycasting/cast.c \
 
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 

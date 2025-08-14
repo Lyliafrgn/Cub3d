@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cast.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 12:14:26 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:05:57 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
-
-/*Fonctions à créer :
-cast_single_ray(...)
-*/
 
 static void	ft_set_step(t_global *data, t_point *step)
 {
@@ -58,10 +54,10 @@ static void	ft_hit_wall(t_global *data, t_vec *side, t_vec *delta, t_point step)
 			data->ray.mapy += step.y;
 			data->ray.side = 1;
 		}
-		if (data->ray.mapx < 0 || data->ray.mapy < 0 || data->ray.mapx >= data->map->width
-			|| data->ray.mapy >= data->map->height)
+		if (data->ray.mapx < 0 || data->ray.mapy < 0 || data->ray.mapx >= data->map.width
+			|| data->ray.mapy >= data->map.height)
 			break ;
-		if (data->map[data->ray.mapy][data->ray.mapx] > '0')
+		if (data->map.map[data->ray.mapy][data->ray.mapx] > '0')
 			break ;
 	}
 }
