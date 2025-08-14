@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 14:17:48 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/14 14:29:19 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ int	parse_map_root(t_global *data, char *file_name)
 	}
 	read_file(data, &data->map);
 	data->map.map = ft_split(data->map.map_string, '\n');
-	print_maps(data); // @debug
 	if (validate_map(data) != EXIT_SUCCESS)
 	{
 		write(STDERR_FILENO, MAP_INVALID, 21);
 		return (EXIT_FAILURE);
 	}
+	print_maps(data); // @debug
 	return (EXIT_SUCCESS);
 }
 
