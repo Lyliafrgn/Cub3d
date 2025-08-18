@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 11:31:24 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/18 11:46:06 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,6 @@ typedef struct s_global
 	int			winh;
 	int			colors[2][3]; // 2= floor and ceiling & 3= colors (RGB)
 	t_dir		dir; // to know which direction the player is moving
-	int			left;
-	int			right;
-	int			up;
-	int			down;
-	int			cam_left;
-	int			cam_right;
 }	t_global;
 
 //////NOT USED YET//////

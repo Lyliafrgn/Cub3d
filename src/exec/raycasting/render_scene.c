@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 13:31:13 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/18 11:41:47 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ int	render_scene(t_global *data)
 	int	col;
 
 	col = 0;
-	if (data->left || data->right || data->up || data->down || data->cam_left
-		|| data->cam_right)
-		ft_move(data);
+	ft_move(data);
 	while (col < data->winw)
 	{
 		draw_column(data, col);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 12:02:01 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/18 11:44:15 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static void	ft_horizontal_move(t_global *data)
 
 	step.x = data->player.planex * data->player.ms;
 	step.y = data->player.planey * data->player.ms;
-	if (data->left)
+	if (data->dir.left)
 	{
 		if (data->map.map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
 			data->player.x -= step.x;
 		if (data->map.map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
 			data->player.y -= step.y;
 	}
-	if (data->right)
+	if (data->dir.right)
 	{
 		if (data->map.map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
 			data->player.x += step.x;
@@ -47,14 +47,14 @@ static void	ft_vertical_move(t_global *data)
 
 	step.x = data->player.dirx * data->player.ms;
 	step.y = data->player.diry * data->player.ms;
-	if (data->down)
+	if (data->dir.down)
 	{
 		if (data->map.map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
 			data->player.x -= step.x;
 		if (data->map.map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
 			data->player.y -= step.y;
 	}
-	if (data->up)
+	if (data->dir.up)
 	{
 		if (data->map.map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
 			data->player.x += step.x;
@@ -70,9 +70,9 @@ static void	ft_rotate(t_global *data)
 	double	rs;
 
 	rs = data->player.rs;
-	if (data->cam_left)
+	if (data->dir.cam_left)
 		rs = -rs;
-	else if (!data->cam_right)
+	else if (!data->dir.cam_right)
 		return ;
 	old_dirx = data->player.dirx;
 	data->player.dirx = data->player.dirx * cos(rs) - data->player.diry * sin(rs);
@@ -85,10 +85,10 @@ static void	ft_rotate(t_global *data)
 
 void	ft_move(t_global *data)
 {
-	if (data->up || data->down)
+	if (data->dir.up || data->dir.down)
 		ft_vertical_move(data);
-	if (data->left || data->right)
+	if (data->dir.left || data->dir.right)
 		ft_horizontal_move(data);
-	if (data->cam_left || data->cam_right)
+	if (data->dir.cam_left || data->dir.cam_right)
 		ft_rotate(data);
 }
