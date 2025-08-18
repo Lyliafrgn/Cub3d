@@ -1,0 +1,29 @@
+# Ignore MiniLibX leaks (X11 / OpenGL related)
+
+{
+   ignore_mlx_init
+   Memcheck:Leak
+   ...
+   fun:mlx_init
+}
+
+{
+   ignore_mlx_new_window
+   Memcheck:Leak
+   ...
+   fun:mlx_new_window
+}
+
+{
+   ignore_x11_leaks
+   Memcheck:Leak
+   fun:XOpenDisplay
+   ...
+   obj:/usr/lib/*/libX11.so*
+}
+
+{
+   ignore_glib_leaks
+   Memcheck:Leak
+   obj:/usr/lib/*/libGL.so*
+}

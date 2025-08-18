@@ -1,24 +1,24 @@
 #include "../headers/cub3d.h"
 
-static int ft_close_window(void *param)
+static int	ft_close_window(void *param)
 {
-	t_global *data;
+	t_global	*data;
 
 	data = (t_global *)param;
 	if (data)
-		ft_free_resources(data);
+		free_resources(data);
 	printf("Window closed\n");
 	exit(0);
 	return (0);
 }
 
-int ft_err(char *msg, t_global *data)
+int	ft_err(char *msg, t_global *data)
 {
 	if (msg)
 		write(2, msg, ft_strlen(msg));
 	write(2, "\n", 1);
 	if (data)
-		ft_free_resources(data);
+		free_resources(data);
 	return (FAILURE);
 }
 
@@ -40,7 +40,7 @@ int	init_mlx(t_global *data)
 }
 
 
-int ft_key_pressed(int keycode, t_global *data)
+int	ft_key_pressed(int keycode, t_global *data)
 {
 	if (keycode == XK_w || keycode == XK_W)
 		data->up = 1;
@@ -57,7 +57,7 @@ int ft_key_pressed(int keycode, t_global *data)
 	else if (keycode == XK_Escape)
 	{
 		printf("Escape key pressed\n");
-		ft_free_resources(data);
+		free_resources(data);
 		exit (0);
 	}
 	return (0);

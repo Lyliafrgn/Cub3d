@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:21:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 13:20:01 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/18 10:32:37 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**free_uncomplete_av(char ***av, int i)
 	return (NULL);
 }
 
-static void	free_textures(t_global *data)
+/* static void	free_textures(t_global *data)
 {
 	if (data->txtr[0].mlx_img)
 		mlx_destroy_image(data->mlx_ptr, data->txtr[0].mlx_img);
@@ -63,17 +63,7 @@ static void	free_textures(t_global *data)
 		mlx_destroy_image(data->mlx_ptr, data->txtr[3].mlx_img);
 }
 
-static void	free_screen(t_global *data)
-{
-	if (data->screen.mlx_img)
-		mlx_destroy_image(data->mlx_ptr, data->screen.mlx_img);
-}
 
-static void	free_window(t_global *data)
-{
-	if (data->win_ptr)
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-}
 
 void	ft_free_resources(t_global *data)
 {
@@ -82,4 +72,4 @@ void	ft_free_resources(t_global *data)
 	free_textures(data);
 	free_screen(data);
 	free_window(data);
-}
+} */
