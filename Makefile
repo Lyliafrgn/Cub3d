@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/18 10:40:10 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/08/18 11:23:40 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -154,6 +154,5 @@ fclean	:	clean
 re		:	fclean all
 
 test	:	$(NAME)
-			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
-			--suppressions=mlx.supp --track-fds=yes ./cub3D ./maps/test2.cub
+			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp --track-fds=yes ./cub3D ./maps/test2.cub
 

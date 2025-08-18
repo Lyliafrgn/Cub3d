@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 13:52:29 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/18 11:34:46 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	initialize_structures(t_global *data)
 	init_map(data);
 	init_player(data);
 	init_pars_sta(&data->pars_sta);
+	ft_memset(&data->dir, 0, sizeof(t_dir));
 }
 //init_player(&data->player);
 

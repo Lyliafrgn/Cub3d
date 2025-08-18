@@ -15,6 +15,13 @@
 }
 
 {
+	IGNORE mlx_destroy_window
+	Memcheck:Leak
+   ...
+	fun:mlx_destroy_window
+}
+
+{
    ignore_x11_leaks
    Memcheck:Leak
    fun:XOpenDisplay
