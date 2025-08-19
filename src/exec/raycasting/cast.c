@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 12:05:57 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/19 02:50:36 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	ft_get_line_height(t_global *data, int col)
 	t_vec			deltadist;
 	t_point			step;
 
-    camerax = 2 * (col) / (double)data->winw - 1;
+	camerax = 2 * (col) / (double)data->winw - 1;
 	data->ray.mapx = (int)data->player.x;
 	data->ray.mapy = (int)data->player.y;
 	data->ray.dir.x = data->player.dirx + (data->player.planex) * (camerax);
@@ -83,9 +83,24 @@ int	ft_get_line_height(t_global *data, int col)
 	ft_set_step(data, &step);
 	ft_set_sidedist(data, &sidedist, deltadist);
 	ft_hit_wall(data, &sidedist, &deltadist, step);
-	data->ray.perp_wall_dist = (sidedist.y - deltadist.y);
+	if (data->ray.side == 0)
+	{
+		if (data->ray.dir.x > 0)
+			data->ray.wall = TX_EA;
+		else
+			data->ray.wall = TX_WE;
+	}
+	else
+	{
+		if (data->ray.dir.y > 0)
+			data->ray.wall = TX_SO;
+		else
+			data->ray.wall = TX_NO;
+	}
 	if (data->ray.side == 0)
 		data->ray.perp_wall_dist = (sidedist.x - deltadist.x);
+	else
+		data->ray.perp_wall_dist = sidedist.y - deltadist.y;
     if (data->ray.perp_wall_dist == 0)
 	    data->ray.perp_wall_dist = 0.0001;
 	return ((int)(data->winh / data->ray.perp_wall_dist));

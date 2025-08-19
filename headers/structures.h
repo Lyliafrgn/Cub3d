@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/12 11:52:06 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/19 02:03:57 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_ray
 	int		side; // Côté touché : 0 = NS (Nord/Sud), 1 = EW (Est/Ouest)
 	int		start; // pixel vertical de début du mur (haut)
 	int		end;  // pixel vertical de fin du mur (bas)
+	int		wall;
 }	t_ray;
 
 typedef struct s_global
