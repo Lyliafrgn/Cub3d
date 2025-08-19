@@ -1,10 +1,10 @@
-NO ./textures/textureWE.xpm 
+NO ./textures/textureNO.xpm 
 SO ./textures/textureSO.xpm
-WE ./textures/textureNO.xpm
-EA ./textures/textureWE.xpm
+WE ./textures/textureWE.xpm
+EA ./textures/textureEA.xpm
 
-F 150,150,150
-C 100,100,255
+F 120,44,133
+C 221,221,133
 
 1111111111
 1000000001
