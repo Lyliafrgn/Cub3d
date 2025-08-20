@@ -6,13 +6,13 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/19 03:46:31 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/20 17:32:25 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-static void	print_char_at(t_map *map_struct, int row, int col)
+/*static void	print_char_at(t_map *map_struct, int row, int col)
 {
 	if (!map_struct || !map_struct->map)
 	{
@@ -31,7 +31,7 @@ static void	print_char_at(t_map *map_struct, int row, int col)
 	}
 
 	printf("Character at [%d][%d] is '%c'\n", row, col, map_struct->map[row][col]);
-}
+}*/
 
 static int  upload_textures(t_global *data)
 {
@@ -45,8 +45,8 @@ static int  upload_textures(t_global *data)
 		if (!img->path)
 			return (ft_err("missing path", data));
 		//print_maps(data); // @debug
-		print_char_at(&data->map, 3, 4);
-		print_char_at(&data->map, 4, 3);
+		//print_char_at(&data->map, 3, 4);
+		//print_char_at(&data->map, 4, 3);
 		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path,
 			&img->imgw, &img->imgh);
 		if (!img->mlx_img)
