@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 10:20:09 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 17:40:36 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,71 @@
  *
  *
 */
+/* Initialises the direction vector
+ * + camera plane according to the player's char
+ */
+static void	set_player_direction(t_player *player, char dir)
+{
+	player->dirx = 0;
+	player->diry = 0;
+	player->planex = 0;
+	player->planey = 0;
+	if (dir == 'N')
+	{
+		player->diry = -1;
+		player->planex = 0.66;
+	}
+	else if (dir == 'S')
+	{
+		player->diry = 1;
+		player->planex = -0.66;
+	}
+	else if (dir == 'E')
+	{
+		player->dirx = 1;
+		player->planey = 0.66;
+	}
+	else if (dir == 'W')
+	{
+		player->dirx = -1;
+		player->planey = -0.66;
+	}
+}
+
+static int	set_player_from_map(t_global *data, int col, int row)
+{
+	char	dir;
+
+	data->player.x = col + 0.5;
+	data->player.y = row + 0.5;
+	dir = data->map.map[row][col];
+	data->map.map[row][col] = '0';
+	set_player_direction(&data->player, dir);
+	return (SUCCESS);
+}
+
+int	ft_find_player(t_global *data)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < data->map.height)
+	{
+		col = 0;
+		while (col < data->map.width)
+		{
+			if (ft_strchr("NSEW", data->map.map[row][col]))
+			{
+				if (set_player_from_map(data, col, row) == FAILURE)
+					return (FAILURE);
+			}
+			col++;
+		}
+		row++;
+	}
+	return (SUCCESS);
+}
 
 /**
  * @note (actual_len + line_len + 2) ==> +2 for newline + null char

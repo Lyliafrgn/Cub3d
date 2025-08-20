@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 22:16:23 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 16:28:53 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		process_line(t_global *data, t_map *map, char *line);
 int		process_map_line(t_global *data, t_map *map, char *line);
 int		process_colore_line(t_global *data, char *line);
 int		process_texture_line(t_global *data, char *line);
+int		ft_find_player(t_global *data);
 
 
 ///////VALIDATION/////
