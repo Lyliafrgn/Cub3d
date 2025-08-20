@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 15:20:20 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:57:00 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ int	parse_map_root(t_global *data, char *file_name)
 	if (validate_map(data) != EXIT_SUCCESS)
 	{
 		write(STDERR_FILENO, MAP_INVALID, 21);
+		return (EXIT_FAILURE);
+	}
+	if (ft_find_player(data) != SUCCESS)
+	{
+		write(STDERR_FILENO, FIND_PLAYER_FAILED, 26);
 		return (EXIT_FAILURE);
 	}
 	//print_maps(data); // @debug

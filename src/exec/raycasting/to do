@@ -1,6 +1,6 @@
+messages erreur au meme format puis dans header
 
-creer fonction pour s assurer que  
-Toutes les lignes de la map ont même longueur logique, sinon :
+penser a commenter egalement le code ajoute dans parse map et process map
 
 norminette
 

@@ -80,7 +80,7 @@ int	ft_key_released(int keycode, t_global *data)
 	return (0);
 }
 
-void	print_structs(t_global *data) // @debug
+/*void	print_structs(t_global *data) // @debug
 {
 	printf("saved map is :\n%s\n", data->map.map_string);
 	printf("Map width: %d, height: %d\n", data->map.width, data->map.height);
@@ -93,4 +93,4 @@ void	print_structs(t_global *data) // @debug
 	printf("colors : floor: %d, %d, %d; ceiling: %d, %d, %d\n\n",
 		data->colors[0][0], data->colors[0][1], data->colors[0][2],
 		data->colors[1][0], data->colors[1][1], data->colors[1][2]);
-}
+}*/
