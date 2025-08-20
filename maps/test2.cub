@@ -1,5 +1,5 @@
-NO ./textures/textureNO.xpm
-SO    ./textures/textureSO.xpm
+NO ./textures/Bricks_02-128x128.xpm
+SO ./textures/basalt_top.xpm
 WE ./textures/textureWE.xpm
 EA ./textures/textureEA.xpm
 
