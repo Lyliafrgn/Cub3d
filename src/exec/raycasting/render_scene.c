@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 11:41:47 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/18 11:51:32 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	draw_wall(t_global *data, int col, int start, int line_height) //reve
  * [Red << 16 | Green << 8 | Blue]
  */
 
-static int ft_rgb_to_int(int color[3])
+static int	ft_rgb_to_int(int color[3])
 {
 	int	red;
 	int	green;
