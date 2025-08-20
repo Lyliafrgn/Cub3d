@@ -31,7 +31,7 @@ int	init_mlx(t_global *data)
 	if (!data->win_ptr)
 		return (FAILURE);
 	if (upload_img(data) == FAILURE)
-		ft_err("image upload failed", data);
+		return(ft_err("image upload failed", data));
 	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data);
 	mlx_hook(data->win_ptr, 3, KeyReleaseMask, ft_key_released, data);
 	mlx_hook(data->win_ptr, 17, 0, ft_close_window, data);

@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 17:32:25 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/20 20:06:58 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,16 @@ static int  upload_textures(t_global *data)
 		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path,
 			&img->imgw, &img->imgh);
 		if (!img->mlx_img)
+		{
+			printf("file to image failed");
 			return(FAILURE); // msg erreur
+		}
 		img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->llen, &img->endian);
 		if (!img->addr)
-			return (FAILURE); // msg erreur
+		{
+			printf("mlx data adress failed");
+			return(FAILURE); // msg erreur
+		}
 		i++;
 	}
 	return (SUCCESS);
