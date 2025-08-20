@@ -1,4 +1,4 @@
-NO ./textures/wall_north.xpm
+NO ./textures/Bricks_02-128x128.xpm
 SO ./textures/wall_south.xpm
 WE ./textures/wall_west.xpm
 EA ./textures/wall_east.xpm

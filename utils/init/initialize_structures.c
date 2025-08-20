@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 17:17:02 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 18:01:15 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	initialize_structures(t_global *data)
 		init_img(&data->txtr[i++]);
 	init_img(&data->screen);
 	(init_color(data->colors[0]), init_color(data->colors[1]));
+	data->win_ptr = NULL;
 	init_ray(&data->ray);
 	init_map(data);
 	init_player(data);
