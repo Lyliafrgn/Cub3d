@@ -14,11 +14,12 @@ static int	ft_close_window(void *param)
 
 int	ft_err(char *msg, t_global *data)
 {
+	(void) data;
 	if (msg)
 		write(2, msg, ft_strlen(msg));
 	write(2, "\n", 1);
-	if (data)
-		free_resources(data);
+	// if (data)
+	// 	free_resources(data);
 	return (FAILURE);
 }
 
@@ -31,7 +32,8 @@ int	init_mlx(t_global *data)
 	if (!data->win_ptr)
 		return (FAILURE);
 	if (upload_img(data) == FAILURE)
-		ft_err("image upload failed", data);
+		return (FAILURE);
+		// return (ft_err("image upload failed", data));
 	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data);
 	mlx_hook(data->win_ptr, 3, KeyReleaseMask, ft_key_released, data);
 	mlx_hook(data->win_ptr, 17, 0, ft_close_window, data);

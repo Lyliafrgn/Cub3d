@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:56:10 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 18:25:16 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 18:53:27 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	free_map(t_map *map)
 static void	free_screen(t_global *data)
 {
 	if (data->screen.mlx_img)
+	{
 		mlx_destroy_image(data->mlx_ptr, data->screen.mlx_img);
+		data->screen.mlx_img = NULL;
+	}
 }
 
 static void	free_window(t_global *data)

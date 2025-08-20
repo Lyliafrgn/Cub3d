@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 17:16:47 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 18:48:56 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char **av, char **env)
 	/// */
 	if (init_mlx(&data) == FAILURE)
 	{
-		write(2, "Err: MLX initialization failed.\n", 31);
+		write(2, "Err: MLX initialization failed.\n", 33);
 		free_resources(&data);
 		return (EXIT_FAILURE);
 	}

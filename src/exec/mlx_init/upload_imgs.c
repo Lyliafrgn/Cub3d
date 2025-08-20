@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   upload_imgs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 17:32:25 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/20 18:56:05 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static int  upload_textures(t_global *data)
 		img = &(data->txtr[i]);
 		if (!img->path)
 			return (ft_err("missing path", data));
-		//print_maps(data); // @debug
+		print_maps(data); // @debug
 		//print_char_at(&data->map, 3, 4);
 		//print_char_at(&data->map, 4, 3);
-		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path,
+		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path, \
 			&img->imgw, &img->imgh);
 		if (!img->mlx_img)
-			return(FAILURE); // msg erreur
+			return(ft_err("Err:mlx_xpm_file_to_image", data)); // msg erreur
 		img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->llen, &img->endian);
 		if (!img->addr)
 			return (FAILURE); // msg erreur
@@ -61,7 +61,7 @@ static int  upload_textures(t_global *data)
 
 int upload_img(t_global *data)
 {
-    if (upload_textures(data) == FAILURE)
+	if (upload_textures(data) == FAILURE)
 		return (ft_err("failed uploading textures", data));
 	data->screen.mlx_img = mlx_new_image(data->mlx_ptr, data->winw, data->winh);
 	if (!data->screen.mlx_img)
