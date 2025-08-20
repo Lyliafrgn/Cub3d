@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 11:34:46 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 17:15:02 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@ static void	init_map(t_global *data)
 	data->map.map = NULL;
 	data->map.width = 0;
 	data->map.height = 0;
+	data->left = 0;
+	data->right = 0;
+	data->up = 0;
+	data->down = 0;
+	data->cam_left = 0;
+	data->cam_right = 0;
 }
 
 static void	init_player(t_global *data) //initialisé en direction de l'est
 {
-	data->player.x = 0.0;
+	data->player.x = 1;
 	data->player.y = 0.0;
 	data->player.angle = 0.0;
 	data->player.planex = 0.0;

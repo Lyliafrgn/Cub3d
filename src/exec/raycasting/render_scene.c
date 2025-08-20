@@ -6,30 +6,36 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 11:51:32 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 17:14:40 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-static int	draw_wall(t_global *data, int col, int start, int line_height) //reveenir dessus
+static int	draw_wall(t_global *data, int col, int start, int line_height)
 {
 	double			step;
 	t_point			tex;
 	double			texpos;
 	int				pix;
+	t_img			*teximg;
 
-	step = 1.0 * data->txtr[TX_NO].imgh / line_height;
-	tex.x = ft_get_texx(data);
-	texpos = (data->ray.start - (data->winh) / 2 + line_height / 2) * step;
+	teximg = &data->txtr[data->ray.wall];
+
+	step = 1.0 * teximg->imgh / line_height;
+	tex.x = ft_get_texx(data); // Coordonnée X dans la texture (colonne)
+	texpos = (data->ray.start - (data->winh) / 2 + line_height / 2) * step; // Position initiale Y dans la texture
 	while (start < data->ray.end)
 	{
-		tex.y = (int)texpos & (data->txtr[TX_NO].imgh - 1);
+		tex.y = (int)texpos;
+		if (tex.y >= 0 && tex.y < teximg->imgh)
+		{
+			pix = ft_get_texpixel(data, tex.x, tex.y);// Applique une ombre légère si mur Est/Ouest
+			if (data->ray.side == 1)
+				pix = (pix >> 1) & 0x7F7F7F;
+			ft_pixel_put(data, col, start, pix);
+		}
 		texpos += step;
-		pix = ft_get_texpixel(data, tex.x, tex.y);
-		if (data->ray.side == 1)
-			pix = (pix >> 1) & 8355711;
-		ft_pixel_put(data, col, start, pix);
 		start++;
 	}
 	return (start);

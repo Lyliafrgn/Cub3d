@@ -11,3 +11,14 @@ tests
 verif code global 
 
 commenter (en EN)
+
+	data.txtr[TX_NO].path = "./textures/textureEA.xpm";
+	data.txtr[TX_SO].path = "./textures/textureNO.xpm";
+	data.txtr[TX_WE].path = "./textures/textureSO.xpm";
+	data.txtr[TX_EA].path = "./textures/textureWE.xpm";
+
+	dans test3.cub
+
+	pb avec la texture SO (l image est trop petite donc utiliser une autre texture)
+
+	s affichent le mur SO (mur droite) et mur WE (a gauche)

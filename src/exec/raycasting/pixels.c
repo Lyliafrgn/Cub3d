@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 11:40:42 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/19 02:58:08 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,10 @@ int	ft_get_texpixel(t_global *data, int texx, int texy)
 {
 	t_img	tex;
 	char	*color;
-	int		wall;
 
-	if (data->ray.side == 1)
-	{
-		wall = TX_NO;
-		if (data->player.y <= data->ray.mapy)
-			wall = TX_SO;
-	}
-	else
-	{
-		wall = TX_EA;
-		if (data->player.x <= data->ray.mapx)
-			wall = TX_WE;
-	}
-	tex = data->txtr[wall];
+	tex = data->txtr[data->ray.wall];
 	if (texx < 0 || texx >= tex.imgw || texy < 0 || texy >= tex.imgh)
-		return (0);
+		return (0xFF00FF); // Rose debug si out of bounds0);
 	color = (tex.addr + (texy * tex.llen + texx * (tex.bpp / 8)));
 	return (*(unsigned int *)color);
 }
@@ -52,16 +39,19 @@ int	ft_get_texx(t_global *data)
 {
 	double	wallx;
 	int		texx;
+	t_img	*tex;
 
+	// Choisir la bonne texture
+	tex = &data->txtr[data->ray.wall];
 	if (data->ray.side == 0)
 		wallx = data->player.y + data->ray.perp_wall_dist * data->ray.dir.y;
 	else
 		wallx = data->player.x + data->ray.perp_wall_dist * data->ray.dir.x;
 	wallx -= floor((wallx));
-	texx = (int)(wallx * (double)(data->txtr[TX_NO].imgw));
+	texx = (int)(wallx * (double)(tex->imgw));
 	if (data->ray.side == 0 && data->ray.dir.x > 0)
-		texx = data->txtr[TX_NO].imgh - texx - 1;
+		texx = tex->imgw - texx - 1;
 	if (data->ray.side == 1 && data->ray.dir.y < 0)
-		texx = data->txtr[TX_NO].imgw - texx - 1;
+		texx = tex->imgw - texx - 1;
 	return (texx);
 }

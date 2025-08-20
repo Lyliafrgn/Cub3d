@@ -79,3 +79,18 @@ int	ft_key_released(int keycode, t_global *data)
 		data->dir.cam_right = 0;
 	return (0);
 }
+
+void	print_structs(t_global *data) // @debug
+{
+	printf("saved map is :\n%s\n", data->map.map_string);
+	printf("Map width: %d, height: %d\n", data->map.width, data->map.height);
+	printf("Map content:\n");
+	print_pp_char_arr(data->map.map);
+	printf("____________\n");
+	printf("Map texture : \n  NO: `%s`,\n  SO: `%s`,\n  EA: `%s`,\n  WE: `%s`\n",
+		data->txtr[TX_NO].path, data->txtr[TX_SO].path,
+		data->txtr[TX_EA].path, data->txtr[TX_WE].path);
+	printf("colors : floor: %d, %d, %d; ceiling: %d, %d, %d\n\n",
+		data->colors[0][0], data->colors[0][1], data->colors[0][2],
+		data->colors[1][0], data->colors[1][1], data->colors[1][2]);
+}

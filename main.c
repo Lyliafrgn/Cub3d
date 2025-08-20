@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 12:27:11 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/20 17:11:52 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int ac, char **av, char **env)
 	{
 		write(STDERR_FILENO, "Run with: ./cub3D <map_file>\n", 30);
 		return (EXIT_FAILURE);
-	}
 	initialize_structures(&data);
 	if (av && av[1] && parse_map_root(&data, av[1]) == EXIT_FAILURE)
 	{
