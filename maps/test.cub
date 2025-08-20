@@ -1,5 +1,5 @@
 NO ./textures/Bricks_02-128x128.xpm
-SO ./textures/wall_south.xpm
+SO ./textures/basalt_top.xpm
 WE ./textures/wall_west.xpm
 EA ./textures/wall_east.xpm
 F 220,100,0
