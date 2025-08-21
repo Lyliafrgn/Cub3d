@@ -6,13 +6,60 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 20:06:58 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/21 02:07:42 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-/*static void	print_char_at(t_map *map_struct, int row, int col)
+static int  upload_textures(t_global *data)
+{
+	t_img	*img;
+	int		i;
+
+	i = 0;
+	while(i < 4)
+	{
+		img = &(data->txtr[i]);
+		if (!img->path)
+			return (ft_err("Err: missing path to texture", data));
+		//print_maps(data); // @debug
+		//print_char_at(&data->map, 3, 4);
+		//print_char_at(&data->map, 4, 3);
+		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path,
+			&img->imgw, &img->imgh);
+		if (!img->mlx_img)
+		{
+			fprintf(stderr, "Err: failed to load texture file at path: %s\n", img->path);
+			return(ft_err("Err: file to image failed", data));
+		}
+		img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->llen, &img->endian);
+		if (!img->addr)
+			return(ft_err("Err: failed to get image data", data));
+		i++;
+	}
+	return (SUCCESS);
+}
+
+int upload_img(t_global *data)
+{
+    if (upload_textures(data) == FAILURE)
+		return (ft_err("Err: failed uploading textures", data));
+	data->screen.mlx_img = mlx_new_image(data->mlx_ptr, data->winw, data->winh);
+	if (!data->screen.mlx_img)
+		return (ft_err("Err: failed to create screen image (mlx_new_image)", data));
+	data->screen.addr = mlx_get_data_addr(data->screen.mlx_img,
+			&data->screen.bpp, &data->screen.llen,
+			&data->screen.endian);
+	if (!data->screen.addr)
+		return (ft_err("Err: failed to get data address of screen image (mlx_get_data_addr)", data));
+	return (SUCCESS);
+}
+
+/*
+@Debug
+*
+static void	print_char_at(t_map *map_struct, int row, int col)
 {
 	if (!map_struct || !map_struct->map)
 	{
@@ -29,53 +76,6 @@
 		printf("Column %d is out of bounds in row %d\n", col, row);
 		return;
 	}
-
-	printf("Character at [%d][%d] is '%c'\n", row, col, map_struct->map[row][col]);
+	printf("Character at [%d][%d] is '%c'\n", row, col, 
+	map_struct->map[row][col]);
 }*/
-
-static int  upload_textures(t_global *data)
-{
-	t_img	*img;
-	int		i;
-
-	i = 0;
-	while(i < 4)
-	{
-		img = &(data->txtr[i]);
-		if (!img->path)
-			return (ft_err("missing path", data));
-		//print_maps(data); // @debug
-		//print_char_at(&data->map, 3, 4);
-		//print_char_at(&data->map, 4, 3);
-		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path,
-			&img->imgw, &img->imgh);
-		if (!img->mlx_img)
-		{
-			printf("file to image failed");
-			return(FAILURE); // msg erreur
-		}
-		img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->llen, &img->endian);
-		if (!img->addr)
-		{
-			printf("mlx data adress failed");
-			return(FAILURE); // msg erreur
-		}
-		i++;
-	}
-	return (SUCCESS);
-}
-
-int upload_img(t_global *data)
-{
-    if (upload_textures(data) == FAILURE)
-		return (ft_err("failed uploading textures", data));
-	data->screen.mlx_img = mlx_new_image(data->mlx_ptr, data->winw, data->winh);
-	if (!data->screen.mlx_img)
-		return (FAILURE);
-	data->screen.addr = mlx_get_data_addr(data->screen.mlx_img,
-			&data->screen.bpp, &data->screen.llen,
-			&data->screen.endian);
-	if (!data->screen.addr)
-		return (FAILURE);
-	return (SUCCESS);
-}
