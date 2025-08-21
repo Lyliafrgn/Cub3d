@@ -1,7 +1,7 @@
-NO ./textures/textureNO.xpm 
-SO ./textures/textureSO.xpm
-WE ./textures/textureWE.xpm
-EA ./textures/textureEA.xpm
+NO ./textures/textureNO1.xpm 
+SO ./textures/textureSO1.xpm
+WE ./textures/textureWE1.xpm
+EA ./textures/textureEA1.xpm
 
 F 81,16,61
 C 83,16,30
