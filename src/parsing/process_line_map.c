@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 17:02:00 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/21 02:28:20 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_find_player(t_global *data)
 			if (ft_strchr("NSEW", data->map.map[row][col]))
 			{
 				if (set_player_from_map(data, col, row) == FAILURE)
-					return (FAILURE);
+					return (ft_err("Err: player initialization failed", data));
 			}
 			col++;
 		}

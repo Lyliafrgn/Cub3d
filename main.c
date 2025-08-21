@@ -6,11 +6,27 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 20:27:22 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/21 02:49:59 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	start_game(t_global *data)
+{
+	data->winw = data->map.width * TILE_SIZE;
+	data->winh = data->map.height * TILE_SIZE;
+
+	if (init_mlx(data) == FAILURE)
+	{
+		ft_err("Err: MLX initialization failed.", data);
+		return (EXIT_FAILURE);
+	}
+	mlx_loop(data->mlx_ptr);
+	ft_free_resources(data);
+	write(STDOUT_FILENO, "Game exited successfully.\n", 26);
+	return (EXIT_SUCCESS);
+}
 
 int	main(int ac, char **av, char **env)
 {
@@ -23,26 +39,13 @@ int	main(int ac, char **av, char **env)
 		return (EXIT_FAILURE);
 	}
 	initialize_structures(&data);
-	if (av && av[1] && parse_map_root(&data, av[1]) == EXIT_FAILURE)
+	if (parse_map_root(&data, av[1]) == EXIT_FAILURE)
 	{
 		write(STDERR_FILENO, "Err: Map parsing failed.\n", 25);
 		free_resources(&data);
 		return (EXIT_FAILURE);
 	}
-	data.winw = data.map.width * TILE_SIZE;
-	data.winh = data.map.height * TILE_SIZE;
-	/// Je pense a première vue que pas utile///
 	if (!data.map.map)
 		return (write(STDERR_FILENO, MAP_PARS_ERR, 27), EXIT_FAILURE);
-	///
-	if (init_mlx(&data) == FAILURE)
-	{
-		write(2, "Err: MLX initialization failed.\n", 31);
-		ft_free_resources(&data);
-		return (EXIT_FAILURE);
-	}
-	mlx_loop(data.mlx_ptr);
-	ft_free_resources(&data);
-	write(STDIN_FILENO, "Game exited successfully.\n", 26);
-	return (EXIT_SUCCESS);
+	return (start_game(&data));
 }

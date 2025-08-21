@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/19 02:58:08 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/21 03:09:08 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_get_texpixel(t_global *data, int texx, int texy)
 
 	tex = data->txtr[data->ray.wall];
 	if (texx < 0 || texx >= tex.imgw || texy < 0 || texy >= tex.imgh)
-		return (0xFF00FF); // Rose debug si out of bounds0);
+		return (0xFF00FF);
 	color = (tex.addr + (texy * tex.llen + texx * (tex.bpp / 8)));
 	return (*(unsigned int *)color);
 }
@@ -41,7 +41,6 @@ int	ft_get_texx(t_global *data)
 	int		texx;
 	t_img	*tex;
 
-	// Choisir la bonne texture
 	tex = &data->txtr[data->ray.wall];
 	if (data->ray.side == 0)
 		wallx = data->player.y + data->ray.perp_wall_dist * data->ray.dir.y;

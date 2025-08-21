@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/19 02:35:55 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/21 03:10:58 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,15 @@ static int	draw_wall(t_global *data, int col, int start, int line_height)
 	t_img			*teximg;
 
 	teximg = &data->txtr[data->ray.wall];
-
 	step = 1.0 * teximg->imgh / line_height;
-	tex.x = ft_get_texx(data); // Coordonnée X dans la texture (colonne)
-	texpos = (data->ray.start - (data->winh) / 2 + line_height / 2) * step; // Position initiale Y dans la texture
+	tex.x = ft_get_texx(data);
+	texpos = (data->ray.start - (data->winh) / 2 + line_height / 2) * step;
 	while (start < data->ray.end)
 	{
 		tex.y = (int)texpos;
 		if (tex.y >= 0 && tex.y < teximg->imgh)
 		{
-			pix = ft_get_texpixel(data, tex.x, tex.y);// Applique une ombre légère si mur Est/Ouest
+			pix = ft_get_texpixel(data, tex.x, tex.y);
 			if (data->ray.side == 1)
 				pix = (pix >> 1) & 0x7F7F7F;
 			ft_pixel_put(data, col, start, pix);
@@ -48,7 +47,7 @@ static int	draw_wall(t_global *data, int col, int start, int line_height)
  * [Red << 16 | Green << 8 | Blue]
  */
 
-static int ft_rgb_to_int(int color[3])
+static int	ft_rgb_to_int(int color[3])
 {
 	int	red;
 	int	green;
@@ -67,7 +66,6 @@ static void	draw_column(t_global *data, int col)
 	int			color;
 
 	line_height = ft_get_line_height(data, col);
-
 	data->ray.start = -line_height / 2 + (data->winh) / 2;
 	if (data->ray.start < 0)
 		data->ray.start = 0;
