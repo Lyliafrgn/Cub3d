@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:21:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 10:32:37 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/23 09:51:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,45 @@ char	**free_uncomplete_av(char ***av, int i)
 
 /* static void	free_textures(t_global *data)
 {
-	if (data->txtr[0].mlx_img)
-		mlx_destroy_image(data->mlx_ptr, data->txtr[0].mlx_img);
-	if (data->txtr[1].mlx_img)
-		mlx_destroy_image(data->mlx_ptr, data->txtr[1].mlx_img);
-	if (data->txtr[2].mlx_img)
-		mlx_destroy_image(data->mlx_ptr, data->txtr[2].mlx_img);
-	if (data->txtr[3].mlx_img)
-		mlx_destroy_image(data->mlx_ptr, data->txtr[3].mlx_img);
+	int	i;
+
+	if (!data || data->mlx_ptr)
+		return;
+	i = 0;
+	while (i < 4)
+	{
+		if (data->txtr[i].mlx_img)
+		{
+			mlx_destroy_image(data->mlx_ptr, data->txtr[i].mlx_img);
+			data->txtr[i].mlx_img = NULL;
+		}
+		i++;
+	}
+}
+
+static void	free_screen(t_global *data)
+{
+	if (data->mlx_ptr && data->screen.mlx_img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->screen.mlx_img);
+		data->screen.mlx_img = NULL;
+	}
 }
 
 
+static void	free_window(t_global *data)
+{
+	if (data->mlx_ptr && data->win_ptr)
+	{
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		data->win_ptr = NULL;
+	}
+}
 
 void	ft_free_resources(t_global *data)
 {
+	if (!data)
+		free_av(&data->map.map);
 	if (data->map.map)
 		free_av(&data->map.map);
 	free_textures(data);

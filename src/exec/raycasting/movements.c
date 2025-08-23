@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 11:44:15 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/23 09:52:17 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,20 @@ static void	ft_horizontal_move(t_global *data)
 	step.y = data->player.planey * data->player.ms;
 	if (data->dir.left)
 	{
-		if (data->map.map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)]
+			[(int)(data->player.x - step.x)] == '0')
 			data->player.x -= step.x;
-		if (data->map.map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y - step.y)]
+			[(int)(data->player.x)] == '0')
 			data->player.y -= step.y;
 	}
 	if (data->dir.right)
 	{
-		if (data->map.map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)]
+			[(int)(data->player.x + step.x)] == '0')
 			data->player.x += step.x;
-		if (data->map.map[(int)(data->player.y + step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y + step.y)]
+			[(int)(data->player.x)] == '0')
 			data->player.y += step.y;
 	}
 }
@@ -49,16 +53,20 @@ static void	ft_vertical_move(t_global *data)
 	step.y = data->player.diry * data->player.ms;
 	if (data->dir.down)
 	{
-		if (data->map.map[(int)(data->player.y)][(int)(data->player.x - step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)]
+			[(int)(data->player.x - step.x)] == '0')
 			data->player.x -= step.x;
-		if (data->map.map[(int)(data->player.y - step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y - step.y)]
+			[(int)(data->player.x)] == '0')
 			data->player.y -= step.y;
 	}
 	if (data->dir.up)
 	{
-		if (data->map.map[(int)(data->player.y)][(int)(data->player.x + step.x)] == '0')
+		if (data->map.map[(int)(data->player.y)]
+			[(int)(data->player.x + step.x)] == '0')
 			data->player.x += step.x;
-		if (data->map.map[(int)(data->player.y + step.y)][(int)(data->player.x)] == '0')
+		if (data->map.map[(int)(data->player.y + step.y)]
+			[(int)(data->player.x)] == '0')
 			data->player.y += step.y;
 	}
 }
@@ -75,11 +83,12 @@ static void	ft_rotate(t_global *data)
 	else if (!data->dir.cam_right)
 		return ;
 	old_dirx = data->player.dirx;
-	data->player.dirx = data->player.dirx * cos(rs) - data->player.diry * sin(rs);
+	data->player.dirx = data->player.dirx
+		* cos(rs) - data->player.diry * sin(rs);
 	data->player.diry = old_dirx * sin(rs) + data->player.diry * cos(rs);
-
 	old_planex = data->player.planex;
-	data->player.planex = data->player.planex * cos(rs) - data->player.planey * sin(rs);
+	data->player.planex = data->player.planex
+		* cos(rs) - data->player.planey * sin(rs);
 	data->player.planey = old_planex * sin(rs) + data->player.planey * cos(rs);
 }
 

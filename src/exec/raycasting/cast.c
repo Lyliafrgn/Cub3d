@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/19 02:50:36 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/21 03:06:48 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void	ft_hit_wall(t_global *data, t_vec *side, t_vec *delta, t_point step)
 			data->ray.mapy += step.y;
 			data->ray.side = 1;
 		}
-		if (data->ray.mapx < 0 || data->ray.mapy < 0 || data->ray.mapx >= data->map.width
+		if (data->ray.mapx < 0 || data->ray.mapy < 0
+			||data->ray.mapx >= data->map.width
 			|| data->ray.mapy >= data->map.height)
 			break ;
 		if (data->map.map[data->ray.mapy][data->ray.mapx] > '0')
@@ -64,7 +65,7 @@ static void	ft_hit_wall(t_global *data, t_vec *side, t_vec *delta, t_point step)
 
 int	ft_get_line_height(t_global *data, int col)
 {
-	double      	camerax;
+	double			camerax;
 	t_vec			sidedist;
 	t_vec			deltadist;
 	t_point			step;
@@ -101,7 +102,7 @@ int	ft_get_line_height(t_global *data, int col)
 		data->ray.perp_wall_dist = (sidedist.x - deltadist.x);
 	else
 		data->ray.perp_wall_dist = sidedist.y - deltadist.y;
-    if (data->ray.perp_wall_dist == 0)
-	    data->ray.perp_wall_dist = 0.0001;
+	if (data->ray.perp_wall_dist == 0)
+		data->ray.perp_wall_dist = 0.0001;
 	return ((int)(data->winh / data->ray.perp_wall_dist));
 }

@@ -6,11 +6,11 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:56:10 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 18:53:27 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/23 09:50:37 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../headers/cub3d.h"
 
 void	free_textures(t_global *data)
 {

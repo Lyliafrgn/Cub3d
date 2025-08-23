@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 17:40:36 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/23 09:49:44 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_find_player(t_global *data)
 			if (ft_strchr("NSEW", data->map.map[row][col]))
 			{
 				if (set_player_from_map(data, col, row) == FAILURE)
-					return (FAILURE);
+					return (ft_err("Err: player initialization failed", data));
 			}
 			col++;
 		}

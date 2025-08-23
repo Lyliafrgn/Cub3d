@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_initialization.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
+/*   Updated: 2025/08/23 09:47:29 by ofilloux         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../headers/cub3d.h"
 
 static int	ft_close_window(void *param)
@@ -27,20 +39,19 @@ int	init_mlx(t_global *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return (FAILURE);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, data->winw, data->winh, "Cub3d");
+		return ((ft_err("Err MLX init failed (mlx_ptr is NULL)", data)));
+	data->win_ptr = mlx_new_window(data->mlx_ptr,
+			data->winw, data->winh, "Cub3d");
 	if (!data->win_ptr)
-		return (FAILURE);
+		return (ft_err("Err: Window creation failed (mlx_new_window)", data));
 	if (upload_img(data) == FAILURE)
-		return (FAILURE);
-		// return (ft_err("image upload failed", data));
+		return (ft_err("Err: Failed to load textures or screen image", data));
 	mlx_hook(data->win_ptr, 2, KeyPressMask, ft_key_pressed, data);
 	mlx_hook(data->win_ptr, 3, KeyReleaseMask, ft_key_released, data);
 	mlx_hook(data->win_ptr, 17, 0, ft_close_window, data);
 	mlx_loop_hook(data->mlx_ptr, render_scene, data);
 	return (SUCCESS);
 }
-
 
 int	ft_key_pressed(int keycode, t_global *data)
 {
