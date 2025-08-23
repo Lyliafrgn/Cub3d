@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:37:24 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/18 10:33:03 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/23 09:57:19 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,4 @@ void	ft_pixel_put(t_global *data, int c, int r, int color);
 int		ft_get_line_height(t_global *data, int col);
 
 void	ft_move(t_global *data);
-
-//void    ft_free_resources(t_global *data);
-
 #endif

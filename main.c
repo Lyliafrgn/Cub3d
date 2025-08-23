@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 09:46:44 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/23 09:57:21 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	start_game(t_global *data)
 		return (EXIT_FAILURE);
 	}
 	mlx_loop(data->mlx_ptr);
-	ft_free_resources(data);
+	free_resources(data);
 	write(STDOUT_FILENO, "Game exited successfully.\n", 26);
 	return (EXIT_SUCCESS);
 }
