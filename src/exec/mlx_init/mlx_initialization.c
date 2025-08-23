@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 09:47:29 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/23 10:54:28 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ int	ft_err(char *msg, t_global *data)
 	return (FAILURE);
 }
 
+/**
+ * @brief Initializes the MiniLibX library, creates a window, uploads images,
+ * and sets up event hooks for key presses, releases, and window closure.
+ *
+ * @param data Pointer to the global data structure containing game state.
+ * @return int SUCCESS (0) on success, FAILURE (-1) on failure.
+ * @note On failure, an error message is printed.
+ *
+ * @see mlx_hook --> parameters: window, event, mask, function, param
+ * event: 2= key press, 3= key release, 17= window close
+ * KeyPressMask corresponds to key press events from X11
+ * ondestroy window the mask 0 is used because there is no mask for it:
+ * it is not an event triggered by the keyboard or mouse.
+ * @see https://harm-smits.github.io/42docs/libs/minilibx/events.html
+ * @see mlx_loop_hook --> parameters: mlx_ptr, function, param
+ */
 int	init_mlx(t_global *data)
 {
 	data->mlx_ptr = mlx_init();

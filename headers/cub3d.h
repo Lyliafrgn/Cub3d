@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 16:18:35 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/23 10:19:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 # include "parsing.h"		// Map parsing functions
 # include "exec.h"			// Game execution functions
 # include "msg_erreurs.h"	// Error messages
-
-# include "sig.h"			// Signal handling functions
 
 # include "libft.h"
 # include "mlx.h"
