@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   upload_imgs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 09:48:54 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/24 01:01:25 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
+/*converts the .xpm file into a usable image with mlx function
+**gets the memory addr where the pixels are located
+(useful for modifying or reading the texture, 
+for ex: for the ceiling or floor color).
+**/
 static int	upload_textures(t_global *data)
 {
 	t_img	*img;
@@ -35,6 +40,10 @@ static int	upload_textures(t_global *data)
 	}
 	return (SUCCESS);
 }
+/*loads the textures.
+**create an ‘empty’ image that serves for rendering each frame.
+**gets the memory address of this image to draw on it pixel by pixel.
+*/
 
 int	upload_img(t_global *data)
 {
@@ -72,55 +81,6 @@ static void	print_char_at(t_map *map_struct, int row, int col)
 		return;
 	}
 
-	printf("Character at [%d][%d] is '%c'\n", row, col, map_struct->map[row][col]);
-}*/
-
-
-/* OLD VERSION
-static int  upload_textures(t_global *data)
-{
-	t_img	*img;
-	int		i;
-
-	i = 0;
-	while(i < 4)
-	{
-		img = &(data->txtr[i]);
-		if (!img->path)
-			return (ft_err("missing path", data));
-		print_maps(data); // @debug
-		//print_char_at(&data->map, 3, 4);
-		//print_char_at(&data->map, 4, 3);
-		img->mlx_img = mlx_xpm_file_to_image(data->mlx_ptr, img->path, \
-			&img->imgw, &img->imgh);
-		if (!img->mlx_img)
-		{
-			ft_err("Err:mlx_xpm_file_to_image : ", data);
-			printf("Texture err : %s\n", img->path);
-			return (FAILURE);
-		}
-		img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->llen, &img->endian);
-		if (!img->addr)
-			return (FAILURE); // msg erreur
-		i++;
-	}
-	return (SUCCESS);
-}
-
-int upload_img(t_global *data)
-{
-	if (upload_textures(data) == FAILURE)
-		return (ft_err("failed uploading textures", data));
-	data->screen.mlx_img = mlx_new_image(data->mlx_ptr, data->winw, data->winh);
-	if (!data->screen.mlx_img)
-		return (FAILURE);
-	data->screen.addr = mlx_get_data_addr(data->screen.mlx_img,
-			&data->screen.bpp, &data->screen.llen,
-			&data->screen.endian);
-	if (!data->screen.addr)
-		return (FAILURE);
-	return (SUCCESS);
-}
-	printf("Character at [%d][%d] is '%c'\n", row, col,
-	map_struct->map[row][col]);
+	printf("Character at [%d][%d] is '%c'\n", row,
+	 col, map_struct->map[row][col]);
 }*/

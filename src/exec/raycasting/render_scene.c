@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 10:59:12 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/24 02:27:37 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ static void	draw_column(t_global *data, int col)
 	while (row < data->winh)
 		ft_pixel_put(data, col, row++, color);
 }
+/* Updates the player's position/direction
+**Calculates and draws each column of pixels
+**Displays the final buffer in the window
+*/
 
 int	render_scene(t_global *data)
 {

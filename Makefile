@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
+#    By: ly <ly@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/23 09:58:14 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/08/24 02:36:43 by ly               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ EXEC	=	src/exec/raycasting/render_scene.c \
 			src/exec/raycasting/movements.c \
 			src/exec/raycasting/pixels.c \
 			src/exec/raycasting/cast.c \
+			src/exec/raycasting/cast_utils.c \
 
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 

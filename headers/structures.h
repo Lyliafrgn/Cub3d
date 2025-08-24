@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 17:09:42 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/24 01:44:20 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct s_img
 	char	*addr; // memory addr of the img
 	int		bpp; // bits per pixel
 	int		llen; // lenght of a line of pixels in the img (in octets)
-	int		endian; //if 0 = little endian (RGB order), if 1 = big endian (RGB)
-	int		imgw; // Width of the img
+	int		endian; //If 0 = little endian (RGB order), if 1 = big endian (RGB)
+	int		imgw; // width of the img
 	int		imgh; // Height of the img
 }	t_img;
 
