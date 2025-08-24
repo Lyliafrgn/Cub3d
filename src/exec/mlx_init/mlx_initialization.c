@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:40:13 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/24 02:49:36 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_err(char *msg, t_global *data)
 		write(2, msg, ft_strlen(msg));
 	write(2, "\n", 1);
 	if (data)
-		ft_free_resources(data);
+		free_resources(data);
 	return (FAILURE);
 }
 

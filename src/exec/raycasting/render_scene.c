@@ -6,12 +6,17 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:27:37 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/24 03:57:46 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
+/*draw a line on the col column
+with the correct texture, 
+correct height,
+and a light effect.
+*/
 static int	draw_wall(t_global *data, int col, int start, int line_height)
 {
 	double			step;
@@ -46,7 +51,6 @@ static int	draw_wall(t_global *data, int col, int start, int line_height)
  * Each color component is packed into one byte:
  * [Red << 16 | Green << 8 | Blue]
  */
-
 static int	ft_rgb_to_int(int color[3])
 {
 	int	red;
@@ -59,6 +63,10 @@ static int	ft_rgb_to_int(int color[3])
 	return (red | green | blue);
 }
 
+/*
+For each column, it projects a ray and draws:
+The ceiling, the wall and the floor
+*/
 static void	draw_column(t_global *data, int col)
 {
 	int			line_height;
@@ -83,11 +91,11 @@ static void	draw_column(t_global *data, int col)
 	while (row < data->winh)
 		ft_pixel_put(data, col, row++, color);
 }
+
 /* Updates the player's position/direction
 **Calculates and draws each column of pixels
 **Displays the final buffer in the window
 */
-
 int	render_scene(t_global *data)
 {
 	int	col;

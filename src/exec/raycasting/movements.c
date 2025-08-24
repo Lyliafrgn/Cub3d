@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 09:52:17 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/24 04:08:25 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-/*
-Allows the player to move in a
-2D environment represented
-by a map and to rotate his view.
-
-	-> base map[row][column] (y, x)
+/*Manages lateral 
+*movements: left/right 
 */
 static void	ft_horizontal_move(t_global *data)
 {
@@ -45,6 +41,9 @@ static void	ft_horizontal_move(t_global *data)
 	}
 }
 
+/*Manages vertical 
+*movements: up/down
+*/
 static void	ft_vertical_move(t_global *data)
 {
 	t_vec	step;
@@ -71,6 +70,13 @@ static void	ft_vertical_move(t_global *data)
 	}
 }
 
+/*
+Allows the player to move in a
+2D environment represented
+by a map and to rotate his view.
+
+	-> base map[row][column] (y, x)
+*/
 static void	ft_rotate(t_global *data)
 {
 	double	old_dirx;
@@ -92,6 +98,10 @@ static void	ft_rotate(t_global *data)
 	data->player.planey = old_planex * sin(rs) + data->player.planey * cos(rs);
 }
 
+/*Checks if the player wants to move forward/backward,
+sideways or rotate the camera
+*the function dispatches movements according of the keys
+*/
 void	ft_move(t_global *data)
 {
 	if (data->dir.up || data->dir.down)

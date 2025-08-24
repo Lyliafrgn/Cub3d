@@ -6,12 +6,19 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:42:02 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/24 03:34:17 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
+/*Moves forward one square at a time,
+vertically or horizontally
+(depending on which is closer (sidedist.x or sidedist.y))
+*when there is a wall (value > ‘0’), it stops
+*+ if wall touched is vertical (side = 0) if horizontal (side = 1)
+*(influences the lighting and texture later)
+*/
 static void	ft_hit_wall(t_global *data, t_vec *side, t_vec *delta, t_point step)
 {
 	while (1)
@@ -36,12 +43,12 @@ static void	ft_hit_wall(t_global *data, t_vec *side, t_vec *delta, t_point step)
 			break ;
 	}
 }
+
 /*Sends a ray from player's pos to forward
 **finds where it hits a wall
 **calculates how far away that wall is
 **returns the wall height to draw on a column of the screen
 */
-
 static void	ft_cast_ray(t_global *data, int col)
 {
 	double			camerax;
@@ -67,6 +74,9 @@ static void	ft_cast_ray(t_global *data, int col)
 		data->ray.perp_wall_dist = 0.0001;
 }
 
+/*Calculates the height of the wall to be drawn:
+height = window height / wall distance
+*/
 int	ft_get_line_height(t_global *data, int col)
 {
 	ft_cast_ray(data, col);

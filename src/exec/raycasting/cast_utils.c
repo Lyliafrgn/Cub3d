@@ -6,12 +6,16 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:41:48 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/24 03:20:51 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
+/*selects the texture of the wall to be drawn 
+based on the direction of the ray 
+and the side it has touched.
+*/
 void	ft_choose_wall_texture(t_ray *ray)
 {
 	if (ray->side == 0)
@@ -30,6 +34,11 @@ void	ft_choose_wall_texture(t_ray *ray)
 	}
 }
 
+/*to know the direction in which we will move in the grid
+step->x = -1 if we are looking to the left.
+step->y = -1 if we are looking up.
+Otherwise, we move to the right/down (+1) 
+*/
 void	ft_set_step(t_global *data, t_point *step)
 {
 	step->x = 1;
@@ -40,6 +49,10 @@ void	ft_set_step(t_global *data, t_point *step)
 		step->y = -1;
 }
 
+/*To know which wall will be hit first:
+*sidedist = distance between the plyr current position
+ and the next grid line (vertical or horizontal)
+*/
 void	ft_set_sidedist(t_global *data, t_vec *sidedist, t_vec deltadist)
 {
 	if (data->ray.dir.x < 0)
@@ -56,6 +69,10 @@ void	ft_set_sidedist(t_global *data, t_vec *sidedist, t_vec deltadist)
 		sidedist->y = 0.1;
 }
 
+/*Calculate the differences 
+between successive intersections, ex:
+deltadist.x = distance between two vertical intersections.
+*/
 void	ft_init_deltadist(t_ray *ray, t_vec *deltadist)
 {
 	if (ray->dir.x == 0)

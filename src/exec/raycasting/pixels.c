@@ -6,12 +6,14 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/21 03:09:08 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/24 04:09:07 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
+/*Draws a specific pixel in the image on the screen (data->screen) 
+at the position (column, row) with a given color.*/
 void	ft_pixel_put(t_global *data, int c, int r, int color)
 {
 	char	*dst;
@@ -23,6 +25,9 @@ void	ft_pixel_put(t_global *data, int c, int r, int color)
 	*(unsigned int *)dst = color;
 }
 
+/*gets the color of a pixel 
+*in the texture of the wall touched
+*/
 int	ft_get_texpixel(t_global *data, int texx, int texy)
 {
 	t_img	tex;
@@ -35,6 +40,9 @@ int	ft_get_texpixel(t_global *data, int texx, int texy)
 	return (*(unsigned int *)color);
 }
 
+/*shows which column of 
+*the wall texture should be used
+*/
 int	ft_get_texx(t_global *data)
 {
 	double	wallx;
