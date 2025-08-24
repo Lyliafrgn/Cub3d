@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:28:38 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/24 02:42:02 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ static void	ft_hit_wall(t_global *data, t_vec *side, t_vec *delta, t_point step)
 			break ;
 	}
 }
-
 /*Sends a ray from player's pos to forward
 **finds where it hits a wall
 **calculates how far away that wall is
 **returns the wall height to draw on a column of the screen
 */
 
-static void ft_cast_ray(t_global *data, int col)
+static void	ft_cast_ray(t_global *data, int col)
 {
 	double			camerax;
 	t_vec			sidedist;

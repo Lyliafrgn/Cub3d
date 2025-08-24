@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:29:19 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/24 02:41:48 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_init_deltadist(t_ray *ray, t_vec *deltadist)
 		deltadist->x = 1e30;
 	else
 		deltadist->x = fabs(1 / ray->dir.x);
-
 	if (ray->dir.y == 0)
 		deltadist->y = 1e30;
 	else

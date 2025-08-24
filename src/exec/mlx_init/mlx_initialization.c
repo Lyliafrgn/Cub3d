@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_initialization.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 10:54:28 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/24 02:40:13 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ static int	ft_close_window(void *param)
 
 int	ft_err(char *msg, t_global *data)
 {
-	(void) data;
 	if (msg)
 		write(2, msg, ft_strlen(msg));
 	write(2, "\n", 1);
-	// if (data)
-	// 	free_resources(data);
+	if (data)
+		ft_free_resources(data);
 	return (FAILURE);
 }
 
