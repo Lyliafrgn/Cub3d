@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cast_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 03:20:51 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/25 16:33:14 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-/*selects the texture of the wall to be drawn 
-based on the direction of the ray 
+/*selects the texture of the wall to be drawn
+based on the direction of the ray
 and the side it has touched.
 */
 void	ft_choose_wall_texture(t_ray *ray)
@@ -37,7 +37,7 @@ void	ft_choose_wall_texture(t_ray *ray)
 /*to know the direction in which we will move in the grid
 step->x = -1 if we are looking to the left.
 step->y = -1 if we are looking up.
-Otherwise, we move to the right/down (+1) 
+Otherwise, we move to the right/down (+1)
 */
 void	ft_set_step(t_global *data, t_point *step)
 {
@@ -69,10 +69,17 @@ void	ft_set_sidedist(t_global *data, t_vec *sidedist, t_vec deltadist)
 		sidedist->y = 0.1;
 }
 
-/*Calculate the differences 
-between successive intersections, ex:
-deltadist.x = distance between two vertical intersections.
-*/
+/**
+ * @brief calculate the differences between successive intersections
+ *
+ * , ex: deltadist.x = distance between two vertical intersections.
+ * 	1e30 is used to represent infinity to avoid division by zero
+ * 	when the ray is perfectly vertical or horizontal. Indeed,
+ * 	if the ray's x or y direction component is zero,
+ * 	it means the ray is moving exactly vertically or horizontally,
+ * 	so the distance to the next vertical or horizontal grid line is infinite.
+ *
+ */
 void	ft_init_deltadist(t_ray *ray, t_vec *deltadist)
 {
 	if (ray->dir.x == 0)
@@ -84,3 +91,40 @@ void	ft_init_deltadist(t_ray *ray, t_vec *deltadist)
 	else
 		deltadist->y = fabs(1 / ray->dir.y);
 }
+/* LE COURS derrière cette fonction:
+ *  1 / ray->dir.x the distance to the next grid line
+ * 	in the direction of the ray, not just the distance in grid units (1).
+ * pythagore
+ * 	Distance euclidienne :
+ * 		deltaDistX = sqrt(1 + (rayDirY * rayDirY) / (rayDirX * rayDirX))
+ *
+ * Le rayon, c’est un vecteur direction et il a une direction (rayDirX, rayDirY).
+ * Cela veut dire :
+ * Quand tu avances de t unités le long du rayon, tu bouges de t * rayDirX en X,
+ *  et de t * rayDirY en Y.
+
+ * _____________
+ * y
+ * ^
+ * |      t
+ * |     /
+ * |    /
+ * |   /
+ * |  /
+ * | /
+ * |/________________> x
+ *
+ *  Formule paramétrique : (x(t),y(t)) = (x0​ + t⋅rayDirX, y0​ + t⋅rayDirY)
+ * où t est la distance parcourue le long du rayon.
+ *
+ * 2. Avancer de 1 case en X
+ * Quand est-ce que mon rayon avance exactement de 1 en X ? Alors :
+ * t . rayDirX = 1  ( 1 pour une case)    ==>   t= 1/ rayDirX
+ * À ce moment-là, le rayon a avancé de :
+ * y = t . rayDirY = rayDirX / rayDirY​
+ * c’est exactement “combien d’unités en Y le rayon parcourt quand
+ * il avance d’une unité en X”.
+ *
+ * Le ration correspond aussi à la pente d'une droite :
+ * pente = Δy / Δx​
+*/

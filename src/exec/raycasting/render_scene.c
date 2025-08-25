@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 03:57:46 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/25 18:16:52 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
-/*draw a line on the col column
-with the correct texture, 
-correct height,
-and a light effect.
+/**
+ * @brief draw a line on the col column with the correct texture, correct height,
+ * and a light effect.
 */
 static int	draw_wall(t_global *data, int col, int start, int line_height)
 {
@@ -63,6 +62,22 @@ static int	ft_rgb_to_int(int color[3])
 	return (red | green | blue);
 }
 
+/**
+ * @brief Calculate the start and end pixel positions
+ * 	for drawing the wall slice on the screen.
+ * 	Ensures that the start and end positions are within the screen bounds.
+ * 	If not, it clamps them.
+ */
+static void	calculate_wall_start_end_screen(t_global *data, int line_height)
+{
+	data->ray.start = (data->winh / 2) - (line_height / 2);
+	if (data->ray.start < 0)
+		data->ray.start = 0;
+	data->ray.end = (data->winh / 2) + (line_height / 2);
+	if (data->ray.end >= (data->winh))
+		data->ray.end = (data->winh) - 1;
+}
+
 /*
 For each column, it projects a ray and draws:
 The ceiling, the wall and the floor
@@ -74,12 +89,7 @@ static void	draw_column(t_global *data, int col)
 	int			color;
 
 	line_height = ft_get_line_height(data, col);
-	data->ray.start = -line_height / 2 + (data->winh) / 2;
-	if (data->ray.start < 0)
-		data->ray.start = 0;
-	data->ray.end = line_height / 2 + (data->winh) / 2;
-	if (data->ray.end >= (data->winh))
-		data->ray.end = (data->winh) - 1;
+	calculate_wall_start_end_screen(data, line_height);
 	if (data->ray.start > data->ray.end)
 		return ;
 	row = 0;
@@ -92,10 +102,10 @@ static void	draw_column(t_global *data, int col)
 		ft_pixel_put(data, col, row++, color);
 }
 
-/* Updates the player's position/direction
-**Calculates and draws each column of pixels
-**Displays the final buffer in the window
-*/
+/** Updates the player's position/direction
+ *Calculates and draws each column of pixels
+ *Displays the final buffer in the window
+ */
 int	render_scene(t_global *data)
 {
 	int	col;

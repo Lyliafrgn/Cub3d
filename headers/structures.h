@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 01:44:20 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/25 15:48:28 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_global
 	t_map		map;
 	t_player	player;
 	t_pars		pars_sta; // to know in which type of line we are
-	t_ray		ray;
+	t_ray		ray; // rayon principal pour le raycasting
 	t_img		txtr[4]; // NO, SO, EA, WE
 	t_img		screen;
 	void		*mlx_ptr;
