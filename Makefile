@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ly <ly@student.42.fr>                      +#+  +:+       +#+         #
+#    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/24 02:36:43 by ly               ###   ########.fr        #
+#    Updated: 2025/08/25 19:06:59 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ EXEC	=	src/exec/raycasting/render_scene.c \
 			src/exec/raycasting/cast.c \
 			src/exec/raycasting/cast_utils.c \
 
+MINIMAP =	src/exec/minimap/minimap.c
+
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 
 PARSING	=	src/parsing/parse_map.c \
@@ -81,6 +83,7 @@ SRC		=	main.c \
 			$(PARSING) \
 			$(VALIDATION) \
 			$(EXEC) \
+			$(MINIMAP) \
 			$(MLX_INIT)
 
 

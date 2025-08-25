@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/25 15:48:28 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/25 19:01:30 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,24 @@ typedef struct s_dir
 	int			cam_right;
 }	t_dir;
 
+//// MINIMAP ////
+typedef struct s_mmap
+{
+	int	border_color;
+	int	border_size; // size of the border around the minimap
+	int	offset_x; // offset from the left edge of the window
+	int	offset_y; // offset from the top edge of the window
+	int	map_width_px; // width of the minimap in pixels
+	int	map_height_px; // height of the minimap in pixels
+	int	step_x; // size of each cell in the minimap
+	int	step_y;
+	int	player_size; // size of the player square in the minimap
+	int	player_color; // color of the player square in the minimap
+	int	wall_color; // color of the walls in the minimap
+	int	floor_color; // color of the floor in the minimap
+	int	ray_color; // color of the rays in the minimap
+}	t_mmap;
+
 typedef struct s_global
 {
 	t_map		map;
@@ -98,6 +116,7 @@ typedef struct s_global
 	t_ray		ray; // rayon principal pour le raycasting
 	t_img		txtr[4]; // NO, SO, EA, WE
 	t_img		screen;
+	t_mmap		minimap;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	int			winw;
@@ -106,12 +125,6 @@ typedef struct s_global
 	t_dir		dir; // to know which direction the player is moving
 }	t_global;
 
-//////NOT USED YET//////
-////// Global structure
-typedef struct s_int_array
-{
-	int	*array;
-	int	size;
-}	t_int_arr;
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/25 18:16:52 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/25 18:30:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int	render_scene(t_global *data)
 		draw_column(data, col);
 		col++;
 	}
+	draw_minimap(data);
 	if (data->mlx_ptr && data->win_ptr && data->screen.mlx_img)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->screen.mlx_img, 0, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:37:24 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:36:24 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/25 19:06:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ void	ft_init_deltadist(t_ray *ray, t_vec *deltadist);
 int		ft_get_texx(t_global *data);
 int		ft_get_texpixel(t_global *data, int texx, int texy);
 void	ft_pixel_put(t_global *data, int c, int r, int color);
+
+/*Minimap*/
+void	draw_minimap(t_global *data);
 
 #endif
