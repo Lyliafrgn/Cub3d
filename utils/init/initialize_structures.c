@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 18:01:15 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/24 15:47:26 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ static void	init_map(t_global *data)
 	data->cam_right = 0; */
 }
 
-static void	init_player(t_global *data) //initialisé en direction de l'est
+/**
+ * @brief  initialisé en direction de l'est
+ *
+ * @question : pourquoi en direction de l'est ?
+ */
+static void	init_player(t_global *data)
 {
 	data->player.x = 1;
 	data->player.y = 0.0;

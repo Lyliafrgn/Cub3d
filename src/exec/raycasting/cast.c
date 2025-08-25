@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 03:34:17 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/25 08:41:12 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,18 @@ static void	ft_hit_wall(t_global *data, t_vec *side, t_vec *delta, t_point step)
 	}
 }
 
-/*Sends a ray from player's pos to forward
-**finds where it hits a wall
-**calculates how far away that wall is
-**returns the wall height to draw on a column of the screen
+/**
+ * @brief Sends a ray from player's pos to forward
+ * finds where it hits a wall
+ * calculates how far away that wall is
+ *
+ * camerax = x-coordinate of the column in window, mapped to range [-1, 1]
+ * mapx et mapy
+ * 		= position of the player in the map grid (as int)
+ * 		= Cellule de départ du rayon
+ * ray.dir.x and ray.dir.y = direction of the ray
+ *
+ * @returns the wall height to draw on a column of the screen
 */
 static void	ft_cast_ray(t_global *data, int col)
 {
@@ -74,8 +82,9 @@ static void	ft_cast_ray(t_global *data, int col)
 		data->ray.perp_wall_dist = 0.0001;
 }
 
-/*Calculates the height of the wall to be drawn:
-height = window height / wall distance
+/**
+ * @brief Calculates the height of the wall to be drawn:
+ * @return height = window height / wall distance
 */
 int	ft_get_line_height(t_global *data, int col)
 {

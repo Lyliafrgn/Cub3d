@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 09:49:44 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/24 15:47:06 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@
 */
 /* Initialises the direction vector
  * + camera plane according to the player's char
+ */
+
+/**
+ * @brief Sets the player's direction and camera plane.
+ *
+ * @note |plane| = tan(FOV/2) ----- FOV (Field of View).
+ * 		FOV ≈ 66° (valeur classique de Wolf3D),
+ * 		tan(66/2) = tan(33°) ≈ 0.65 ≈ 0.66
+ * 		pour rappel tan(xº) = opp/adj
+ * 		ici, opp = |plane| et adj = |dir| = 1
+ * 		Donc |plane| = tan(33º) ≈ 0.66
  */
 static void	set_player_direction(t_player *player, char dir)
 {
@@ -50,6 +61,19 @@ static void	set_player_direction(t_player *player, char dir)
 	}
 }
 
+/**
+ * @brief Sets the player's position and direction based on the map.
+ *
+ * The player's position is set to the center of the cell (col + 0.5, row + 0.5).
+ * The direction is determined by the character found in the map at the given
+ * column and row ('N', 'S', 'E', or 'W').
+ * The map cell is then set to '0' to indicate an empty space.
+ *
+ * @param data Pointer to the global data structure containing game state.
+ * @param col Column index of the player's position in the map.
+ * @param row Row index of the player's position in the map.
+ * @return int SUCCESS (0) on success, FAILURE (-1) on failure.
+ */
 static int	set_player_from_map(t_global *data, int col, int row)
 {
 	char	dir;
@@ -90,13 +114,8 @@ int	ft_find_player(t_global *data)
  */
 int	save_map_line(t_map *map, char *line)
 {
-	// int		actual_len;
-	// int		line_len;
 	char	*tmp;
 
-	//actual_len = ft_strlen(map->map_string);
-	//line_len = ft_strlen(line);
-	// tmp = malloc(sizeof(char) * (actual_len + line_len + 2));
 	tmp = ft_strjoin(map->map_string, line);
 	if (!tmp)
 		return (EXIT_FAILURE);
@@ -134,7 +153,8 @@ int	process_map_line(t_global *data, t_map *map, char *line)
 		return (EXIT_SUCCESS);
 	if (data->pars_sta.map == 0 && data->pars_sta.empty)
 		return (EXIT_SUCCESS);
-	if (data->pars_sta.map != 1 && (!is_valide_map_line(line) || line_is_only_spaces(line)))
+	if (data->pars_sta.map != 1 \
+			&& (!is_valide_map_line(line) || line_is_only_spaces(line)))
 		return (EXIT_SUCCESS);
 	data->pars_sta.map = 1;
 	map->height++;
