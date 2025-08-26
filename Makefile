@@ -6,7 +6,7 @@
 #    By: ly <ly@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/24 02:36:43 by ly               ###   ########.fr        #
+#    Updated: 2025/08/26 19:24:14 by ly               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,6 @@ UTILS	=	utils/frees/free_resources.c \
 			utils/array/char.c
 
 SRC		=	main.c \
-			$(SIGNALS) \
 			$(UTILS) \
 			$(PARSING) \
 			$(VALIDATION) \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_resources.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:56:10 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 09:50:37 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/26 19:48:13 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,11 @@ int	free_resources(t_global *data)
 	free_map(&data->map);
 	free_screen(data);
 	free_window(data);
+	if (data->mlx_ptr)
+	{
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+		data->mlx_ptr = NULL;
+	}
 	return (EXIT_SUCCESS);
 }
