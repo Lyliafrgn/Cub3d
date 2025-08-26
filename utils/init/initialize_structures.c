@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 15:47:26 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/26 19:21:31 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	init_pars_sta(t_pars *pars_sta)
 {
-
 	pars_sta->empty = true;
 	pars_sta->map = 0;
 	ft_memset(pars_sta->txtr, false, sizeof(pars_sta->txtr));
@@ -27,18 +26,14 @@ static void	init_map(t_global *data)
 	data->map.map = NULL;
 	data->map.width = 0;
 	data->map.height = 0;
-/* 	data->left = 0;
-	data->right = 0;
-	data->up = 0;
-	data->down = 0;
-	data->cam_left = 0;
-	data->cam_right = 0; */
 }
 
 /**
  * @brief  initialisé en direction de l'est
  *
  * @question : pourquoi en direction de l'est ?
+ @reponse :Aucune raison particuliere ça peut 
+ etre n'importe laquelle des 4 directions
  */
 static void	init_player(t_global *data)
 {
@@ -51,6 +46,12 @@ static void	init_player(t_global *data)
 	data->player.diry = 0.0;
 	data->player.ms = 0.055;
 	data->player.rs = 0.02;
+	data->dir.left = 0;
+	data->dir.right = 0;
+	data->dir.up = 0;
+	data->dir.down = 0;
+	data->dir.cam_left = 0;
+	data->dir.cam_right = 0;
 }
 
 static void	init_ray(t_ray *ray)
@@ -85,8 +86,6 @@ void	initialize_structures(t_global *data)
 	init_pars_sta(&data->pars_sta);
 	ft_memset(&data->dir, 0, sizeof(t_dir));
 }
-//init_player(&data->player);
-
 
 /* int	initialize_structures(t_global *data)
 {
@@ -104,4 +103,3 @@ void	initialize_structures(t_global *data)
 	initialize_img_colors(data);
 	return (EXIT_SUCCESS);
 } */
-
