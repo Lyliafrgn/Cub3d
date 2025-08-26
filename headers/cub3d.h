@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 00:36:51 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/26 19:05:47 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define G 1
 # define B 2
 
-#define TILE_SIZE 64 //size in pixels
+# define TILE_SIZE 64//size in pixels
 
 /// define a max size for the map so we don't overflow use to much memory
 # define MAP_MAX_HEIGHT 500

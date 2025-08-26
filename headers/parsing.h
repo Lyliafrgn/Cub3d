@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/20 16:28:53 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/26 19:03:55 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_parsing
 {
 	bool	empty; //empty line
 	int		map; //map line : init 0, 1 = true, -1 = map already parsed
-	bool	txtr[4]; // NO, SO, EA, WE //texture line : init false, true = already parsed
+	bool	txtr[4]; //texture line : init false, true = already parsed
 	bool	color[2]; //floor,ceilling // init false, true = already parsed
 }	t_pars;
 
@@ -34,7 +34,6 @@ int		process_map_line(t_global *data, t_map *map, char *line);
 int		process_colore_line(t_global *data, char *line);
 int		process_texture_line(t_global *data, char *line);
 int		ft_find_player(t_global *data);
-
 
 ///////VALIDATION/////
 int		validate_map(t_global *data);
