@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 23:02:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 23:24:57 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/27 23:26:27 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	draw_player(t_global *data, int col, int row)
 	player_y = M_MAP_OFFSET_X + M_MAP_BORDER + data->minimap.inner_offset_y \
 				+ data->player.x * data->minimap.new_tile_size;
 
+	// Mettre player x et y directement dans la structure minimap pour pouvoir les utiliser lorsque je dessinerai le champ de vision du joueur sur la minimap
 
 	if (data->player.y * data->minimap.scale == row - M_MAP_OFFSET_Y - M_MAP_BORDER \
 		- data->minimap.inner_offset_y \
