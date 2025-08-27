@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 15:45:48 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:19:00 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_map
 	int		fd;			// File descriptor for the map file
 	char	*map_string;	//to save map_line when exploring map file
 	char	**map;	// 2D array for the map
-	int		width;		// Width of the map
-	int		height;		// Height of the map
+	int		width;		// Width of the map (not in pixels)
+	int		height;		// Height of the map (not in pixels)
 }	t_map;
 
 typedef struct s_img
@@ -92,19 +92,26 @@ typedef struct s_dir
 //// MINIMAP ////
 typedef struct s_mmap
 {
-	int	border_color;
-	int	border_size; // size of the border around the minimap
-	int	offset_x; // offset from the left edge of the window
-	int	offset_y; // offset from the top edge of the window
-	int	map_width_px; // width of the minimap in pixels
-	int	map_height_px; // height of the minimap in pixels
-	int	step_x; // size of each cell in the minimap
-	int	step_y;
-	int	player_size; // size of the player square in the minimap
-	int	player_color; // color of the player square in the minimap
-	int	wall_color; // color of the walls in the minimap
-	int	floor_color; // color of the floor in the minimap
-	int	ray_color; // color of the rays in the minimap
+	int		border_size; // size of the border around the minimap
+	int		offset_x; // offset from the left edge of the window
+	int		offset_y; // offset from the top edge of the window
+
+	int		map_frame_width_px; // width of the minimap in pixels
+	int		map_frame_heigh_px; // height of the minimap in pixels
+
+	int		border_color;
+	int		player_color; // color of the player square in the minimap
+	int		wall_color; // color of the walls in the minimap
+	int		floor_color; // color of the floor in the minimap
+	int		ray_color; // color of the rays in the minimap
+
+	int		step_x; // size of each cell in the minimap
+	int		step_y;
+	int		player_size; // size of the player square in the minimap
+
+
+	double	scale; // mise à l'echelle de la map par rapport à la minimap
+	int		new_tile_size; // new tile size after scaling
 }	t_mmap;
 
 typedef struct s_global
