@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/25 19:01:30 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/27 15:45:48 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,34 +49,33 @@ typedef struct s_img
 	int		imgh; // Height of the img
 }	t_img;
 
-
-typedef struct s_vec //Représente un vecteur (x, y) en coordonnées flottantes
+//Represents a vector (x, y) in floating point coordinates
+typedef struct s_vec
 {
 	double	x;
 	double	y;
 }	t_vec;
 
-// Représente un point (x, y) en coordonnées entières
+//Represents a point (x, y) in integer coordinates
 typedef struct s_point
 {
 	int		x;
 	int		y;
 }	t_point;
 
-// Structure de rayon utilisée pour le raycasting (DDA)
 typedef struct s_ray
 {
-	t_vec	dir; // Direction du rayon (en x et y)
-	t_vec	sidedist; // Distance actuelle du rayon jusqu'au bord suivant en x ou y
-	t_vec	deltadist; // Distance à parcourir pour passer d'une ligne de grille à la suivante (en x et y)
-	double	perp_wall_dist;	// Distance perpendiculaire entre la caméra et le mur (corrige la distorsion fish-eye)
-	int		mapx; // Case actuelle du rayon sur la map (coordonnée x)
-	int		mapy; // Case actuelle du rayon sur la map (coordonnée y)
-	int		stepx; // Direction dans la grille pour DDA (raycasting): Pas (direction +1 ou -1) du rayon en x
-	int		stepy; // Pas du rayon en y (Direction dans la grille pour DDA (raycasting))
-	int		side; // Côté touché : 0 = NS (Nord/Sud), 1 = EW (Est/Ouest)
-	int		start; // pixel vertical de début du mur (haut)
-	int		end;  // pixel vertical de fin du mur (bas)
+	t_vec	dir; // Ray direction
+	t_vec	sidedist; // Dist from ray's pos to first sides x y
+	t_vec	deltadist; // Dist ray must travel from side x/y to the next one
+	double	perp_wall_dist;	//Perp dist between player and wall touched by a ray
+	int		mapx; // Current pos of ray on the map (integer)
+	int		mapy;
+	int		stepx; // Step of the ray on x on grid for DDA: +1 or -1
+	int		stepy;
+	int		side; // Hitted side : 0 = NS (No/SO), 1 = EW (EA/WE)
+	int		start; // Vertical pixel of wall start (top)
+	int		end;// Vertical pixel of wall end (bottom)
 	int		wall;
 }	t_ray;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:21:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/23 09:57:17 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/26 19:22:45 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ char	**free_uncomplete_av(char ***av, int i)
 	ft_free((void **) av);
 	return (NULL);
 }
-
