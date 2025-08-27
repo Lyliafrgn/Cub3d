@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/27 15:46:01 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/08/27 23:10:46 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,11 @@ EXEC	=	src/exec/raycasting/render_scene.c \
 			src/exec/raycasting/cast.c \
 			src/exec/raycasting/cast_utils.c \
 
-MINIMAP =	src/exec/minimap/minimap.c
+MINIMAP =	src/exec/minimap/minimap.c \
+			src/exec/minimap/m_map_util.c \
+			src/exec/minimap/m_map_border.c \
+			src/exec/minimap/drawmap.c \
+			src/exec/minimap/draw_player.c
 
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 

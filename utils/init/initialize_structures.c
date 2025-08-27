@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/26 19:21:31 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/27 23:22:21 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ static void	init_map(t_global *data)
 
 /**
  * @brief  initialisé en direction de l'est
- *
- * @question : pourquoi en direction de l'est ?
- @reponse :Aucune raison particuliere ça peut 
- etre n'importe laquelle des 4 directions
  */
 static void	init_player(t_global *data)
 {

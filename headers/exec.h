@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:37:24 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/25 19:06:04 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/27 23:13:19 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,10 @@ void	ft_pixel_put(t_global *data, int c, int r, int color);
 
 /*Minimap*/
 void	draw_minimap(t_global *data);
+double	min_two_val(double a, double b);
+bool	not_in_mmap(int col, int row);
+void	draw_borders(t_global *data, t_mmap mmap, int col, int row);
+void	drawmap(t_global *data, int col, int row);
+void	draw_player(t_global *data, int col, int row);
 
 #endif

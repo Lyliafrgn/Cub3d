@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/26 19:07:34 by ly               ###   ########.fr       */
+/*   Updated: 2025/08/27 22:55:22 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@
 /// Define a max size for the map so we don't overflow use to much memory
 # define MAP_MAX_HEIGHT 500
 # define MAP_MAX_WIDTH 500
+
+//MINIMAP
+# define M_MAP_SIZE 150 // in pixels // size of the minimap square
+# define M_MAP_OFFSET_X 8 // margin from the window edge to the minimap border
+# define M_MAP_OFFSET_Y 8 // offset from the top edge of the window
+# define M_MAP_BORDER 2 // size of the border around the minimap
 
 enum e_map_elem
 {
