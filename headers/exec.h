@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:37:24 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 23:13:19 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/28 09:14:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,9 @@ bool	not_in_mmap(int col, int row);
 void	draw_borders(t_global *data, t_mmap mmap, int col, int row);
 void	drawmap(t_global *data, int col, int row);
 void	draw_player(t_global *data, int col, int row);
+void	calculate_tile_y(t_global *data, int row, int *tile_y);
+void	calculate_tile_x(t_global *data, int col, int *tile_x);
+bool	in_wall(t_global *data, int row, int col);
+void	draw_rays(t_global *data, int row, int col);
 
 #endif

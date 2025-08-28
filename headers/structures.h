@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 22:55:29 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/28 08:55:08 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,11 @@ typedef struct s_dir
 //// MINIMAP ////
 typedef struct s_mmap
 {
-	int		border_color;
+		int		border_color;
 	int		player_color; // color of the player square in the minimap
 	int		wall_color; // color of the walls in the minimap
 	int		floor_color; // color of the floor in the minimap
 	int		ray_color; // color of the rays in the minimap
-
-	int		step_x; // size of each cell in the minimap
-	int		step_y;
-	int		player_size; // size of the player square in the minimap
-
 
 	double	scale; // mise à l'echelle de la map par rapport à la minimap
 	double	new_tile_size; // new tile size after scaling
@@ -109,6 +104,9 @@ typedef struct s_mmap
 	double	new_height_px; // hauteur de la nouvelle map mise à l'échelle
 	int		inner_offset_y; // offset à l'interieur mmap pour centrer map
 	int		inner_offset_x; // offset à l'interieur mmap pour centrer map
+
+	double	player_x; // position x du joueur sur la minimap
+	double	player_y; // position y du joueur sur la minimap
 }	t_mmap;
 
 typedef struct s_global

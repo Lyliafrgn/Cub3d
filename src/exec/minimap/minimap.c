@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:28:14 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 23:19:38 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/28 09:12:30 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	calc_inner_offsets(t_mmap *mmap)
 void	init_minimap(t_global *data, t_mmap *mmap)
 {
 	mmap->border_color = 0xFFFFFF;
-	mmap->player_size = 3;
 	mmap->player_color = 0xFF0000; // red
 	mmap->wall_color = 0x000000; // black
 	mmap->floor_color = 0xCCCCCC; // light grey
@@ -56,18 +55,21 @@ void	init_minimap(t_global *data, t_mmap *mmap)
 	mmap->new_tile_size = TILE_SIZE * mmap->scale;
 	if (mmap->new_tile_size < 1)
 		mmap->new_tile_size = 1;
-	mmap->new_width_px = data->map.width * data->minimap.new_tile_size;
-	mmap->new_height_px = data->map.height * data->minimap.new_tile_size;
+	mmap->new_width_px = data->map.width * mmap->new_tile_size;
+	mmap->new_height_px = data->map.height * mmap->new_tile_size;
+	calc_inner_offsets(&data->minimap);
+	mmap->player_x = M_MAP_OFFSET_Y + M_MAP_BORDER + mmap->inner_offset_x \
+				+ data->player.x * mmap->new_tile_size;
+	mmap->player_y = M_MAP_OFFSET_X + M_MAP_BORDER + mmap->inner_offset_y \
+				+ data->player.y * mmap->new_tile_size;
 }
 
 void	draw_minimap(t_global *data)
 {
 	int	row;
 	int	col;
-	//int	color;
 
 	init_minimap(data, &data->minimap);
-	calc_inner_offsets(&data->minimap);
 	col = M_MAP_OFFSET_X;
 	while (col < M_MAP_OFFSET_X + M_MAP_SIZE + 2 * M_MAP_BORDER)
 	{
@@ -75,9 +77,9 @@ void	draw_minimap(t_global *data)
 		while (row < M_MAP_OFFSET_Y + M_MAP_SIZE + 2 * M_MAP_BORDER)
 		{
 			draw_borders(data, data->minimap, col, row);
-			drawmap(data,col, row);
-			draw_player(data, col,row);
-			// draw rays
+			drawmap(data, col, row);
+			draw_player(data, col, row);
+			draw_rays(data, col, row);
 			row++;
 		}
 		col++;
