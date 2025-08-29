@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/28 08:55:08 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:00:46 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_dir
 //// MINIMAP ////
 typedef struct s_mmap
 {
-		int		border_color;
+	int		border_color;
 	int		player_color; // color of the player square in the minimap
 	int		wall_color; // color of the walls in the minimap
 	int		floor_color; // color of the floor in the minimap

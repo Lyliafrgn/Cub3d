@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 23:00:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 23:01:22 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/29 19:13:57 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	calculate_tile_x(t_global *data, int col, int *tile_x)
 
 	*tile_x = 0;
 	new_width_px = data->minimap.new_width_px;
-	*tile_x = (int)((double)((col - M_MAP_OFFSET_X - M_MAP_BORDER \
+	*tile_x = (int)(((double)((col - M_MAP_OFFSET_X - M_MAP_BORDER \
 								- data->minimap.inner_offset_x) \
-				* data->map.width) / new_width_px);
+				* data->map.width) / new_width_px));
 	if (*tile_x < 0)
 		*tile_x = 0;
 	if (*tile_x >= data->map.width)
@@ -33,9 +33,9 @@ void	calculate_tile_y(t_global *data, int row, int *tile_y)
 
 	*tile_y = 0;
 	new_height_px = data->minimap.new_height_px;
-	*tile_y = (int)((double)((row - M_MAP_OFFSET_Y - M_MAP_BORDER \
+	*tile_y = (int)(((double)((row - M_MAP_OFFSET_Y - M_MAP_BORDER \
 								- data->minimap.inner_offset_y) \
-				* data->map.height) / new_height_px);
+				* data->map.height) / new_height_px));
 	if (*tile_y < 0)
 		*tile_y = 0;
 	if (*tile_y >= data->map.height)

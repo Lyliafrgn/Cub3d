@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:28:14 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/28 09:12:30 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/29 17:04:21 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	init_minimap(t_global *data, t_mmap *mmap)
 	mmap->wall_color = 0x000000; // black
 	mmap->floor_color = 0xCCCCCC; // light grey
 	mmap->ray_color = 0x00FF00; // green
-	mmap->scale = min_two_val((double) 150 / (data->map.width * TILE_SIZE), \
-								(double) 150 / (data->map.height * TILE_SIZE));
+	mmap->scale = min_two_val((double)M_MAP_SIZE / (data->map.width * TILE_SIZE), \
+								(double)M_MAP_SIZE / (data->map.height * TILE_SIZE));
 	mmap->new_tile_size = TILE_SIZE * mmap->scale;
 	if (mmap->new_tile_size < 1)
 		mmap->new_tile_size = 1;
