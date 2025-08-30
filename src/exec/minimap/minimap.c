@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:28:14 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/29 17:04:21 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:10:27 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	init_minimap(t_global *data, t_mmap *mmap)
 	mmap->new_height_px = data->map.height * mmap->new_tile_size;
 	calc_inner_offsets(&data->minimap);
 	mmap->player_x = M_MAP_OFFSET_Y + M_MAP_BORDER + mmap->inner_offset_x \
-				+ data->player.x * mmap->new_tile_size;
+				+ (double)(data->player.x * mmap->new_tile_size);
 	mmap->player_y = M_MAP_OFFSET_X + M_MAP_BORDER + mmap->inner_offset_y \
-				+ data->player.y * mmap->new_tile_size;
+				+ (double)(data->player.y * mmap->new_tile_size);
 }
 
 void	draw_minimap(t_global *data)

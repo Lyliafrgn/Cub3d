@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 23:02:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/29 19:06:21 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:38:08 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	sens_x_y(int tile_x_y, int tile_player_x_y)
  *			if (e2 > -dy) { err -= dy; x += sx; }
  *			if (e2 < dx)  { err += dx; y += sy; }
  *		}
+ * @note Il y avait pas mal de bugs liés à calculate_tile_x qui prenait un int
+ * 		et qui générait des approximations lors de la conversion float -> int
  * @return true if cross a wall, false otherwise
  */
 bool	cross_wall(t_global *data, int row, int col)
@@ -73,37 +75,34 @@ bool	cross_wall(t_global *data, int row, int col)
 	t_point	tile; // tile du pixel du cercle que l'on doit tester
 	t_point	player_tile; // tile du joueur
 	t_point	dist; // distance entre le joueur et le pixel du cercle
-	t_point	sens; // sens d'avancement tile.x et tile.y (+1 ou -1)
-	int		err; // erreur pour l'algorithme de Bresenham
-	int		e2; // double de l'erreur
+	t_point	sens;  // sens d'avancement tile.x et tile.y (+1 ou -1)
+	t_point error; // x = error et y = 2 * error // erreur pour l'algorithme de Bresenham
 
 	calculate_tile_x(data, col, &tile.x);
 	calculate_tile_y(data, row, &tile.y);
-	//player_tile.x = (int) floor(data->minimap.player_x);
-	//player_tile.y = (int) floor(data->minimap.player_y);
-	calculate_tile_x(data, (int)data->minimap.player_x, &player_tile.x);
-	calculate_tile_y(data, (int)data->minimap.player_y, &player_tile.y);
+	calculate_tile_x(data, data->minimap.player_x, &player_tile.x);
+	calculate_tile_y(data, data->minimap.player_y, &player_tile.y);
 	dist.x = abs(player_tile.x - tile.x);
 	dist.y = abs(player_tile.y - tile.y);
 	sens.x = sens_x_y(tile.x, player_tile.x);
 	sens.y = sens_x_y(tile.y, player_tile.y);
 
-	err = dist.x - dist.y;
+	error.x = dist.x - dist.y;
 	while (1)
 	{
 		if (player_tile.x == tile.x && player_tile.y == tile.y)
 			break ;
-		e2 = 2 * err;
-		if (e2 > -dist.y)
+		error.y = 2 * error.x;
+		if (error.y > -dist.y)
 		{
-			err -= dist.y;
+			error.x -= dist.y;
 			tile.x += sens.x;
 		}
 		if (data->map.map[tile.y][tile.x] == '1')
 			return (true);
-		if (e2 < dist.x)
+		if (error.y < dist.x)
 		{
-			err += dist.x;
+			error.x += dist.x;
 			tile.y += sens.y;
 		}
 		if (data->map.map[tile.y][tile.x] == '1')
@@ -111,62 +110,6 @@ bool	cross_wall(t_global *data, int row, int col)
 	}
 	return (false);
 }
-
-/* bool	cross_wall(t_global *data, int row, int col)
-{
-	t_point	tile; // tile du pixel du cercle que l'on doit tester
-	t_point	player_tile; // tile du joueur
-	// t_point	dist; // distance entre le joueur et le pixel du cercle
-	// t_point	sens; // sens d'avancement tile.x et tile.y (+1 ou -1)
-	// int		err; // erreur pour l'algorithme de Bresenham
-	// int		e2; // double de l'erreur
-
-	calculate_tile_x(data, col, &tile.x);
-	calculate_tile_y(data, row, &tile.y);
-	player_tile.x = (int) floor(data->minimap.player_x);
-	player_tile.y = (int) floor(data->minimap.player_y);
-
-	//si tile_x - player_tile.x = 0 et tile_y - player_tile.y = 0, on est sur le joueur
-	// si tile_x -player_tile.x = 1 et tile_y - player_tile.y = 0, on est à droite du joueur
-	// si tile_x -player_tile.x = 0 et tile_y - player_tile.y = 1, on est en dessous du joueur
-	// si tile_x -player_tile.x = -1 et tile_y - player_tile.y = 0, on est à gauche du joueur
-	// si tile_x -player_tile.x = 0 et tile_y - player_tile.y	= -1, on est au dessus du joueur
-
-	// je dois regarder si je suis dans une diagonale.
-	if (abs(tile.x - player_tile.x) != 0  && abs(tile.y - player_tile.y) != 0)
-	{
-		// alors je suis dans une diagonale
-		if (tile.x - player_tile.x == 1 && tile.y - player_tile.y == 1)
-		{
-			// je suis en bas à droite du joueur
-			// je dois vérifier les cases (tile.x -1, tile.y) et (tile.x, tile.y -1)
-			if (data->map.map[tile.y][tile.x - 1] == '1' || data->map.map[tile.y - 1][tile.x] == '1')
-				return (true);
-		}
-		else if (tile.x - player_tile.x == 1 && tile.y - player_tile.y == -1)
-		{
-			// je suis en haut à droite du joueur
-			// je dois vérifier les cases (tile.x -1, tile.y) et (tile.x, tile.y +1)
-			if (data->map.map[tile.y][tile.x - 1] == '1' || data->map.map[tile.y + 1][tile.x] == '1')
-				return (true);
-		}
-		else if (tile.x - player_tile.x == -1 && tile.y - player_tile.y == 1)
-		{
-			// je suis en bas à gauche du joueur
-			// je dois vérifier les cases (tile.x +1, tile.y) et (tile.x, tile.y -1)
-			if (data->map.map[tile.y][tile.x + 1] == '1' || data->map.map[tile.y - 1][tile.x] == '1')
-				return (true);
-		}
-		else if (tile.x - player_tile.x == -1 && tile.y - player_tile.y == -1)
-		{
-			// je suis en haut à gauche du joueur
-			// je dois vérifier les cases (tile.x +1, tile.y) et (tile.x, tile.y +1)
-			if (data->map.map[tile.y][tile.x + 1] == '1' || data->map.map[tile.y + 1][tile.x] == '1')
-				return (true);
-		}
-	}
-	return (false);
-} */
 
 /** * @brief Draws the player as a filled circle on the minimap.
  * @note Soit deux points (x1, y1) et (x2, y2).
