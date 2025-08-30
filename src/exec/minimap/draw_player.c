@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 23:02:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/30 11:38:08 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/30 11:41:11 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ int	sens_x_y(int tile_x_y, int tile_player_x_y)
 }
 
 /**
+ * @brief
+ *	t_point	tile; // tile du pixel du cercle que l'on doit tester
+ *	t_point	player_tile; // tile du joueur
+ *	t_point	dist; // distance entre le joueur et le pixel du cercle
+ *	t_point	sens;  // sens d'avancement tile.x et tile.y (+1 ou -1)
+ *	t_point error; // x = error et y = 2 * error // erreur pour l'algorithme de Bresenham
+ *
  * Algorithme de Bresenham
  * Savoir si une ligne entre le joueur et le pixel croise un mur
  *
@@ -72,11 +79,11 @@ int	sens_x_y(int tile_x_y, int tile_player_x_y)
  */
 bool	cross_wall(t_global *data, int row, int col)
 {
-	t_point	tile; // tile du pixel du cercle que l'on doit tester
-	t_point	player_tile; // tile du joueur
-	t_point	dist; // distance entre le joueur et le pixel du cercle
-	t_point	sens;  // sens d'avancement tile.x et tile.y (+1 ou -1)
-	t_point error; // x = error et y = 2 * error // erreur pour l'algorithme de Bresenham
+	t_point	tile;
+	t_point	player_tile;
+	t_point	dist;
+	t_point	sens;
+	t_point error;
 
 	calculate_tile_x(data, col, &tile.x);
 	calculate_tile_y(data, row, &tile.y);
