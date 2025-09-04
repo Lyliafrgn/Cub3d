@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 09:06:41 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/03 21:42:49 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/04 09:15:57 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	draw_rays(t_global *data, int row, int col)
 		|| pow(col - player.x, 2.0) + pow(row - player.y, 2.0) <= pow(M_MAP_PLAYER_SIZE / 2.0, 2.0))
 		return ;
 
-	/* player_angle = atan2(data->player.diry, data->player.dirx);
+	player_angle = atan2(data->player.diry, data->player.dirx);
 	normalize_angle(&player_angle);
 	angle_pixel_to_player = atan2(row - player.y, col - player.x);
 	normalize_angle(&angle_pixel_to_player);
@@ -65,6 +65,6 @@ void	draw_rays(t_global *data, int row, int col)
 	normalize_angle(&diff);
 	if (fabs(diff) > M_PI / 3.0 / 2.0)
 		return ;
-	if (!in_wall(data, row, col) && !cross_wall(data, row, col)) */
+	if (!in_wall(data, row, col) && !cross_wall(data, row, col))
 		ft_pixel_put(data, col, row, data->minimap.ray_color);
 }
