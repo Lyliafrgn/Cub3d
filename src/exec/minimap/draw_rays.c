@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 09:06:41 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/04 09:15:57 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/04 09:16:28 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	normalize_angle(double *angle)
 
 void	draw_rays(t_global *data, int row, int col)
 {
-	// double	player_angle;
-	// double	angle_pixel_to_player;
+	double	player_angle;
+	double	angle_pixel_to_player;
 	t_vec	player;
-	// double	diff;
+	double	diff;
 
 	player.x = data->minimap.player_x;
 	player.y = data->minimap.player_y;
