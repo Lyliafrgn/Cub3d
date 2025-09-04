@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/29 16:00:46 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/03 19:20:41 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_player
 {
 	double	x;		// Player's x position
 	double	y;		// Player's y position
-	double	angle;	// Player's direction angle
+	double	angle;	// Player's direction angle  // @util Non utilisé il me semble
 	double	dirx;	// Direction (vecteur unitaire) du joueur sur x
 	double	diry;	// Direction du joueur sur y
 	double	planex;	// Composante x du plan de caméra (perpendiculaire à dir)
@@ -106,6 +106,8 @@ typedef struct s_mmap
 	int		inner_offset_x; // offset à l'interieur mmap pour centrer map
 
 	double	player_x; // position x du joueur sur la minimap
+						//offset horizontal + décalage interne horizontal
+						//+ position monde X convertie en pixels minimap
 	double	player_y; // position y du joueur sur la minimap
 }	t_mmap;
 

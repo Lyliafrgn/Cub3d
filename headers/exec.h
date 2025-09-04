@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:37:24 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/30 11:22:42 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/31 10:29:55 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	calculate_tile_y(t_global *data, double row, int *tile_y);
 void	calculate_tile_x(t_global *data, double col, int *tile_x);
 bool	in_wall(t_global *data, int row, int col);
 void	draw_rays(t_global *data, int row, int col);
+bool	cross_wall(t_global *data, int row, int col);
+
 
 #endif

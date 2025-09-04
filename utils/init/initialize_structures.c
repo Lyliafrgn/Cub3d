@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 23:22:21 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/08/31 10:30:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	init_player(t_global *data)
 {
 	data->player.x = 1;
 	data->player.y = 0.0;
-	data->player.angle = 0.0;
+	data->player.angle = 0.0; // @util Non utilisé il me semble
 	data->player.planex = 0.0;
 	data->player.planey = 0.66;
 	data->player.dirx = 1.0;

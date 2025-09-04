@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/29 16:57:39 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/03 21:38:16 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@
 # define MAP_MAX_WIDTH 500
 
 //MINIMAP
+# define _USE_MATH_DEFINES
 # define M_MAP_SIZE 300 // in pixels // size of the minimap square
 # define M_MAP_OFFSET_X 8 // margin from the window edge to the minimap border
 # define M_MAP_OFFSET_Y 8 // offset from the top edge of the window
 # define M_MAP_BORDER 2 // size of the border around the minimap
-# define M_MAP_PLAYER_SIZE 20 // size of the player on the minimap
+# define M_MAP_PLAYER_SIZE 10 // size of the player on the minimap
+# define M_MAP_PLAYER_VUE 30.0 // size of the player view lines on the minimap
 
 enum e_map_elem
 {
