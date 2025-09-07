@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_root.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:12:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 15:23:41 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:35:50 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,14 @@ int	validate_map(t_global *data)
 	if (map_width_is_valid(&data->map) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
 	if (map_has_zero_or_letter(&data->map) != EXIT_SUCCESS)
-		return (write(STDERR_FILENO, "Err: Map : no space for spawn\n", 31), EXIT_FAILURE);
+		return (err_msg("Err: Map : no space for spawn\n"));
 	if (map_has_one_letter(&data->map) != EXIT_SUCCESS)
-		return (write(STDERR_FILENO, "Err: Map : 0 or more than one spawn\n", 37), EXIT_FAILURE);
+		return (err_msg("Err: Map : 0 or more than one spawn\n"));
 	if (map_lines_are_valid(&data->map) != EXIT_SUCCESS)
-		return (write(STDERR_FILENO, "Err: Map : invalid characters in map\n", 37), EXIT_FAILURE);
+		return (err_msg("Err: Map : invalid characters in map\n"));
 	if (check_wrong_surrounding_letters(&data->map) != EXIT_SUCCESS)
-		return (write(STDERR_FILENO, "Err: Map : missing wall or empty inside\n", 41), EXIT_FAILURE);
+		return (err_msg("Err: Map : missing wall or empty inside\n"));
 	if (check_textures(data) != EXIT_SUCCESS)
-		return (write(STDERR_FILENO, "Err: textures invalid\n", 23), EXIT_FAILURE);
+		return (err_msg("Err: textures invalid\n"));
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 14:08:19 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:39:10 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	update_do_read_status(bool *do_read, char *line)
 		*do_read = false;
 }
 
-
 int	read_file(t_global *data, t_map *map)
 {
 	char	*line;
@@ -45,7 +44,7 @@ int	read_file(t_global *data, t_map *map)
 			return (close(map->fd), ft_free((void **) &line), EXIT_SUCCESS);
 		if (process_line(data, map, line) == EXIT_FAILURE)
 		{
-			write(STDERR_FILENO, "Err : invalid line\n", 20);
+			err_msg("Err : invalid line\n");
 			close(map->fd);
 			ft_free((void **) &line);
 			exit(EXIT_FAILURE);
@@ -66,7 +65,7 @@ void	print_maps(t_global *data)
 	printf("Map content:\n");
 	print_pp_char_arr(data->map.map);
 	printf("____________\n");
-	printf("Map texture : \n  NO: `%s`,\n  SO: `%s`,\n  EA: `%s`,\n  WE: `%s`\n",
+	printf("Map textur: \nNO: `%s`,\nSO: `%s`,\nEA: `%s`,\nWE: `%s`\n",
 		data->txtr[TX_NO].path, data->txtr[TX_SO].path,
 		data->txtr[TX_EA].path, data->txtr[TX_WE].path);
 	printf("colors : floor: %d, %d, %d; ceiling: %d, %d, %d\n\n",
@@ -79,19 +78,19 @@ int	parse_map_root(t_global *data, char *file_name)
 {
 	if (open_map_file(data, file_name) != EXIT_SUCCESS)
 	{
-		write(STDERR_FILENO, MAP_NOT_FOUND, 20);
+		err_msg(MAP_NOT_FOUND);
 		return (EXIT_FAILURE);
 	}
 	read_file(data, &data->map);
 	data->map.map = ft_split(data->map.map_string, '\n');
 	if (validate_map(data) != EXIT_SUCCESS)
 	{
-		write(STDERR_FILENO, MAP_INVALID, 21);
+		err_msg(MAP_INVALID);
 		return (EXIT_FAILURE);
 	}
 	if (ft_find_player(data) != SUCCESS)
 	{
-		write(STDERR_FILENO, FIND_PLAYER_FAILED, 26);
+		err_msg(FIND_PLAYER_FAILED);
 		return (EXIT_FAILURE);
 	}
 	//print_maps(data); // @debug
@@ -102,9 +101,11 @@ int	parse_map_root(t_global *data, char *file_name)
 
 // Only one letter is possible
 
-// calculate max width and max height from 0 and letters. it can'b be inferior to 3 (map to small to place the player)
- // a map with only the player is possible
-// in other words, it is validated if other conditions are met + if there is at least one letter in the map, or one 0
+// calculate max width and max height from 0 and letters.
+//  it can'b be inferior to 3 (map to small to place the player)
+//   a map with only the player is possible
+// in other words, it is validated if other conditions are met
+// + if there is at least one letter in the map, or one 0
 
 /// a map shouldn't contain empty space. --> add parsing state IN, OUT, WALL
 

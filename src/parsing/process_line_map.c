@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 15:47:06 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:41:04 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,17 +159,17 @@ int	process_map_line(t_global *data, t_map *map, char *line)
 	data->pars_sta.map = 1;
 	map->height++;
 	if (map->height == 1 && !all_line_is_one(line))
-		return (write(STDERR_FILENO, NORTH_WALL_INVALID, 46), EXIT_FAILURE);
+		return (err_msg(NORTH_WALL_INVALID));
 	if (map->height > 1 && !start_with_one(line))
-		return (write(STDERR_FILENO, WEST_WALL_INVALID, 46), EXIT_FAILURE);
+		return (err_msg(WEST_WALL_INVALID));
 	if (map->height > 1 && !finish_with_one(line))
-		return (write(STDERR_FILENO, EAST_WALL_INVALID, 46), EXIT_FAILURE);
+		return (err_msg(EAST_WALL_INVALID));
 	if (map->height > 1 && all_line_is_one(line))
 		data->pars_sta.map = -1;
 	if (map->height > MAP_MAX_HEIGHT)
-		return (write(STDERR_FILENO, MAP_TOO_HIGH, 41), EXIT_FAILURE);
+		return (err_msg(MAP_TOO_HIGH));
 	if (save_map_line(map, line) == EXIT_FAILURE)
-		return (write(STDERR_FILENO, MAP_SAVING_FAILED, 29), EXIT_FAILURE);
+		return (err_msg(MAP_SAVING_FAILED));
 	return (EXIT_SUCCESS);
 }
 	//if (!(data->pars_sta.empty || data->pars_sta.map >= 0))

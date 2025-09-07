@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/26 19:23:34 by ly               ###   ########.fr       */
+/*   Updated: 2025/09/07 15:38:15 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,12 @@ int	main(int ac, char **av, char **env)
 
 	(void)env;
 	if (ac < 2)
-	{
-		write(STDERR_FILENO, "Run with: ./cub3D <map_file>\n", 30);
-		return (EXIT_FAILURE);
-	}
+		return (err_msg("Run with: ./cub3D <map_file>\n"));
 	initialize_structures(&data);
 	if (parse_map_root(&data, av[1]) == EXIT_FAILURE)
-	{
-		write(STDERR_FILENO, "Err: Map parsing failed.\n", 25);
-		free_resources(&data);
-		return (EXIT_FAILURE);
-	}
+		return (free_resources(&data), \
+				err_msg("Err: Map parsing failed.\n"));
 	if (!data.map.map)
-		return (write(STDERR_FILENO, MAP_PARS_ERR, 27), EXIT_FAILURE);
+		return (err_msg(MAP_PARS_ERR));
 	return (start_game(&data));
 }

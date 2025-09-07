@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 19:09:46 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 14:07:46 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:41:39 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	map_height_is_valid(t_map *map)
 {
 	if (map->height > MAP_MAX_HEIGHT)
-		return (write(STDERR_FILENO, "Err: map too big\n", 18), EXIT_FAILURE);
+		return (err_msg("Err: map too big\n"));
 	return (EXIT_SUCCESS);
 }
 
@@ -48,6 +48,6 @@ int	map_width_is_valid(t_map *map)
 {
 	get_max_width(map);
 	if (map->width > MAP_MAX_WIDTH)
-		return (write(STDERR_FILENO, "Err: map too big\n", 18), EXIT_FAILURE);
+		return (err_msg("Err: map too big\n"));
 	return (EXIT_SUCCESS);
 }

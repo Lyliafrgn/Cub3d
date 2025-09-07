@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_texture.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 15:19:33 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:35:22 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*get_texture(char *line)
 		i++;
 	}
 	if (!line[i] || i == (int) ft_strlen(line))
-		return (write(STDERR_FILENO, "Err: texture path not found\n", 29), NULL);
+		return (err_msg("Err: texture path not found\n"), NULL);
 	return (ft_substr(line + i, 0, (size_t) get_texture_len(line)));
 }
 
@@ -69,7 +69,7 @@ int	process_texture_line(t_global *data, char *line)
 	while (i < 5)
 	{
 		if (data->pars_sta.txtr[i] && ft_strncmp(line, txtr_code[i], 2) == 0)
-			return (write(STDERR_FILENO,"Err: Use juste 1 north texture\n", 32), EXIT_FAILURE);
+			return (err_msg("Err: same NSEW texture twice\n"));
 		if (!data->pars_sta.txtr[i] && ft_strncmp(line, txtr_code[i], 2) == 0)
 		{
 			data->txtr[i].path = get_texture(line + 2);

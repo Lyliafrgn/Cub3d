@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_main.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:49:59 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 17:14:17 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:27:53 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	process_line(t_global *data, t_map *map, char *line)
 	ft_free((void **) &tmp);
 	if (process_map_line(data, map, line) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	return(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

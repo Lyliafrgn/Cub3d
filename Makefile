@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/09/07 13:19:08 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/09/07 15:42:28 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,8 @@ UTILS	=	utils/frees/free_resources.c \
 			utils/get_next_line.c \
 			utils/get_next_line_utils.c \
 			utils/array/char.c \
-			utils/math.c
+			utils/math.c \
+			utils/err_msg.c
 
 SRC		=	main.c \
 			$(UTILS) \
