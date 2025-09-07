@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/03 19:20:41 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:38:56 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_player
 {
-	double	x;		// Player's x position
+	double	x;		// Player's x position  (in tiles coordonates)
 	double	y;		// Player's y position
 	double	angle;	// Player's direction angle  // @util Non utilisé il me semble
 	double	dirx;	// Direction (vecteur unitaire) du joueur sur x
@@ -50,18 +50,20 @@ typedef struct s_img
 }	t_img;
 
 //Represents a vector (x, y) in floating point coordinates
+// t_coor = coordonnee
 typedef struct s_vec
 {
 	double	x;
 	double	y;
-}	t_vec;
+} t_vec,	t_coor;
 
 //Represents a point (x, y) in integer coordinates
+// tile represent les coordonnees en tiles (int)
 typedef struct s_point
 {
 	int		x;
 	int		y;
-}	t_point;
+} t_point,	t_tile;
 
 typedef struct s_ray
 {
@@ -88,6 +90,23 @@ typedef struct s_dir
 	int			cam_left;
 	int			cam_right;
 }	t_dir;
+
+
+//// MINIMAP ////
+//algorithme DDA (Digital Differential Analyzer)
+typedef struct s_dda
+{
+	t_coor	player;
+	t_coor	pixel;
+	t_tile	current;
+	t_tile	target;
+	t_vec	dist;
+	t_point	dir;
+	t_vec	delta_dist;
+	t_vec	side_dist;
+}	t_dda;
+//Vérifie si la ligne entre le joueur et le pixel (col,row)
+// traverse un mur en utilisant un algorithme DDA
 
 //// MINIMAP ////
 typedef struct s_mmap

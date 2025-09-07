@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:28:14 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/03 21:36:19 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:02:46 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_minimap(t_global *data, t_mmap *mmap)
 	mmap->player_color = 0xFF0000; // red
 	mmap->wall_color = 0x000000; // black
 	mmap->floor_color = 0xCCCCCC; // light grey
-	mmap->ray_color = 0x00FF00; // green
+	mmap->ray_color = 0x7DFF7D; // green
 	mmap->scale = min_two_val((double)M_MAP_SIZE / (data->map.width * TILE_SIZE), \
 								(double)M_MAP_SIZE / (data->map.height * TILE_SIZE));
 	mmap->new_tile_size = TILE_SIZE * mmap->scale;
@@ -79,7 +79,7 @@ void	draw_minimap(t_global *data)
 			draw_borders(data, data->minimap, col, row);
 			drawmap(data, col, row);
 			draw_player(data, col, row);
-			draw_rays(data, col, row);
+			//draw_rays(data, col, row);
 			row++;
 		}
 		col++;

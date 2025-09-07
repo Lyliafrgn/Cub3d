@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
+#    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/08/28 09:07:52 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/09/07 12:07:43 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ YELLOW	=	\e[1;33m
 NAME	=	cub3D
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror #$(INC) $(LNK_FLAGS)
+CFLAGS	=	-Wall -Wextra -Werror $(INC) #$(LNK_FLAGS)
 DEBUG	=	-g -O0
 
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
@@ -55,8 +55,9 @@ MINIMAP =	src/exec/minimap/minimap.c \
 			src/exec/minimap/m_map_util.c \
 			src/exec/minimap/m_map_border.c \
 			src/exec/minimap/drawmap.c \
-			src/exec/minimap/draw_player.c\
-			src/exec/minimap/draw_rays.c
+			src/exec/minimap/draw_player.c \
+			src/exec/minimap/draw_rays.c \
+			src/exec/minimap/cross_wall.c
 
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 
@@ -80,7 +81,8 @@ UTILS	=	utils/frees/free_resources.c \
 			utils/init/init_img_colors.c \
 			utils/get_next_line.c \
 			utils/get_next_line_utils.c \
-			utils/array/char.c
+			utils/array/char.c \
+			utils/math.c
 
 SRC		=	main.c \
 			$(UTILS) \

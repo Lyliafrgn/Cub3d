@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   m_map_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 22:59:43 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/27 23:00:17 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:09:35 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	min_two_val(double a, double b)
+bool	in_wall(t_global *data, int row, int col)
 {
-	if (a < b)
-		return (a);
-	return (b);
+	int	tile_x;
+	int	tile_y;
+
+	tile_x = 0;
+	tile_y = 0;
+	calculate_tile_x(data, col, &tile_x);
+	calculate_tile_y(data, row, &tile_y);
+	if (data->map.map[tile_y][tile_x] == '1')
+		return (true);
+	return (false);
 }
 
 bool	not_in_mmap(int col, int row)
@@ -26,3 +33,4 @@ bool	not_in_mmap(int col, int row)
 		|| row < M_MAP_OFFSET_Y + M_MAP_BORDER \
 		|| row > M_MAP_OFFSET_Y + M_MAP_BORDER + M_MAP_SIZE);
 }
+

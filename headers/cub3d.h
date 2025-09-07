@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/03 21:38:16 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 12:03:17 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@
 # define M_MAP_OFFSET_X 8 // margin from the window edge to the minimap border
 # define M_MAP_OFFSET_Y 8 // offset from the top edge of the window
 # define M_MAP_BORDER 2 // size of the border around the minimap
-# define M_MAP_PLAYER_SIZE 10 // size of the player on the minimap
-# define M_MAP_PLAYER_VUE 30.0 // size of the player view lines on the minimap
+# define M_MAP_PLAYER_RAD 5 // size of the player on the minimap
+# define M_MAP_PLAYER_VUE 50.0 // size of the player view lines on the minimap
 
 enum e_map_elem
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:39:07 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/14 15:02:49 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 10:32:51 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ char	*concat(char *s1, char *s2);
 //Char
 int		pp_char_len(char **array);
 void	print_pp_char_arr(char **str);
+
+////// MATH
+double	sqr(double a);
 
 ////// DEBUG/////
 void	print_maps(t_global *data);

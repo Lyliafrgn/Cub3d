@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:37:24 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/31 10:29:55 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 11:58:09 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void	calculate_tile_x(t_global *data, double col, int *tile_x);
 bool	in_wall(t_global *data, int row, int col);
 void	draw_rays(t_global *data, int row, int col);
 bool	cross_wall(t_global *data, int row, int col);
+
+
+bool	cross_wall2(t_global *data, int row, int col);
 
 
 #endif

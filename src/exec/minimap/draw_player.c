@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 23:02:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/03 20:37:30 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 11:58:17 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-bool	in_wall(t_global *data, int row, int col)
-{
-	int	tile_x;
-	int	tile_y;
-
-	tile_x = 0;
-	tile_y = 0;
-	calculate_tile_x(data, col, &tile_x);
-	calculate_tile_y(data, row, &tile_y);
-	if (data->map.map[tile_y][tile_x] == '1')
-		return (true);
-	return (false);
-}
 
 int	sens_x_y(int tile_x_y, int tile_player_x_y)
 {
@@ -93,7 +79,6 @@ bool	cross_wall(t_global *data, int row, int col)
 	dist.y = abs(player_tile.y - tile.y);
 	sens.x = sens_x_y(tile.x, player_tile.x);
 	sens.y = sens_x_y(tile.y, player_tile.y);
-
 	error.x = dist.x - dist.y;
 	while (1)
 	{
@@ -125,17 +110,60 @@ bool	cross_wall(t_global *data, int row, int col)
  * --> on dessine le pixel que si la distance entre le pixel et le centre
  * du joueur est inférieure ou égale au rayon.
  */
+// void	draw_player(t_global *data, int col, int row)
+// {
+// 	t_vec	player;
+// 	double	radius;
+
+// 	player.x = data->minimap.player_x;
+// 	player.y = data->minimap.player_y;
+// 	radius = M_MAP_PLAYER_RAD / 2.0;
+// 	if (pow(col - player.x, 2.0) + pow(row - player.y, 2.0) <= pow(radius, 2.0))
+// 	{
+// 		if (!in_wall(data, row, col) && !cross_wall(data, row, col))
+// 			ft_pixel_put(data, col, row, data->minimap.player_color);
+// 	}
+// }
+
+void	normalize_angle(double *angle)
+{
+	while (*angle > M_PI)
+		*angle -= 2 * M_PI;
+	while (*angle < -M_PI)
+		*angle += 2 * M_PI;
+}
+
+bool	not_player_vue_cirle(t_vec player, int row, int col)
+{
+	return (sqr((double)col - player.x) + sqr((double)row - player.y) \
+			> sqr((double)M_MAP_PLAYER_VUE) \
+			|| \
+			sqr(col - player.x) + sqr(row - player.y) \
+			<= sqr(M_MAP_PLAYER_RAD));
+}
+
 void	draw_player(t_global *data, int col, int row)
 {
 	t_vec	player;
-	double	radius;
+	double	player_angle;
+	double	angle_pixel_to_player;
+	double	diff;
 
 	player.x = data->minimap.player_x;
 	player.y = data->minimap.player_y;
-	radius = M_MAP_PLAYER_SIZE / 2.0;
-	if (pow(col - player.x, 2.0) + pow(row - player.y, 2.0) <= pow(radius, 2.0))
+	if (sqr(col - player.x) + sqr(row - player.y) <= sqr(M_MAP_PLAYER_RAD))
 	{
 		if (!in_wall(data, row, col) && !cross_wall(data, row, col))
 			ft_pixel_put(data, col, row, data->minimap.player_color);
 	}
+	if (not_player_vue_cirle(player, row, col))
+		return ;
+	player_angle = atan2(data->player.diry, data->player.dirx);
+	angle_pixel_to_player = atan2(row - player.y, col - player.x);
+	diff = angle_pixel_to_player - player_angle;
+	normalize_angle(&diff);
+	if (fabs(diff) > M_PI / 3.0 / 2.0)
+		return ;
+	if (!in_wall(data, row, col) && !cross_wall2(data, row, col))
+		ft_pixel_put(data, col, row, data->minimap.ray_color);
 }
