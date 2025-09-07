@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:38:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/07/30 17:39:01 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:07:14 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,19 @@ char	*ft_strjoin3(char *s1, char *s2, char *s3)
 bool	ft_isspace(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\r');
+}
+
+bool	line_is_only_spaces(char *line)
+{
+	int	i;
+
+	i = -1;
+	if (!line)
+		return (true);
+	while (line[++i])
+	{
+		if (!ft_isspace(line[i]) && line[i] != '\n')
+			return (false);
+	}
+	return (true);
 }

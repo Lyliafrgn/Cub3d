@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:28:14 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 12:02:46 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:06:44 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	calc_inner_offsets(t_mmap *mmap)
 
 	if (mmap->new_width_px > mmap->new_height_px)
 	{
-		diff = M_MAP_SIZE - mmap->new_height_px;
+		diff = (int)M_MAP_SIZE - mmap->new_height_px;
 		mmap->inner_offset_y = diff / 2 + (diff % 2);
 		mmap->inner_offset_x = 0;
 	}
 	else if (mmap->new_width_px < mmap->new_height_px)
 	{
-		diff = M_MAP_SIZE - mmap->new_width_px;
+		diff = (int)M_MAP_SIZE - mmap->new_width_px;
 		mmap->inner_offset_x = diff / 2 + (diff % 2);
 		mmap->inner_offset_y = 0;
 	}
@@ -33,7 +33,6 @@ void	calc_inner_offsets(t_mmap *mmap)
 		mmap->inner_offset_x = 0;
 		mmap->inner_offset_y = 0;
 	}
-
 }
 
 // white border
@@ -45,13 +44,13 @@ void	calc_inner_offsets(t_mmap *mmap)
  */
 void	init_minimap(t_global *data, t_mmap *mmap)
 {
-	mmap->border_color = 0xFFFFFF;
-	mmap->player_color = 0xFF0000; // red
-	mmap->wall_color = 0x000000; // black
-	mmap->floor_color = 0xCCCCCC; // light grey
-	mmap->ray_color = 0x7DFF7D; // green
-	mmap->scale = min_two_val((double)M_MAP_SIZE / (data->map.width * TILE_SIZE), \
-								(double)M_MAP_SIZE / (data->map.height * TILE_SIZE));
+	mmap->border_color = WHITE;
+	mmap->player_color = RED;
+	mmap->wall_color = BLACK;
+	mmap->floor_color = LIGHT_GREY;
+	mmap->ray_color = LIGHT_GREEN;
+	mmap->scale = min_two_val(M_MAP_SIZE / (data->map.width * TILE_SIZE), \
+								M_MAP_SIZE / (data->map.height * TILE_SIZE));
 	mmap->new_tile_size = TILE_SIZE * mmap->scale;
 	if (mmap->new_tile_size < 1)
 		mmap->new_tile_size = 1;
@@ -71,15 +70,14 @@ void	draw_minimap(t_global *data)
 
 	init_minimap(data, &data->minimap);
 	col = M_MAP_OFFSET_X;
-	while (col < M_MAP_OFFSET_X + M_MAP_SIZE + 2 * M_MAP_BORDER)
+	while (col < M_MAP_OFFSET_X + (int)M_MAP_SIZE + 2 * M_MAP_BORDER)
 	{
 		row = M_MAP_OFFSET_Y;
-		while (row < M_MAP_OFFSET_Y + M_MAP_SIZE + 2 * M_MAP_BORDER)
+		while (row < M_MAP_OFFSET_Y + (int)M_MAP_SIZE + 2 * M_MAP_BORDER)
 		{
 			draw_borders(data, data->minimap, col, row);
 			drawmap(data, col, row);
 			draw_player(data, col, row);
-			//draw_rays(data, col, row);
 			row++;
 		}
 		col++;

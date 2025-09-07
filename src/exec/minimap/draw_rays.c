@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 09:06:41 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 10:28:47 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 13:37:18 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 // bool	not_player_vue_cirle(t_vec player, int row, int col)
 // {
-// 	return (pow((double)col - player.x, 2.0) + pow((double)row - player.y, 2.0) \
+// 	return (pow((double)col - player.x, 2.0) + pow((double)row - player.y, 2.0)\
 // 			> pow((double)M_MAP_PLAYER_VUE, 2.0) \
 // 			|| \
 // 			pow(col - player.x, 2.0) + pow(row - player.y, 2.0) \

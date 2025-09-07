@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 12:03:17 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:05:03 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define G 1
 # define B 2
 
-# define TILE_SIZE 64// Size in pixels
+# define TILE_SIZE 128// Size in pixels
 
 /// Define a max size for the map so we don't overflow use to much memory
 # define MAP_MAX_HEIGHT 500
@@ -56,12 +56,19 @@
 
 //MINIMAP
 # define _USE_MATH_DEFINES
-# define M_MAP_SIZE 300 // in pixels // size of the minimap square
+# define M_MAP_SIZE 300.0 // in pixels // size of the minimap square
 # define M_MAP_OFFSET_X 8 // margin from the window edge to the minimap border
 # define M_MAP_OFFSET_Y 8 // offset from the top edge of the window
 # define M_MAP_BORDER 2 // size of the border around the minimap
 # define M_MAP_PLAYER_RAD 5 // size of the player on the minimap
 # define M_MAP_PLAYER_VUE 50.0 // size of the player view lines on the minimap
+
+// MIMIMAP COLORS
+# define WHITE 0xFFFFFF
+# define BLACK 0x000000
+# define RED 0xFF0000
+# define LIGHT_GREY 0xCCCCCC
+# define LIGHT_GREEN 0x7DFF7D
 
 enum e_map_elem
 {

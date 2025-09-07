@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:37:24 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 11:58:09 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 13:35:34 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,14 @@ void	calculate_tile_y(t_global *data, double row, int *tile_y);
 void	calculate_tile_x(t_global *data, double col, int *tile_x);
 bool	in_wall(t_global *data, int row, int col);
 void	draw_rays(t_global *data, int row, int col);
-bool	cross_wall(t_global *data, int row, int col);
 
-
+// minimap crosswall
 bool	cross_wall2(t_global *data, int row, int col);
-
+void	set_tiles_coor(t_coor player, t_coor pixel,
+			t_tile *current, t_tile *target);
+void	set_dist(t_coor player, t_coor pixel, t_vec *dist);
+void	set_dir(t_point *dir, t_vec dist);
+void	set_delta_dist(t_vec dist, t_vec *delta_dist);
+void	set_side_dist(t_dda *dda, t_vec dist, t_vec *side_dist);
 
 #endif

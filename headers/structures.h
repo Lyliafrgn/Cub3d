@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 12:38:56 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 13:36:34 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ typedef struct s_player
 {
 	double	x;		// Player's x position  (in tiles coordonates)
 	double	y;		// Player's y position
-	double	angle;	// Player's direction angle  // @util Non utilisé il me semble
 	double	dirx;	// Direction (vecteur unitaire) du joueur sur x
 	double	diry;	// Direction du joueur sur y
 	double	planex;	// Composante x du plan de caméra (perpendiculaire à dir)
@@ -33,8 +32,8 @@ typedef struct s_map
 	int		fd;			// File descriptor for the map file
 	char	*map_string;	//to save map_line when exploring map file
 	char	**map;	// 2D array for the map
-	int		width;		// Width of the map (not in pixels)
-	int		height;		// Height of the map (not in pixels)
+	int		width;		// Width of the map (not in pixels, in tiles)
+	int		height;		// Height of the map (not in pixels, in tiles)
 }	t_map;
 
 typedef struct s_img
@@ -91,19 +90,25 @@ typedef struct s_dir
 	int			cam_right;
 }	t_dir;
 
-
 //// MINIMAP ////
 //algorithme DDA (Digital Differential Analyzer)
 typedef struct s_dda
 {
-	t_coor	player;
-	t_coor	pixel;
-	t_tile	current;
-	t_tile	target;
-	t_vec	dist;
-	t_point	dir;
-	t_vec	delta_dist;
-	t_vec	side_dist;
+	t_coor	player; // Coordonnées du joueur dans le monde (float)
+						// correspond a data->player.x ou y
+	t_coor	pixel; // Coordonnées du pixel cible (ou du point
+						//sur le cercle du FOV) converti en coord. monde
+	t_tile	current; // Case (tile) actuelle de la DDA dans la grille,
+						// on avance pas à pas
+	t_tile	target; // Case (tile) où la ligne doit se terminer
+						//(celle correspondant à 'pixel')
+	t_vec	dist; // Vecteur distance entre player et pixel (dx, dy)
+	t_point	dir; // Direction d'avancement en x et y
+					//(+1 ou -1 selon la direction du rayon)
+	t_vec	delta_dist; // Distance à parcourir pour passer d’une case
+							// à la suivante en x ou y (1/dx et 1/dy)
+	t_vec	side_dist; // Distance restante pour atteindre le prochain
+							// bord de case en x et en y
 }	t_dda;
 //Vérifie si la ligne entre le joueur et le pixel (col,row)
 // traverse un mur en utilisant un algorithme DDA
@@ -116,14 +121,14 @@ typedef struct s_mmap
 	int		wall_color; // color of the walls in the minimap
 	int		floor_color; // color of the floor in the minimap
 	int		ray_color; // color of the rays in the minimap
-
+	/////
 	double	scale; // mise à l'echelle de la map par rapport à la minimap
 	double	new_tile_size; // new tile size after scaling
 	double	new_width_px; // largeur en pxel de la nouvelle map mise à l'échelle
 	double	new_height_px; // hauteur de la nouvelle map mise à l'échelle
 	int		inner_offset_y; // offset à l'interieur mmap pour centrer map
 	int		inner_offset_x; // offset à l'interieur mmap pour centrer map
-
+	/////
 	double	player_x; // position x du joueur sur la minimap
 						//offset horizontal + décalage interne horizontal
 						//+ position monde X convertie en pixels minimap
@@ -146,7 +151,5 @@ typedef struct s_global
 	int			colors[2][3]; // 2= floor and ceiling & 3= colors (RGB)
 	t_dir		dir; // to know which direction the player is moving
 }	t_global;
-
-
 
 #endif

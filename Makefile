@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/09/07 12:07:43 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/09/07 13:19:08 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ MINIMAP =	src/exec/minimap/minimap.c \
 			src/exec/minimap/drawmap.c \
 			src/exec/minimap/draw_player.c \
 			src/exec/minimap/draw_rays.c \
-			src/exec/minimap/cross_wall.c
+			src/exec/minimap/cross_wall.c \
+			src/exec/minimap/cross_wall_utils.c
 
 MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
 

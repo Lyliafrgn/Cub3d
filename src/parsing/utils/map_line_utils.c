@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_line_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:21:43 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 21:28:51 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:07:27 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,21 +95,6 @@ bool	is_valide_map_line(char *line)
 		if (flag == -1)
 			return (false);
 		line++;
-	}
-	return (true);
-}
-
-bool	line_is_only_spaces(char *line)
-{
-	int	i;
-
-	i = -1;
-	if (!line)
-		return (true);
-	while (line[++i])
-	{
-		if (!ft_isspace(line[i]) && line[i] != '\n')
-			return (false);
 	}
 	return (true);
 }

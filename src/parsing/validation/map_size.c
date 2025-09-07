@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 19:09:46 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 20:34:23 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 14:07:46 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 int	map_height_is_valid(t_map *map)
 {
