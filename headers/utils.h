@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:39:07 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 15:41:55 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:48:25 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void	print_pp_char_arr(char **str);
 double	sqr(double a);
 
 /// MSG
-int	err_msg(char *string);
-
+int		err_msg(char *string);
 
 ////// DEBUG/////
 void	print_maps(t_global *data);

@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 15:39:10 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:48:14 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ int	parse_map_root(t_global *data, char *file_name)
 		err_msg(FIND_PLAYER_FAILED);
 		return (EXIT_FAILURE);
 	}
-	//print_maps(data); // @debug
 	return (EXIT_SUCCESS);
 }
 

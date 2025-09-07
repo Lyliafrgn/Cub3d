@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 13:24:33 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:47:16 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	init_player(t_global *data)
 	data->player.dirx = 1.0;
 	data->player.diry = 0.0;
 	data->player.ms = 0.055;
-	data->player.rs = 0.02;
+	data->player.rs = 0.03;
 	data->dir.left = 0;
 	data->dir.right = 0;
 	data->dir.up = 0;
