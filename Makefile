@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/09/07 15:42:28 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/09/07 16:04:03 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,8 @@ OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 LIBFT_PATH	=	./libs/libft/libft.a
 LIBFT_OBJ	:=	$(patsubst %.c,%.o,$(wildcard ./libs/libft/build/*.c))
 
+#### HEADERS ####
+HEADERS := $(wildcard headers/*.h)
 
 #    ______  _____  _       ______      _______         _____    _____  ______  _______  _____
 #   |  ____||_   _|| |     |  ____|    |__   __| /\    |  __ \  / ____||  ____||__   __|/ ____|
@@ -124,7 +126,7 @@ LIBFT_OBJ	:=	$(patsubst %.c,%.o,$(wildcard ./libs/libft/build/*.c))
 #   | |      _| |_ | |____ | |____        | | / ____ \ | | \ \ | |__| || |____    | |   ____) |
 #   |_|     |_____||______||______|       |_|/_/    \_\|_|  \_\ \_____||______|   |_|  |_____/
 #
-$(BUILD_DIR)/%.o	:	%.c Makefile
+$(BUILD_DIR)/%.o	:	%.c Makefile $(HEADERS)
 						@mkdir -p $(dir $@)
 						@printf "$(YELLOW)[cub3D] Compiling $< ...$(DEFAULT)                  \r"
 						@$(CC) $(CFLAGS) $(INC) $(DEBUG) -c $< -o $@
