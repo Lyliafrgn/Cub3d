@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 15:41:04 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 16:16:22 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	ft_find_player(t_global *data)
 }
 
 /**
- * @note (actual_len + line_len + 2) ==> +2 for newline + null char
+ * @brief, si la ligne de map est valide, on la sauvegarde dans map->map_string
  */
 int	save_map_line(t_map *map, char *line)
 {

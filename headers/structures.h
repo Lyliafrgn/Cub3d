@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 13:36:34 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 17:55:38 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_map
 	char	**map;	// 2D array for the map
 	int		width;		// Width of the map (not in pixels, in tiles)
 	int		height;		// Height of the map (not in pixels, in tiles)
+	int		min_zero_pos; // valeur int du 0 le plus a gauche de la map
+	int		max_zero_pos; // valeur int du 0 le plus a gauche de la map
 }	t_map;
 
 typedef struct s_img

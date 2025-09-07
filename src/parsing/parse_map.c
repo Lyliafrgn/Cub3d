@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 15:48:14 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 17:55:26 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	open_map_file(t_global *data, const char *file_name)
 	return (EXIT_SUCCESS);
 }
 
-static void	update_do_read_status(bool *do_read, char *line)
+static inline void	update_do_read_status(bool *do_read, char *line)
 {
 	*do_read = true;
 	if (!line)
@@ -77,22 +77,14 @@ void	print_maps(t_global *data)
 int	parse_map_root(t_global *data, char *file_name)
 {
 	if (open_map_file(data, file_name) != EXIT_SUCCESS)
-	{
-		err_msg(MAP_NOT_FOUND);
-		return (EXIT_FAILURE);
-	}
+		return (err_msg(MAP_NOT_FOUND));
 	read_file(data, &data->map);
 	data->map.map = ft_split(data->map.map_string, '\n');
 	if (validate_map(data) != EXIT_SUCCESS)
-	{
-		err_msg(MAP_INVALID);
-		return (EXIT_FAILURE);
-	}
+		return (err_msg(MAP_INVALID));
+	normalize_map(data, &data->map);
 	if (ft_find_player(data) != SUCCESS)
-	{
-		err_msg(FIND_PLAYER_FAILED);
-		return (EXIT_FAILURE);
-	}
+		return (err_msg(FIND_PLAYER_FAILED));
 	return (EXIT_SUCCESS);
 }
 

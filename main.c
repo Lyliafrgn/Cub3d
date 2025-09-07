@@ -6,16 +6,24 @@
 /*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 15:38:15 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/07 17:55:30 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * intialement :
+ * data->winw = data->map.width * TILE_SIZE;
+ * data->winh = data->map.height * TILE_SIZE;
+ *
+ * Mais cela pose probleme, en effet sur les grandes maps, la fenetre devient
+ * immense.
+ */
 static int	start_game(t_global *data)
 {
-	data->winw = data->map.width * TILE_SIZE;
-	data->winh = data->map.height * TILE_SIZE;
+	data->winw = 10 * TILE_SIZE;
+	data->winh = 10 * TILE_SIZE;
 	if (init_mlx(data) == FAILURE)
 	{
 		ft_err("Err: MLX initialization failed.", data);

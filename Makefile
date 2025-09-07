@@ -6,7 +6,7 @@
 #    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/09/07 16:04:03 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/09/07 17:47:49 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ PARSING	=	src/parsing/parse_map.c \
 			src/parsing/process_line_map.c \
 			src/parsing/utils/map_line_utils.c \
 			src/parsing/utils/string.c \
+			src/parsing/normalize_map.c
 
 VALIDATION = src/parsing/validation/validation_root.c \
 			src/parsing/validation/map_size.c \
@@ -168,5 +169,5 @@ fclean	:	clean
 re		:	fclean all
 
 test	:	$(NAME)
-			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp --track-fds=yes ./cub3D ./maps/test3.cub
+			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp --track-fds=yes ./cub3D ./maps/test2.cub
 

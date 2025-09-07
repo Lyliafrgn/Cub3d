@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/26 19:03:55 by ly               ###   ########.fr       */
+/*   Updated: 2025/09/07 17:50:56 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int		validate_map(t_global *data);
 int		check_wrong_surrounding_letters(t_map *map);
 int		map_width_is_valid(t_map *map);
 int		map_height_is_valid(t_map *map);
+
+// NORMALIZE (replace spaces by 1)
+void	normalize_map(t_global *data, t_map *map);
 
 /////////UTILS/////////
 //MAPS
