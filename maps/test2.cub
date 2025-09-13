@@ -1,7 +1,8 @@
-NO ./textures/Bricks_02-128x128.xpm
-SO ./textures/basalt_top.xpm
-WE ./textures/textureWE.xpm
-EA ./textures/textureEA.xpm
+NO ./textures/textureN.xpm
+SO ./textures/textureS.xpm
+
+WE ./textures/textureW.xpm
+EA ./textures/textureE.xpm
 
 F 220,100,0
 C 225,30,0

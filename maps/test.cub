@@ -1,8 +1,8 @@
-NO ./textures/Bricks_02-128x128.xpm
-SO ./textures/basalt_top.xpm
+NO ./textures/textureN.xpm
+SO ./textures/textureS.xpm
 
-WE ./textures/mossy_cobblestone.xpm
-EA ./textures/textureEA.xpm
+WE ./textures/textureW.xpm
+EA ./textures/textureE.xpm
 F 188,188,188
 C 229,242,255
 
