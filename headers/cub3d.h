@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:00:38 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 14:05:03 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/15 21:57:23 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define G 1
 # define B 2
 
-# define TILE_SIZE 128// Size in pixels
+# define TILE_SIZE 64// Size in pixels
 
 /// Define a max size for the map so we don't overflow use to much memory
 # define MAP_MAX_HEIGHT 500
