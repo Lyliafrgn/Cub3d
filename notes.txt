@@ -15,6 +15,6 @@
 2) la lecture d un fichier autre que .cub (ex .txt .c et meme .jpeg) fonctionne, 
 devrait on ajouter une secu ? 
 
-3) couleurs hors plage marchent aussi (au dessus de 255)
+3) couleurs hors plage marchent aussi (au dessus de 255), et meme texte (corrige)
 
 4) pas une erreur mais gerer les messages, il y en a trop

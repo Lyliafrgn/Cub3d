@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:47 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/16 15:35:23 by ly               ###   ########.fr       */
+/*   Updated: 2025/09/16 16:04:05 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,36 @@ static int	color_start(char *line)
 	return (i);
 }
 
+static int	is_valid_rgb_digits(char **rgb)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	while (j < 3)
+	{
+		k = 0;
+		while (rgb[j][k])
+		{
+			if (!ft_isdigit(rgb[j][k]))
+				return (0);
+			k++;
+		}
+		j++;
+	}
+	return (1);
+}
+
+static int	is_rgb_in_range(int *colors)
+{
+	if (colors[0] < 0 || colors[0] > 255 || colors[1] < 0
+		|| colors[1] > 255 || colors[2] < 0 || colors[2] > 255)
+	{
+		return (0);
+	}
+	return (1);
+}
+
 static int	get_colors(char *line, int colors[3])
 {
 	int		i;
@@ -45,14 +75,15 @@ static int	get_colors(char *line, int colors[3])
 	tmp = ft_split(line + i, ',');
 	if (pp_char_len(tmp) != 3)
 		return (err_msg("Err: 3 colors are needed\n"));
+	if (!is_valid_rgb_digits(tmp))
+		return (free_av(&tmp), err_msg("Err: color values must be digits\n"));
 	colors[0] = ft_atoi(tmp[0]);
 	colors[1] = ft_atoi(tmp[1]);
 	colors[2] = ft_atoi(tmp[2]);
-	if (colors[0] < 0 || colors[0] > 255 || colors[1] < 0
-		|| colors[1] > 255 || colors[2] < 0 || colors[2] > 255)
+	if (!is_rgb_in_range(colors))
 	{
 		free_av(&tmp);
-		return (err_msg("Err: Color values must be between 0 and 255\n"));
+		return (err_msg("Err: color values must be between 0 and 255\n"));
 	}
 	free_av(&tmp);
 	return (EXIT_SUCCESS);
