@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 17:55:26 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:22:01 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	print_maps(t_global *data)
 
 int	parse_map_root(t_global *data, char *file_name)
 {
+	if (!is_cub_extension(file_name))
+		return (err_msg("Error: invalid file extension, must be .cub\n"));
 	if (open_map_file(data, file_name) != EXIT_SUCCESS)
 		return (err_msg(MAP_NOT_FOUND));
 	read_file(data, &data->map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 17:50:56 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:19:56 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ bool	finish_with_one(char *line);
 //string
 char	*ft_strjoin3(char *s1, char *s2, char *s3);
 bool	ft_isspace(char c);
+int		is_cub_extension(const char *filename);
 
 #endif

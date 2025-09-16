@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:38:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 14:07:14 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:19:18 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,16 @@ bool	line_is_only_spaces(char *line)
 			return (false);
 	}
 	return (true);
+}
+
+int	is_cub_extension(const char *filename)
+{
+	int	len;
+
+	if (!filename)
+		return (0);
+	len = ft_strlen(filename);
+	if (len < 4)
+		return (0);
+	return (ft_strncmp(filename + len - 4, ".cub", 4) == 0);
 }

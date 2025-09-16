@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:47 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/16 16:04:05 by ly               ###   ########.fr       */
+/*   Updated: 2025/09/16 16:26:56 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,27 @@ static int	color_start(char *line)
 
 static int	is_valid_rgb_digits(char **rgb)
 {
-	int	j;
-	int	k;
+	int		j;
+	int		k;
+	char	*trimmed;
 
 	j = 0;
 	while (j < 3)
 	{
+		trimmed = ft_strtrim(rgb[j], " \t\n\r");
+		if (!trimmed)
+			return (0);
 		k = 0;
-		while (rgb[j][k])
+		while (trimmed[k])
 		{
-			if (!ft_isdigit(rgb[j][k]))
+			if (!ft_isdigit(trimmed[k]))
+			{
+				free(trimmed);
 				return (0);
+			}
 			k++;
 		}
+		free(trimmed);
 		j++;
 	}
 	return (1);
