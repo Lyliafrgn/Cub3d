@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/24 02:49:36 by ly               ###   ########.fr       */
+/*   Updated: 2025/09/16 18:29:41 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ static int	ft_close_window(void *param)
 
 int	ft_err(char *msg, t_global *data)
 {
-	if (msg)
+	static int already_print = 0;
+
+	if (msg && !already_print)
+	{
 		write(2, msg, ft_strlen(msg));
-	write(2, "\n", 1);
+		write(2, "\n", 1);
+		already_print = 1;
+	}
 	if (data)
 		free_resources(data);
 	return (FAILURE);

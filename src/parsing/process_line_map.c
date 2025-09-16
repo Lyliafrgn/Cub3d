@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:48:48 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 16:16:22 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:11:35 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,8 @@ int	process_map_line(t_global *data, t_map *map, char *line)
 		return (EXIT_SUCCESS);
 	if (data->pars_sta.map == 0 && data->pars_sta.empty)
 		return (EXIT_SUCCESS);
-	if (data->pars_sta.map != 1 \
-			&& (!is_valide_map_line(line) || line_is_only_spaces(line)))
+	if (data->pars_sta.map != 1
+		&& (!is_valide_map_line(line) || line_is_only_spaces(line)))
 		return (EXIT_SUCCESS);
 	data->pars_sta.map = 1;
 	map->height++;

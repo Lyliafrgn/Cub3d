@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   surrounding_elements.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:18:13 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/04 23:02:22 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:13:03 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	check_wrong_surrounding_letters(t_map *map)
 		j = 0;
 		while (map->map[i][j] != 0)
 		{
-			if ((ok_char_for_map(map->map[i][j]) >= 2 && map->map[i][j] != ' ') \
-					|| map->map[i][j] == '0')
+			if ((ok_char_for_map(map->map[i][j]) >= 2 && map->map[i][j] != ' ')
+				|| map->map[i][j] == '0')
 			{
 				flag += check_up(map, i, j) + check_down(map, i, j);
 				flag += check_left(map, i, j) + check_right(map, i, j);
