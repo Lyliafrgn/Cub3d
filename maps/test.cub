@@ -3,10 +3,10 @@ SO ./textures/textureSO1.xpm
 WE ./textures/textureWE1.xpm
 EA ./textures/textureEA1.xpm
 
-F 123,toto,123
+F 123,123,123
 C 200,200,200
 
-1111111
-1000001
-1000S01
-1111111
+ 1111111
+ 1000001
+ 1000S01
+ 1111111
