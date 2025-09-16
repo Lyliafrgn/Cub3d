@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:55:30 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/16 18:29:41 by ly               ###   ########.fr       */
+/*   Updated: 2025/09/16 18:30:36 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	init_mlx(t_global *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-		return ((ft_err("Err MLX init failed (mlx_ptr is NULL)", data)));
+		return ((ft_err("Err: MLX init failed (mlx_ptr is NULL)", data)));
 	data->win_ptr = mlx_new_window(data->mlx_ptr,
 			data->winw, data->winh, "Cub3d");
 	if (!data->win_ptr)

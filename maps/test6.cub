@@ -1,10 +1,11 @@
-NO ./textures/Bricks_02-128x128.xpm
-SO ./textures/basalt_top.xpm
+NO ./textures/textureN.xpm
+SO ./textures/textureS.xpm
 
-WE ./textures/mossy_cobblestone.xpm
-EA ./textures/textureEA.xpm
-F 188,188,188
-C 229,242,255
+WE ./textures/textureW.xpm
+EA ./textures/textureE.xpm
+
+F 81,16,61
+C 83,16,30
 
 111111111111
 100000000001
