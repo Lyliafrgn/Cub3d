@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_color.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:51:47 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 15:39:53 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/16 15:35:23 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ static int	get_colors(char *line, int colors[3])
 	colors[0] = ft_atoi(tmp[0]);
 	colors[1] = ft_atoi(tmp[1]);
 	colors[2] = ft_atoi(tmp[2]);
+	if (colors[0] < 0 || colors[0] > 255 || colors[1] < 0
+		|| colors[1] > 255 || colors[2] < 0 || colors[2] > 255)
+	{
+		free_av(&tmp);
+		return (err_msg("Err: Color values must be between 0 and 255\n"));
+	}
 	free_av(&tmp);
 	return (EXIT_SUCCESS);
 }

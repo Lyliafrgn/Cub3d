@@ -1,8 +1,20 @@
+1) test.cub donne resultat etrange avec map
+  1111111
+  1000001
+  1000S01
+  1111111
+ 
+ (il y a des espaces avant, mais celle en dessous fonctionne)
 
-Structures :
-	une structure globale avec tous les éléments.
-		- une structure joueur
-		- structure minilibix
-		-
+ mais 
+1111111
+1000001
+1000S01
+1111111
 
+2) la lecture d un fichier autre que .cub (ex .txt .c et meme .jpeg) fonctionne, 
+devrait on ajouter une secu ? 
 
+3) couleurs hors plage marchent aussi (au dessus de 255)
+
+4) pas une erreur mais gerer les messages, il y en a trop
