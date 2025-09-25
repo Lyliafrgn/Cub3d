@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:43:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 17:55:38 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/25 06:53:09 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_map
 	int		height;		// Height of the map (not in pixels, in tiles)
 	int		min_zero_pos; // valeur int du 0 le plus a gauche de la map
 	int		max_zero_pos; // valeur int du 0 le plus a gauche de la map
+	int		min_one_pos; // index du 1 le plus à gauche pour pourvoir
+						// trimer les espaces non nécessaires
 }	t_map;
 
 typedef struct s_img

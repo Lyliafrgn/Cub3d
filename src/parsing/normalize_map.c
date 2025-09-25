@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 16:20:13 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 17:55:43 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/25 07:13:06 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,31 @@ void	get_min_max_zero_pos(t_map *map)
 		map->min_zero_pos = 0;
 }
 
+void	get_min_one_pos(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	map->min_one_pos = INT_MAX;
+	while (i < map->height)
+	{
+		j = 0;
+		while (map->map[i][j] != '\0' && j <= INT_MAX)
+		{
+			if (map->map[i][j] == '1')
+			{
+				if (j >= 0 && j < map->min_one_pos)
+					map->min_one_pos = j;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (map->min_one_pos == INT_MAX)
+		map->min_one_pos = 0;
+}
+
 /**
  * @brief
  * (map->max_zero_pos + 3) --> +3 car :
@@ -80,16 +105,18 @@ void	normalize_map(t_global *data, t_map *map)
 
 	i = 0;
 	get_min_max_zero_pos(map);
+	get_min_one_pos(map);
+	printf("min_one_pos = %i\n", map->min_one_pos);
 	while (i < map->height)
 	{
-		tmp = malloc(sizeof(char) * (map->max_zero_pos + 3));
+		tmp = malloc(sizeof(char) * (map->max_zero_pos + 3 - map->min_one_pos));
 		if (!tmp)
 			return ;
 		copy_line(map, &tmp, i);
-		tmp[map->max_zero_pos + 2] = '\0';
+		tmp[map->max_zero_pos + 2 - map->min_one_pos] = '\0';
 		ft_free((void **) &map->map[i]);
 		map->map[i] = tmp;
 		i++;
 	}
-	data->map.width = map->max_zero_pos + 2;
+	data->map.width = map->max_zero_pos + 2 - map->min_one_pos;
 }

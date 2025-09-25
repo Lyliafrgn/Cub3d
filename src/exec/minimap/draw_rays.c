@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 09:06:41 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/15 21:49:18 by ly               ###   ########.fr       */
+/*   Updated: 2025/09/25 07:15:17 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 /**
  * @brief Normalize an angle to the range [-π, π].
  * @param angle Pointer to the angle in radians to be normalized.
- */
- /*
+*/
 // void	normalize_angle(double *angle)
 // {
 // 	while (*angle > M_PI)
@@ -75,4 +74,3 @@
 // 	if (!in_wall(data, row, col) && !cross_wall(data, row, col))
 // 		ft_pixel_put(data, col, row, data->minimap.ray_color);
 // }
-*/
