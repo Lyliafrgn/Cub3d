@@ -6,7 +6,7 @@
 /*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/25 07:17:25 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:46:13 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	read_file(t_global *data, t_map *map)
 			err_msg("Err : invalid line\n");
 			close(map->fd);
 			ft_free((void **) &line);
+			free_resources(data);
 			exit(EXIT_FAILURE);
 		}
 		ft_free((void **) &line);

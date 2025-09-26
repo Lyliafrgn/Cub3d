@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 15:47:16 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:47:50 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,3 @@ void	initialize_structures(t_global *data)
 	init_pars_sta(&data->pars_sta);
 	ft_memset(&data->dir, 0, sizeof(t_dir));
 }
-
-/* int	initialize_structures(t_global *data)
-{
-	if (init_map(data) == EXIT_FAILURE)
-	{
-		write(STDERR_FILENO, "Error: Could not initialize map.\n", 34);
-		exit(EXIT_FAILURE);
-	}
-	if (init_player(data) == EXIT_FAILURE)
-	{
-		write(STDERR_FILENO, "Error: Could not initialize player.\n", 37);
-		exit(EXIT_FAILURE);
-	}
-	init_pars_sta(&data->pars_sta);
-	initialize_img_colors(data);
-	return (EXIT_SUCCESS);
-} */

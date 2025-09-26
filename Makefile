@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+         #
+#    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/09/07 17:47:49 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/09/26 17:55:31 by ofilloux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,5 +169,5 @@ fclean	:	clean
 re		:	fclean all
 
 test	:	$(NAME)
-			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp --track-fds=yes ./cub3D ./maps/test2.cub
+			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp --track-fds=yes ./cub3D ./maps/test.cub
 
