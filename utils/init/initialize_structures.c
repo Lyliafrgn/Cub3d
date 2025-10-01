@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/26 18:47:50 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:05:57 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	initialize_structures(t_global *data)
 	init_img(&data->screen);
 	(init_color(data->colors[0]), init_color(data->colors[1]));
 	data->win_ptr = NULL;
+	data->mlx_ptr = NULL;
 	init_ray(&data->ray);
 	init_map(data);
 	init_player(data);

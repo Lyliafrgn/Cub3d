@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_resources.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:56:10 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/26 19:48:13 by ly               ###   ########.fr       */
+/*   Updated: 2025/10/01 16:14:55 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	free_map(t_map *map)
 {
 	int	i;
 
+	ft_free((void **) &map->map_string);
 	if (!map->map)
 		return ;
 	i = 0;
@@ -42,7 +43,6 @@ void	free_map(t_map *map)
 		i++;
 	}
 	ft_free((void **) &map->map);
-	ft_free((void **) &map->map_string);
 	map->height = 0;
 	map->width = 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 16:20:13 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/25 07:13:06 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:17:03 by ofilloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	normalize_map(t_global *data, t_map *map)
 	i = 0;
 	get_min_max_zero_pos(map);
 	get_min_one_pos(map);
-	printf("min_one_pos = %i\n", map->min_one_pos);
 	while (i < map->height)
 	{
 		tmp = malloc(sizeof(char) * (map->max_zero_pos + 3 - map->min_one_pos));
