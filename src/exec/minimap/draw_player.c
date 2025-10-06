@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 23:02:57 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 13:37:07 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:10:05 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,10 @@ void	normalize_angle(double *angle)
 
 bool	not_player_vue_cirle(t_vec player, int row, int col)
 {
-	return (sqr((double)col - player.x) + sqr((double)row - player.y) \
-			> sqr((double)M_MAP_PLAYER_VUE) \
-			|| \
-			sqr(col - player.x) + sqr(row - player.y) \
-			<= sqr(M_MAP_PLAYER_RAD));
+	return (sqr((double)col - player.x) + sqr((double)row - player.y)
+		> sqr((double)M_MAP_PLAYER_VUE)
+		|| sqr(col - player.x) + sqr(row - player.y)
+		<= sqr(M_MAP_PLAYER_RAD));
 }
 
 void	draw_player(t_global *data, int col, int row)

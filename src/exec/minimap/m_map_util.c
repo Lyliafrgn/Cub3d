@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_map_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 22:59:43 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 14:05:43 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:05:40 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ bool	in_wall(t_global *data, int row, int col)
 
 bool	not_in_mmap(int col, int row)
 {
-	return (col < M_MAP_OFFSET_X + M_MAP_BORDER \
-		|| col > M_MAP_OFFSET_X + M_MAP_BORDER + (int)M_MAP_SIZE \
-		|| row < M_MAP_OFFSET_Y + M_MAP_BORDER \
+	return (col < M_MAP_OFFSET_X + M_MAP_BORDER
+		|| col > M_MAP_OFFSET_X + M_MAP_BORDER + (int)M_MAP_SIZE
+		|| row < M_MAP_OFFSET_Y + M_MAP_BORDER
 		|| row > M_MAP_OFFSET_Y + M_MAP_BORDER + (int)M_MAP_SIZE);
 }

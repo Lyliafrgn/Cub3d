@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cross_wall.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 12:07:04 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 13:37:01 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:09:23 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ bool	cross_wall2(t_global *data, int row, int col)
 			dda.side_dist.y += dda.delta_dist.y;
 			dda.current.y += dda.dir.y;
 		}
-		if (dda.current.x < 0 || dda.current.y < 0 \
-			|| dda.current.x >= data->map.width \
-			|| dda.current.y >= data->map.height \
+		if (dda.current.x < 0 || dda.current.y < 0
+			|| dda.current.x >= data->map.width
+			|| dda.current.y >= data->map.height
 			|| data->map.map[dda.current.y][dda.current.x] == '1')
 			return (true);
 	}

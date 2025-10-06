@@ -1,4 +1,4 @@
-NO ./textures/textureNO1.xpm
+NO ./textures/basalt_top.xpm
 SO ./textures/textureSO1.xpm
 WE ./textures/textureWE1.xpm
 EA ./textures/textureEA1.xpm
@@ -7,7 +7,6 @@ F 0, 250, 0
 C 255, 255, 255
 
   1111111
-   1000001
-
+  1000001
   1000S01
   1111111

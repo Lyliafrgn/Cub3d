@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 18:28:14 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/07 14:06:44 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:12:25 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ void	init_minimap(t_global *data, t_mmap *mmap)
 	mmap->wall_color = BLACK;
 	mmap->floor_color = LIGHT_GREY;
 	mmap->ray_color = LIGHT_GREEN;
-	mmap->scale = min_two_val(M_MAP_SIZE / (data->map.width * TILE_SIZE), \
-								M_MAP_SIZE / (data->map.height * TILE_SIZE));
+	mmap->scale = min_two_val(M_MAP_SIZE / (data->map.width * TILE_SIZE),
+			M_MAP_SIZE / (data->map.height * TILE_SIZE));
 	mmap->new_tile_size = TILE_SIZE * mmap->scale;
 	if (mmap->new_tile_size < 1)
 		mmap->new_tile_size = 1;
 	mmap->new_width_px = data->map.width * mmap->new_tile_size;
 	mmap->new_height_px = data->map.height * mmap->new_tile_size;
 	calc_inner_offsets(&data->minimap);
-	mmap->player_x = M_MAP_OFFSET_X + M_MAP_BORDER + mmap->inner_offset_x \
-				+ (double)(data->player.x * mmap->new_tile_size);
-	mmap->player_y = M_MAP_OFFSET_Y + M_MAP_BORDER + mmap->inner_offset_y \
-				+ (double)(data->player.y * mmap->new_tile_size);
+	mmap->player_x = M_MAP_OFFSET_X + M_MAP_BORDER + mmap->inner_offset_x
+		+ (double)(data->player.x * mmap->new_tile_size);
+	mmap->player_y = M_MAP_OFFSET_Y + M_MAP_BORDER + mmap->inner_offset_y
+		+ (double)(data->player.y * mmap->new_tile_size);
 }
 
 void	draw_minimap(t_global *data)

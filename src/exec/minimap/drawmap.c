@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 23:00:35 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/08/30 11:19:06 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:14:31 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	calculate_tile_x(t_global *data, double col, int *tile_x)
 
 	*tile_x = 0;
 	new_width_px = data->minimap.new_width_px;
-	*tile_x = (int)floor((((double)((col - M_MAP_OFFSET_X - M_MAP_BORDER \
-								- data->minimap.inner_offset_x) \
-				* data->map.width) / new_width_px)));
+	*tile_x = (int)floor((((double)((col - M_MAP_OFFSET_X - M_MAP_BORDER
+							- data->minimap.inner_offset_x)
+						* data->map.width) / new_width_px)));
 	if (*tile_x < 0)
 		*tile_x = 0;
 	if (*tile_x >= data->map.width)
@@ -33,9 +33,9 @@ void	calculate_tile_y(t_global *data, double row, int *tile_y)
 
 	*tile_y = 0;
 	new_height_px = data->minimap.new_height_px;
-	*tile_y = (int)floor((((double)((row - M_MAP_OFFSET_Y - M_MAP_BORDER \
-								- data->minimap.inner_offset_y) \
-				* data->map.height) / new_height_px)));
+	*tile_y = (int)floor((((double)((row - M_MAP_OFFSET_Y - M_MAP_BORDER
+							- data->minimap.inner_offset_y)
+						* data->map.height) / new_height_px)));
 	if (*tile_y < 0)
 		*tile_y = 0;
 	if (*tile_y >= data->map.height)
