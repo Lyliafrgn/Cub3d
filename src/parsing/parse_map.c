@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/26 18:46:13 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:11:01 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	open_map_file(t_global *data, const char *file_name)
 	data->map.fd = open(file_name, O_RDONLY);
 	if (data->map.fd < 0)
 	{
-		perror("Error opening map file");
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

@@ -3,7 +3,7 @@ SO ./textures/textureSO1.xpm
 WE ./textures/textureWE1.xpm
 EA ./textures/textureEA1.xpm
 
-F 81,16,61
+F 0,0,61
 C 83,16,30
 
 111111111111  1111111
