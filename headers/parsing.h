@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:35:21 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/09/16 16:19:56 by ly               ###   ########.fr       */
+/*   Updated: 2025/10/06 16:23:20 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		validate_map(t_global *data);
 int		check_wrong_surrounding_letters(t_map *map);
 int		map_width_is_valid(t_map *map);
 int		map_height_is_valid(t_map *map);
+int		validate_colors(t_global *data);
 
 // NORMALIZE (replace spaces by 1)
 void	normalize_map(t_global *data, t_map *map);

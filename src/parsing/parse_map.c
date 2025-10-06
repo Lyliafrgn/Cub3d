@@ -6,7 +6,7 @@
 /*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:52:20 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/10/06 16:11:01 by ly               ###   ########.fr       */
+/*   Updated: 2025/10/06 16:21:39 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	parse_map_root(t_global *data, char *file_name)
 	if (open_map_file(data, file_name) != EXIT_SUCCESS)
 		return (err_msg(MAP_NOT_FOUND));
 	read_file(data, &data->map);
+	if (validate_colors(data) != EXIT_SUCCESS)
+    return (EXIT_FAILURE);
 	data->map.map = ft_split(data->map.map_string, '\n');
 	if (validate_map(data) != EXIT_SUCCESS)
 		return (err_msg(MAP_INVALID));
