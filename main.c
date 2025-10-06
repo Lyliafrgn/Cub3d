@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/10/01 16:06:13 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:44:23 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	main(int ac, char **av, char **env)
 	t_global	data;
 
 	(void)env;
-	if (ac < 2)
-		return (err_msg("Run with: ./cub3D <map_file>\n"));
+	if (ac < 2 || ac > 2)
+		return (err_msg("Err: run with \"./cub3D <map_file>\"\n"));
 	initialize_structures(&data);
 	if (parse_map_root(&data, av[1]) == EXIT_FAILURE)
 		return (free_resources(&data), \

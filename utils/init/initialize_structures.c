@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structures.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:53:58 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/10/01 16:05:57 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:36:59 by ly               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	init_player(t_global *data)
 	data->player.planey = 0.66;
 	data->player.dirx = 1.0;
 	data->player.diry = 0.0;
-	data->player.ms = 0.055;
+	data->player.ms = 0.03;
 	data->player.rs = 0.03;
 	data->dir.left = 0;
 	data->dir.right = 0;
