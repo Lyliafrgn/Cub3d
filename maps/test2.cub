@@ -14,8 +14,7 @@ NO ./textures/textureNO1.xpm
 SO ./textures/textureSO1.xpm
 WE ./textures/textureWE1.xpm
 EA ./textures/textureEA1.xpm
-ED ./textures/textureEA1.xpdm
-F 81,16,61
-G 81,16,612122
+     F 81,16,61
+  G 81,16,612122
 C 83, 16  ,200
 
