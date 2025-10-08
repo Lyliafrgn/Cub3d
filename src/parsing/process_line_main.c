@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_line_main.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ofilloux <ofilloux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lylfergu <lylfergu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:49:59 by ofilloux          #+#    #+#             */
-/*   Updated: 2025/10/08 11:30:48 by ofilloux         ###   ########.fr       */
+/*   Updated: 2025/10/08 12:11:12 by lylfergu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	process_line(t_global *data, t_map *map, char *line)
 	data->pars_sta.empty = line_is_only_spaces(line);
 	if (invalid_line(tmp))
 	{
-		err_msg("Invalid config\n");
+		err_msg("Err: Invalid config\n");
 		free_resources(data);
 		ft_free((void **) &tmp);
 		return (EXIT_FAILURE);
