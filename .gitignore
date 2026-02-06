@@ -1,0 +1,10 @@
+**/*.o
+**/*.out
+**/*.a
+.vscode
+**/minilibx/*
+cub3D
+./libs/minilibx
+minilibx
+libs/minilibx
+**/.DS_Store

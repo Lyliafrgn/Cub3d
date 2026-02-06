@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ofilloux <ofilloux@student.42barcelona.    +#+  +:+       +#+         #
+#    By: ly <ly@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 16:43:26 by ofilloux          #+#    #+#              #
-#    Updated: 2025/07/21 16:48:04 by ofilloux         ###   ########.fr        #
+#    Updated: 2025/08/26 19:24:14 by ly               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,24 +30,57 @@ YELLOW	=	\e[1;33m
 #      \  /     / ____ \  | | \ \   _| |_   / ____ \  | |_) | | |____  | |____   ____) |
 #       \/     /_/    \_\ |_|  \_\ |_____| /_/    \_\ |____/  |______| |______| |_____/
 #
-NAME	=	minishell
-CC		=	cc
-INC = -I./header
-CFLAGS	=	-Wall -Wextra -Werror -g $(INC)
+NAME	=	cub3D
 
-LIBFLAGS	=	#-lreadline
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror #$(INC) $(LNK_FLAGS)
+DEBUG	=	-g -O0
+
+MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+LNK_FLAGS	=-lm $(MLX_FLAGS)
+
+INC 	=	-I./headers -I./libs/libft -I./libs/minilibx
+
 
 #   ////////////////// SOURCES FILES //////////////////
-SIGNALS	=	./src/signals/signals.c
+SIGNALS	=	src/signals/signal_main.c
 
-EXEC	=	./src/exec/exec.c
+EXEC	=	src/exec/raycasting/render_scene.c \
+			src/exec/raycasting/movements.c \
+			src/exec/raycasting/pixels.c \
+			src/exec/raycasting/cast.c \
+			src/exec/raycasting/cast_utils.c \
 
-UTILS	=	./utils.c
+MLX_INIT = $(wildcard src/exec/mlx_init/*.c)
+
+PARSING	=	src/parsing/parse_map.c \
+			src/parsing/process_line_main.c \
+			src/parsing/process_line_color.c \
+			src/parsing/process_line_texture.c \
+			src/parsing/process_line_map.c \
+			src/parsing/utils/map_line_utils.c \
+			src/parsing/utils/string.c \
+
+VALIDATION = src/parsing/validation/validation_root.c \
+			src/parsing/validation/map_size.c \
+			src/parsing/validation/surrounding_elements.c
+
+
+
+UTILS	=	utils/frees/free_resources.c \
+			utils/frees/ft_free.c \
+			utils/init/initialize_structures.c \
+			utils/init/init_img_colors.c \
+			utils/get_next_line.c \
+			utils/get_next_line_utils.c \
+			utils/array/char.c
 
 SRC		=	main.c \
-			$(SIGNALS) \
 			$(UTILS) \
-			$(EXEC)
+			$(PARSING) \
+			$(VALIDATION) \
+			$(EXEC) \
+			$(MLX_INIT)
 
 
 #     ____    ____         _   ______    _____   _______    _____
@@ -57,7 +90,15 @@ SRC		=	main.c \
 #   | |__| | | |_) | | |__| | | |____  | |____     | |     ____) |
 #    \____/  |____/   \____/  |______|  \_____|    |_|    |_____/
 #
-BUILD_DIR	=	./build
+#////////////////// MLX && LIBS//////////////////
+LIB_DIR =	libs
+
+MLX_DIR	=	$(LIB_DIR)/minilibx
+MLX		=	$(MLX_DIR)/libmlx.a
+MLX_OBJ	=	$(MLX_DIR:.c=.o) #### TO CONFIRM ####
+
+#### OBJ ####
+BUILD_DIR	=	build
 OBJ			=	$(SRC:%.c=$(BUILD_DIR)/%.o)
 
 LIBFT_PATH	=	./libs/libft/libft.a
@@ -71,18 +112,21 @@ LIBFT_OBJ	:=	$(patsubst %.c,%.o,$(wildcard ./libs/libft/build/*.c))
 #   | |      _| |_ | |____ | |____        | | / ____ \ | | \ \ | |__| || |____    | |   ____) |
 #   |_|     |_____||______||______|       |_|/_/    \_\|_|  \_\ \_____||______|   |_|  |_____/
 #
-$(BUILD_DIR)/%.o	:	%.c $(INC) Makefile
-						@printf "$(YELLOW)[minishell] Compiling $< ...$(DEFAULT)                  \r"
+$(BUILD_DIR)/%.o	:	%.c Makefile
 						@mkdir -p $(dir $@)
-						@$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
+						@printf "$(YELLOW)[cub3D] Compiling $< ...$(DEFAULT)                  \r"
+						@$(CC) $(CFLAGS) $(INC) $(DEBUG) -c $< -o $@
 
-$(NAME) 			:	$(OBJ) $(LIBFT_PATH)
-						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) -o $@ $(LDFLAGS)
-						@printf "\n$(GREEN)[minishell] Compiled successfully.$(DEFAULT)\n"
+$(NAME) 			:	$(OBJ) $(LIBFT_PATH) $(MLX)
+						@$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(LIBFT_PATH) $(INC) $(LNK_FLAGS) -o $@
+						@printf "\n$(GREEN)[cub3D] Compiled successfully.$(DEFAULT)\n"
 
 $(LIBFT_PATH)		:	$(LIBFT_OBJ)
 						@$(MAKE) -C ./libs/libft
-						@printf "\n$(GREEN)[minishell] libft compiled successfully.$(DEFAULT)\n" > /dev/null
+						@printf "\n$(GREEN)[cub3D] libft compiled successfully.$(DEFAULT)\n" > /dev/null
+
+$(MLX)				:	$(MLX_OBJ)
+						make -C $(MLX_DIR) all
 
 #    _____   _    _   ____   _   _ __     __    _______         _____    _____  ______  _______  _____
 #   |  __ \ | |  | | / __ \ | \ | |\ \   / /   |__   __| /\    |  __ \  / ____||  ____||__   __|/ ____|
@@ -98,6 +142,7 @@ all		:	$(NAME)
 
 clean	:
 			@make -s clean -C ./libs/libft
+			@make -C $(MLX_DIR) clean
 			@rm -rf $(BUILD_DIR)
 			@printf "$(RED)[minishell] Object files cleaned.$(DEFAULT)\n"
 
@@ -109,6 +154,5 @@ fclean	:	clean
 re		:	fclean all
 
 test	:	$(NAME)
-			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes \
-			--child-silent-after-fork=no --suppressions=readline.supp -s ./minishell
+			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=mlx.supp --track-fds=yes ./cub3D ./maps/test3.cub
 

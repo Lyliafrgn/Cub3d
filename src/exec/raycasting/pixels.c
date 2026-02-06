@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pixels.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ly <ly@student.42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/21 17:37:40 by ofilloux          #+#    #+#             */
+/*   Updated: 2025/08/24 04:09:07 by ly               ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../headers/cub3d.h"
+
+/*Draws a specific pixel in the image on the screen (data->screen) 
+at the position (column, row) with a given color.*/
+void	ft_pixel_put(t_global *data, int c, int r, int color)
+{
+	char	*dst;
+
+	if (c < 0 || c >= data->winw || r < 0 || r >= data->winh)
+		return ;
+	dst = data->screen.addr + (r * data->screen.llen + c
+			* (data->screen.bpp / 8));
+	*(unsigned int *)dst = color;
+}
+
+/*gets the color of a pixel 
+*in the texture of the wall touched
+*/
+int	ft_get_texpixel(t_global *data, int texx, int texy)
+{
+	t_img	tex;
+	char	*color;
+
+	tex = data->txtr[data->ray.wall];
+	if (texx < 0 || texx >= tex.imgw || texy < 0 || texy >= tex.imgh)
+		return (0xFF00FF);
+	color = (tex.addr + (texy * tex.llen + texx * (tex.bpp / 8)));
+	return (*(unsigned int *)color);
+}
+
+/*shows which column of 
+*the wall texture should be used
+*/
+int	ft_get_texx(t_global *data)
+{
+	double	wallx;
+	int		texx;
+	t_img	*tex;
+
+	tex = &data->txtr[data->ray.wall];
+	if (data->ray.side == 0)
+		wallx = data->player.y + data->ray.perp_wall_dist * data->ray.dir.y;
+	else
+		wallx = data->player.x + data->ray.perp_wall_dist * data->ray.dir.x;
+	wallx -= floor((wallx));
+	texx = (int)(wallx * (double)(tex->imgw));
+	if (data->ray.side == 0 && data->ray.dir.x > 0)
+		texx = tex->imgw - texx - 1;
+	if (data->ray.side == 1 && data->ray.dir.y < 0)
+		texx = tex->imgw - texx - 1;
+	return (texx);
+}
